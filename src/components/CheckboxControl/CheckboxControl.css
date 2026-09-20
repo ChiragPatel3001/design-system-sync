@@ -1,0 +1,86 @@
+/**
+ * Tokens: Surface/default-secondary, Surface/action-hover-light, Surface/action(-hover),
+ * Surface/disabled, Border/default, Border/action(-hover), Border/disabled,
+ * Icon/on-action, Icon/disabled, Border radius/xl, Border width/sm|md.
+ * See manifest components[] entry ".Checkbox item" (node 19:667).
+ *
+ * Uses :has() to style the wrapper from the hidden input's checked/focus
+ * state without extra JS state — requires a modern evergreen browser (see
+ * design-system/implementation-notes.md).
+ *
+ * Per the manifest (borderWidthVerification on this component), variants
+ * 19:666 and 19:669 (Unselected/Default and Unselected/hover) intentionally
+ * have no border-width variable in Figma; they are implemented here at
+ * Border width/sm like every other variant, per the user's confirmation
+ * recorded in the manifest.
+ */
+
+.ds-checkbox-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: var(--radius-xl);
+  border-width: var(--border-width-sm);
+  border-style: solid;
+  background: var(--color-surface-default-secondary);
+  border-color: var(--color-border-default);
+  color: transparent;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.ds-checkbox-control:hover:not(.ds-checkbox-control--disabled) {
+  background: var(--color-surface-action-hover-light);
+  border-color: var(--color-border-action-hover);
+}
+
+.ds-checkbox-control:has(:focus-visible) {
+  outline: var(--border-width-md) solid var(--color-border-action-hover);
+  outline-offset: 2px;
+}
+
+.ds-checkbox-control:has(:checked) {
+  background: var(--color-surface-action);
+  border-color: var(--color-border-action);
+  color: var(--color-icon-on-action);
+}
+
+.ds-checkbox-control:has(:checked):hover:not(.ds-checkbox-control--disabled) {
+  background: var(--color-surface-action-hover);
+  border-color: var(--color-border-action-hover);
+}
+
+.ds-checkbox-control--disabled {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-disabled);
+}
+
+.ds-checkbox-control--disabled:has(:checked) {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-icon-disabled);
+}
+
+.ds-checkbox-control__input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.ds-checkbox-control--disabled .ds-checkbox-control__input {
+  cursor: not-allowed;
+}
+
+.ds-checkbox-control__check {
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}

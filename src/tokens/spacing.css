@@ -1,0 +1,30 @@
+/**
+ * Spacing tokens.
+ *
+ * There is no semantic spacing collection in Figma — only the numeric
+ * "Brand/Scale" ramp (see manifest "tokens.typography.spacing": "There is a
+ * numeric Scale but no semantic spacing variables; components use unbound
+ * raw values."). Component gap/padding values are bound to the closest
+ * Scale step where the manifest confirms one exists. Two raw values (9px
+ * menu-item gap, 13px FormField gap) have no matching Scale step in Figma;
+ * those are left as literal px in the component CSS rather than invented
+ * as fake tokens — see design-system/implementation-notes.md.
+ */
+
+:root {
+  --scale-0: 0px;
+  --scale-25: 1px;
+  --scale-50: 2px;
+  --scale-100: 4px;
+  --scale-200: 8px;
+  --scale-300: 12px;
+  --scale-400: 16px;
+  --scale-500: 20px;
+  --scale-600: 24px;
+  --scale-700: 32px;
+  --scale-800: 40px;
+  --scale-900: 48px;
+  --scale-1000: 56px;
+  --scale-1100: 64px;
+  --scale-1200: 72px;
+}

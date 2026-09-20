@@ -1,0 +1,12 @@
+/**
+ * Border radius tokens (figma collection "Alias", group "Border radius").
+ * Each step aliases a Brand/Scale value, matching the manifest exactly.
+ */
+
+:root {
+  --radius-none: var(--scale-0);
+  --radius-sm: var(--scale-25);
+  --radius-md: var(--scale-50);
+  --radius-lg: var(--scale-100);
+  --radius-xl: var(--scale-200);
+}

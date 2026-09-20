@@ -1,0 +1,55 @@
+/**
+ * Tokens: Text/action(-hover), Text/disabled, Surface/disabled, Border/action,
+ * Border width/sm, Border radius/lg. See manifest components[] entry "Link"
+ * (node 18:503).
+ */
+
+.ds-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--scale-200);
+  height: 20px;
+  font-family: var(--alias-font-family-body);
+  font-size: var(--font-size-paragraph-medium);
+  line-height: var(--line-height-paragraph-medium);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.ds-link__icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Type = Default */
+.ds-link--default {
+  color: var(--color-text-action);
+}
+.ds-link--default:hover {
+  color: var(--color-text-action-hover);
+}
+.ds-link--default:focus-visible {
+  outline: var(--border-width-sm) solid var(--color-border-action);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+/* Type = Active */
+.ds-link--active {
+  color: var(--color-text-action-hover);
+}
+.ds-link--active:focus-visible {
+  outline: var(--border-width-sm) solid var(--color-border-action);
+  outline-offset: 2px;
+  border-radius: var(--radius-lg);
+}
+
+/* Type = Disabled */
+.ds-link--disabled {
+  background: var(--color-surface-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}

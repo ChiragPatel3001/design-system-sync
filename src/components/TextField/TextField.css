@@ -1,0 +1,104 @@
+/**
+ * Tokens: Surface/default-secondary, Surface/action-hover-light, Surface/error,
+ * Surface/disabled, Border/default, Border/action-hover, Border/error,
+ * Border/disabled, Border/focus, Text/placeholder, Text/Body, Text/action-hover,
+ * Text/error, Text/disabled, Border radius/lg, Border width/sm|md.
+ * See manifest components[] entry "Field" (node 18:130) for the full
+ * stylesByTypeThenStatus matrix. Per that entry's own note: "Type=Default
+ * and Type=Error disabled states are identical" — reflected below by the
+ * shared .ds-textfield--disabled rule applying regardless of variant.
+ */
+
+.ds-textfield {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--scale-200);
+  width: 100%;
+  padding: var(--scale-300);
+  border-radius: var(--radius-lg);
+  border-width: var(--border-width-sm);
+  border-style: solid;
+  background: var(--color-surface-default-secondary);
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.ds-textfield__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--alias-font-family-body);
+  font-size: var(--font-size-paragraph-medium);
+  line-height: var(--line-height-paragraph-medium);
+  color: inherit;
+}
+
+.ds-textfield__input::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+.ds-textfield__icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Type = Default */
+.ds-textfield--default {
+  border-color: var(--color-border-default);
+  color: var(--color-text-placeholder);
+}
+.ds-textfield--default:hover:not(.ds-textfield--disabled) {
+  background: var(--color-surface-action-hover-light);
+  border-color: var(--color-border-action-hover);
+  color: var(--color-text-action-hover);
+}
+.ds-textfield--default:focus-within {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+/* Type = Filled */
+.ds-textfield--filled {
+  border-color: var(--color-border-default);
+  color: var(--color-text-body);
+}
+.ds-textfield--filled:hover:not(.ds-textfield--disabled) {
+  background: var(--color-surface-action-hover-light);
+  border-color: var(--color-border-action-hover);
+  color: var(--color-text-action-hover);
+}
+.ds-textfield--filled:focus-within {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+/* Type = Error */
+.ds-textfield--error {
+  border-color: var(--color-border-error);
+  color: var(--color-text-error);
+}
+.ds-textfield--error:hover:not(.ds-textfield--disabled) {
+  background: var(--color-surface-error);
+  border-color: var(--color-border-error);
+  color: var(--color-text-error);
+}
+.ds-textfield--error:focus-within {
+  outline: var(--border-width-md) solid var(--color-border-error);
+  outline-offset: 3px;
+}
+
+/* Status = disabled (identical across all three Types, per the manifest) */
+.ds-textfield--disabled,
+.ds-textfield--disabled:hover {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}

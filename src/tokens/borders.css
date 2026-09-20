@@ -1,0 +1,11 @@
+/**
+ * Border width tokens (figma collection "Alias", group "Border width").
+ * Each step aliases a Brand/Scale value, matching the manifest exactly.
+ */
+
+:root {
+  --border-width-none: var(--scale-0);
+  --border-width-sm: var(--scale-25);
+  --border-width-md: var(--scale-50);
+  --border-width-lg: var(--scale-100);
+}

@@ -1,0 +1,29 @@
+.demo-app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: var(--scale-700);
+}
+
+.demo-intro {
+  color: var(--color-text-caption);
+  font-size: var(--font-size-paragraph-small);
+}
+
+.demo-section {
+  margin-bottom: var(--scale-800);
+}
+
+.demo-section h2 {
+  font-family: var(--alias-font-family-heading);
+  font-weight: var(--font-weight-heading);
+  font-size: var(--font-size-h6);
+  color: var(--color-text-heading);
+  margin-bottom: var(--scale-400);
+}
+
+.demo-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--scale-400);
+}

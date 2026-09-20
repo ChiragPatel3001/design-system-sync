@@ -1,0 +1,217 @@
+/**
+ * Color tokens.
+ *
+ * Mirrors the three-tier alias chain documented in design-system-manifest.json
+ * ("tokens.collectionChain"): Mapped (semantic, consumed by components) ->
+ * Alias (roles) -> Brand (raw primitives). Each tier is expressed as its own
+ * CSS custom property, aliasing the tier below it with var(), so the chain in
+ * code matches the chain in Figma variable-for-variable.
+ *
+ * Naming: <tier>-<group>-<step>, lowercased/kebab-cased from the Figma
+ * variable name (e.g. "Brand/Purple/500-Default" -> --brand-purple-500-default).
+ * Names are preserved as-is, including Figma's own inconsistencies (see
+ * design-system/implementation-notes.md, "Token naming" section).
+ */
+
+:root {
+  /* ---- Brand: raw color ramps (figma collection "Brand") ---- */
+  --brand-purple-50: #f4ecfe;
+  --brand-purple-100: #e8d7fd;
+  --brand-purple-200: #d0affb;
+  --brand-purple-300: #b988f9;
+  --brand-purple-400: #a160f7;
+  --brand-purple-500-default: #8a38f5;
+  --brand-purple-600: #6e2dc4;
+  --brand-purple-700: #532293;
+  --brand-purple-800: #371662;
+  --brand-purple-900: #1c0b31;
+  --brand-purple-950: #0e0618;
+
+  --brand-red-50: #feecec;
+  --brand-red-100: #fdd7d7;
+  --brand-red-200: #fbafaf;
+  --brand-red-300: #f98888;
+  --brand-red-400: #f76060;
+  --brand-red-500: #f53838;
+  --brand-red-600: #c42d2d;
+  --brand-red-700: #932222;
+  --brand-red-800: #621616;
+  --brand-red-900: #310b0b;
+  --brand-red-950: #180606;
+
+  --brand-green-50: #ebfaeb;
+  --brand-green-100: #d6f4d5;
+  --brand-green-200: #ade9ab;
+  --brand-green-300: #83dd82;
+  --brand-green-400: #5ad258;
+  --brand-green-500: #31c72e;
+  --brand-green-600: #279f25;
+  --brand-green-700: #1d771c;
+  --brand-green-800: #145012;
+  --brand-green-900: #0a2809;
+  --brand-green-950: #051405;
+
+  --brand-gray-50: #eaeaea;
+  --brand-gray-100: #d5d5d5;
+  --brand-gray-200: #ababab;
+  --brand-gray-300: #818180;
+  --brand-gray-400: #575756;
+  --brand-gray-500: #2d2d2c;
+  --brand-gray-600: #242423;
+  --brand-gray-700: #1b1b1a;
+  --brand-gray-800: #121212;
+  --brand-gray-900: #090909;
+  --brand-gray-950: #040404;
+
+  --brand-orange-50: #fff2e7;
+  --brand-orange-100: #ffe5cd;
+  --brand-orange-200: #ffca9c;
+  --brand-orange-300: #ffb06a;
+  --brand-orange-400: #ff9539;
+  --brand-orange-500: #ff7b07;
+  --brand-orange-600: #cc6206;
+  --brand-orange-700: #994a04;
+  --brand-orange-800: #663103;
+  --brand-orange-900: #331901;
+  --brand-orange-950: #190c01;
+
+  --brand-blue-50: #eaecfb;
+  --brand-blue-100: #d4d8f6;
+  --brand-blue-200: #a9b2ec;
+  --brand-blue-300: #7e8be3;
+  --brand-blue-400: #5365d9;
+  --brand-blue-500: #283ed0;
+  --brand-blue-600: #2032a6;
+  --brand-blue-700: #18257d;
+  --brand-blue-800: #101953;
+  --brand-blue-900: #080c2a;
+  --brand-blue-950: #040615;
+
+  --brand-foundation-white: #ffffff;
+  --brand-foundation-black: #000000;
+
+  /* ---- Alias: semantic role layer, aliases Brand (figma collection "Alias") ---- */
+  --alias-primary-50: var(--brand-purple-50);
+  --alias-primary-100: var(--brand-purple-100);
+  --alias-primary-200: var(--brand-purple-200);
+  --alias-primary-300: var(--brand-purple-300);
+  --alias-primary-400: var(--brand-purple-400);
+  --alias-primary-500: var(--brand-purple-500-default);
+  --alias-primary-600: var(--brand-purple-600);
+  --alias-primary-700: var(--brand-purple-700);
+  --alias-primary-800: var(--brand-purple-800);
+  --alias-primary-900: var(--brand-purple-900);
+  --alias-primary-950: var(--brand-purple-950);
+
+  --alias-success-50: var(--brand-green-50);
+  --alias-success-100: var(--brand-green-100);
+  --alias-success-200: var(--brand-green-200);
+  --alias-success-300: var(--brand-green-300);
+  --alias-success-400: var(--brand-green-400);
+  --alias-success-500: var(--brand-green-500);
+  --alias-success-600: var(--brand-green-600);
+  --alias-success-700: var(--brand-green-700);
+  --alias-success-800: var(--brand-green-800);
+  --alias-success-900: var(--brand-green-900);
+  --alias-success-950: var(--brand-green-950);
+
+  --alias-error-50: var(--brand-red-50);
+  --alias-error-100: var(--brand-red-100);
+  --alias-error-200: var(--brand-red-200);
+  --alias-error-300: var(--brand-red-300);
+  --alias-error-400: var(--brand-red-400);
+  --alias-error-500: var(--brand-red-500);
+  --alias-error-600: var(--brand-red-600);
+  --alias-error-700: var(--brand-red-700);
+  --alias-error-800: var(--brand-red-800);
+  --alias-error-900: var(--brand-red-900);
+  --alias-error-950: var(--brand-red-950);
+
+  --alias-warning-50: var(--brand-orange-50);
+  --alias-warning-100: var(--brand-orange-100);
+  --alias-warning-200: var(--brand-orange-200);
+  --alias-warning-300: var(--brand-orange-300);
+  --alias-warning-400: var(--brand-orange-400);
+  --alias-warning-500: var(--brand-orange-500);
+  --alias-warning-600: var(--brand-orange-600);
+  --alias-warning-700: var(--brand-orange-700);
+  --alias-warning-800: var(--brand-orange-800);
+  --alias-warning-900: var(--brand-orange-900);
+  --alias-warning-950: var(--brand-orange-950);
+
+  --alias-information-50: var(--brand-blue-50);
+  --alias-information-100: var(--brand-blue-100);
+  --alias-information-200: var(--brand-blue-200);
+  --alias-information-300: var(--brand-blue-300);
+  --alias-information-400: var(--brand-blue-400);
+  --alias-information-500: var(--brand-blue-500);
+  --alias-information-600: var(--brand-blue-600);
+  --alias-information-700: var(--brand-blue-700);
+  --alias-information-800: var(--brand-blue-800);
+  --alias-information-900: var(--brand-blue-900);
+  --alias-information-950: var(--brand-blue-950);
+
+  --alias-neutral-50: var(--brand-gray-50);
+  --alias-neutral-100: var(--brand-gray-100);
+  --alias-neutral-200: var(--brand-gray-200);
+  --alias-neutral-300: var(--brand-gray-300);
+  --alias-neutral-400: var(--brand-gray-400);
+  --alias-neutral-500: var(--brand-gray-500);
+  --alias-neutral-600: var(--brand-gray-600);
+  --alias-neutral-700: var(--brand-gray-700);
+  --alias-neutral-800: var(--brand-gray-800);
+  --alias-neutral-900: var(--brand-gray-900);
+  --alias-neutral-950: var(--brand-gray-950);
+
+  --alias-foundation-white: var(--brand-foundation-white);
+  --alias-foundation-black: var(--brand-foundation-black);
+
+  /* ---- Mapped: component-facing semantic tokens, aliases Alias (figma collection "Mapped", mode "Light") ---- */
+  --color-surface-page: var(--alias-foundation-white);
+  --color-surface-default: var(--alias-neutral-50);
+  --color-surface-default-secondary: var(--alias-foundation-white);
+  --color-surface-action: var(--alias-primary-500);
+  --color-surface-action-hover: var(--alias-primary-600);
+  --color-surface-action-hover-light: var(--alias-primary-50);
+  --color-surface-success: var(--alias-success-50);
+  --color-surface-error: var(--alias-error-50);
+  --color-surface-warning: var(--alias-warning-50);
+  --color-surface-information: var(--alias-information-50);
+  --color-surface-disabled: var(--alias-neutral-50);
+
+  --color-border-default: var(--alias-neutral-100);
+  --color-border-action: var(--alias-primary-500);
+  --color-border-action-hover: var(--alias-primary-600);
+  --color-border-success: var(--alias-success-300);
+  --color-border-error: var(--alias-error-300);
+  --color-border-warning: var(--alias-warning-300);
+  --color-border-information: var(--alias-information-300);
+  --color-border-disabled: var(--alias-neutral-50);
+  --color-border-focus: var(--alias-primary-500);
+
+  --color-text-heading: var(--alias-neutral-900);
+  --color-text-body: var(--alias-neutral-700);
+  --color-text-caption: var(--alias-neutral-500);
+  --color-text-placeholder: var(--alias-neutral-400);
+  --color-text-on-action: var(--alias-foundation-white);
+  --color-text-on-action-hover: var(--alias-primary-100);
+  --color-text-action: var(--alias-primary-500);
+  --color-text-action-hover: var(--alias-primary-600);
+  --color-text-success: var(--alias-success-500);
+  --color-text-error: var(--alias-error-500);
+  --color-text-warning: var(--alias-warning-500);
+  --color-text-information: var(--alias-information-500);
+  --color-text-disabled: var(--alias-neutral-400);
+
+  --color-icon-default: var(--alias-neutral-700);
+  --color-icon-placeholder: var(--alias-neutral-400);
+  --color-icon-on-action: var(--alias-foundation-white);
+  --color-icon-on-action-hover: var(--alias-primary-100);
+  --color-icon-action: var(--alias-primary-500);
+  --color-icon-action-hover: var(--alias-primary-600);
+  --color-icon-success: var(--alias-success-500);
+  --color-icon-error: var(--alias-error-500);
+  --color-icon-warning: var(--alias-warning-500);
+  --color-icon-information: var(--alias-information-500);
+  --color-icon-disabled: var(--alias-neutral-400);
+}

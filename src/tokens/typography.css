@@ -1,0 +1,63 @@
+/**
+ * Typography tokens.
+ *
+ * Font families come from Brand -> Alias ("Font Family/Heading", "Font
+ * Family/Body"). Size/line-height/paragraph-spacing come from the
+ * "Responsive" collection (single mode, so no per-breakpoint values exist —
+ * see manifest finding F19). Values are taken from the manifest's
+ * "tokens.typography.textStyles" object, verified against the Figma
+ * specimen frame 70:170 on 2026-09-21.
+ */
+
+:root {
+  /* ---- Brand -> Alias: font family roles ---- */
+  --brand-font-heading: 'Roboto', sans-serif;
+  --brand-font-body: 'Inter', sans-serif;
+  --alias-font-family-heading: var(--brand-font-heading);
+  --alias-font-family-body: var(--brand-font-body);
+
+  /* ---- Responsive: type scale (figma collection "Responsive") ---- */
+  --font-size-h1: 76px;
+  --line-height-h1: 92px;
+  --paragraph-spacing-h1: 40px;
+
+  --font-size-h2: 60px;
+  --line-height-h2: 72px;
+  --paragraph-spacing-h2: 32px;
+
+  --font-size-h3: 48px;
+  --line-height-h3: 56px;
+  --paragraph-spacing-h3: 32px;
+
+  --font-size-h4: 40px;
+  --line-height-h4: 48px;
+  --paragraph-spacing-h4: 20px;
+
+  --font-size-h5: 32px;
+  --line-height-h5: 40px;
+  --paragraph-spacing-h5: 16px;
+
+  --font-size-h6: 24px;
+  --line-height-h6: 28px;
+  --paragraph-spacing-h6: 12px;
+
+  --font-size-paragraph-large: 20px;
+  --line-height-paragraph-large: 24px;
+  --paragraph-spacing-paragraph-large: 12px;
+
+  --font-size-paragraph-medium: 16px;
+  --line-height-paragraph-medium: 20px;
+  --paragraph-spacing-paragraph-medium: 8px;
+
+  --font-size-paragraph-small: 12px;
+  --line-height-paragraph-small: 16px;
+  --paragraph-spacing-paragraph-small: 8px;
+
+  --font-size-caption: 12px;
+  --line-height-caption: 16px;
+  --paragraph-spacing-caption: 8px;
+
+  /* ---- Font weights observed on the specimen frame (not their own Figma variables) ---- */
+  --font-weight-heading: 600; /* Roboto SemiBold */
+  --font-weight-body: 400; /* Inter Regular */
+}

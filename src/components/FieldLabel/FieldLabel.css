@@ -1,0 +1,29 @@
+/**
+ * Tokens: Text/Body (label text color). Layout: row, gap 8, align start,
+ * justify center (from manifest components[] entry "Label", node 17:50).
+ */
+
+.ds-field-label {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--scale-200);
+  font-family: var(--alias-font-family-body);
+  font-size: var(--font-size-paragraph-medium);
+  line-height: var(--line-height-paragraph-medium);
+  color: var(--color-text-body);
+  cursor: default;
+}
+
+.ds-field-label__required {
+  /* No color token specified in the manifest for this glyph; see
+     design-system/implementation-notes.md for the inferred decision. */
+  color: var(--color-text-error);
+}
+
+.ds-field-label__help-icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: var(--color-icon-default);
+}

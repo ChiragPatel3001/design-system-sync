@@ -1,0 +1,21 @@
+/**
+ * Layout: row, gap 12, align center (from manifest components[] entry
+ * "Checkbox label", node 19:702). Tokens: Text/Body (label text color,
+ * re-read 2026-09-21 per the manifest note on this component).
+ */
+
+.ds-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--scale-300);
+  font-family: var(--alias-font-family-body);
+  font-size: var(--font-size-paragraph-medium);
+  line-height: var(--line-height-paragraph-medium);
+  color: var(--color-text-body);
+  cursor: pointer;
+}
+
+.ds-checkbox--disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}

@@ -1,0 +1,24 @@
+/**
+ * Design token entry point.
+ *
+ * Import order matters: spacing defines --scale-*, which radius.css and
+ * borders.css alias via var(). Load this file once, at the app root
+ * (see src/main.tsx), before any component CSS.
+ */
+
+@import './spacing.css';
+@import './colors.css';
+@import './typography.css';
+@import './radius.css';
+@import './borders.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--alias-font-family-body);
+  background: var(--color-surface-page);
+  color: var(--color-text-body);
+}

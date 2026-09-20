@@ -1,0 +1,17 @@
+/**
+ * Tokens: Border/default, Border width/sm, Border radius/lg.
+ * See manifest components[] entry "Menu" (node 18:384).
+ */
+
+.ds-menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 323px;
+  max-height: 320px;
+  overflow-y: auto;
+  border-width: var(--border-width-sm);
+  border-style: solid;
+  border-color: var(--color-border-default);
+  border-radius: var(--radius-lg);
+}

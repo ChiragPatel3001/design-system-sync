@@ -1,0 +1,103 @@
+/**
+ * Tokens: Surface/action(-hover), Surface/default-secondary, Surface/disabled,
+ * Border/action(-hover), Border/default(disabled), Border/focus, Text/on-action(-hover),
+ * Text/action(-hover), Text/disabled, Border radius/lg, Border width/sm|md|none.
+ * See manifest components[] entry "Button" (node 15:664) for the full
+ * stylesByTypeThenState matrix this CSS implements 1:1.
+ */
+
+.ds-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--scale-200);
+  padding: var(--scale-200) var(--scale-300);
+  border-radius: var(--radius-lg);
+  border-width: var(--border-width-sm);
+  border-style: solid;
+  font-family: var(--alias-font-family-body);
+  font-size: var(--font-size-paragraph-medium);
+  line-height: var(--line-height-paragraph-medium);
+  font-weight: var(--font-weight-body);
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.ds-button:disabled {
+  cursor: not-allowed;
+}
+
+.ds-button__icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.ds-button__label {
+  white-space: nowrap;
+}
+
+/* Type = Default */
+.ds-button--default {
+  background: var(--color-surface-action);
+  border-color: var(--color-border-action);
+  color: var(--color-text-on-action);
+}
+.ds-button--default:hover:not(:disabled) {
+  background: var(--color-surface-action-hover);
+  border-color: var(--color-border-action-hover);
+  color: var(--color-text-on-action-hover);
+}
+.ds-button--default:focus-visible {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+.ds-button--default:disabled {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+}
+
+/* Type = Outline */
+.ds-button--outline {
+  background: var(--color-surface-default-secondary);
+  border-color: var(--color-border-action);
+  color: var(--color-text-action);
+}
+.ds-button--outline:hover:not(:disabled) {
+  background: var(--color-surface-action-hover-light);
+  border-color: var(--color-border-action-hover);
+  color: var(--color-text-action-hover);
+}
+.ds-button--outline:focus-visible {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+.ds-button--outline:disabled {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+}
+
+/* Type = Transparent (no fill, border-width none) */
+.ds-button--transparent {
+  background: transparent;
+  border-color: transparent;
+  border-width: var(--border-width-none);
+  color: var(--color-text-action);
+}
+.ds-button--transparent:hover:not(:disabled) {
+  color: var(--color-text-action-hover);
+}
+.ds-button--transparent:focus-visible {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+.ds-button--transparent:disabled {
+  background: var(--color-surface-disabled);
+  color: var(--color-text-disabled);
+}

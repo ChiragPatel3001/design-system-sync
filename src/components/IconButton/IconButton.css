@@ -1,0 +1,97 @@
+/**
+ * Tokens: same Surface/Border/Text roles as Button (node 15:880's
+ * stylesByTypeThenState is token-identical to Button's, minus text color
+ * since this is icon-only).
+ *
+ * Known limitation (manifest F09): Disabled/Transparent (15:928) measures
+ * 42x42 vs 40x40 on its siblings in Figma. Not reproduced here — see
+ * design-system/implementation-notes.md.
+ */
+
+.ds-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: var(--scale-200);
+  border-radius: var(--radius-lg);
+  border-width: var(--border-width-sm);
+  border-style: solid;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.ds-icon-button:disabled {
+  cursor: not-allowed;
+}
+
+.ds-icon-button__icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+}
+
+/* Type = Default */
+.ds-icon-button--default {
+  background: var(--color-surface-action);
+  border-color: var(--color-border-action);
+  color: var(--color-icon-on-action);
+}
+.ds-icon-button--default:hover:not(:disabled) {
+  background: var(--color-surface-action-hover);
+  border-color: var(--color-border-action-hover);
+  color: var(--color-icon-on-action-hover);
+}
+.ds-icon-button--default:focus-visible {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+.ds-icon-button--default:disabled {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-icon-disabled);
+}
+
+/* Type = Outline */
+.ds-icon-button--outline {
+  background: var(--color-surface-default-secondary);
+  border-color: var(--color-border-action);
+  color: var(--color-icon-action);
+}
+.ds-icon-button--outline:hover:not(:disabled) {
+  background: var(--color-surface-action-hover-light);
+  border-color: var(--color-border-action-hover);
+  color: var(--color-icon-action-hover);
+}
+.ds-icon-button--outline:focus-visible {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+.ds-icon-button--outline:disabled {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-icon-disabled);
+}
+
+/* Type = Transparent (no fill, border-width none) */
+.ds-icon-button--transparent {
+  background: transparent;
+  border-color: transparent;
+  border-width: var(--border-width-none);
+  color: var(--color-icon-action);
+}
+.ds-icon-button--transparent:hover:not(:disabled) {
+  color: var(--color-icon-action-hover);
+}
+.ds-icon-button--transparent:focus-visible {
+  outline: var(--border-width-md) solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+.ds-icon-button--transparent:disabled {
+  background: var(--color-surface-disabled);
+  color: var(--color-icon-disabled);
+}

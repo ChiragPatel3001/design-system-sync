@@ -1,0 +1,23 @@
+/**
+ * Layout: column, gap 13px (from manifest components[] entry "Input", node
+ * 18:256). 13px has no matching Brand/Scale step (see manifest
+ * "tokens.typography.spacing.note"), so it is left as a literal value
+ * rather than invented as a fake token.
+ *
+ * Tokens: Text/Caption (hint text color).
+ */
+
+.ds-formfield {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  width: 100%;
+}
+
+.ds-formfield__hint {
+  margin: 0;
+  font-family: var(--alias-font-family-body);
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--color-text-caption);
+}

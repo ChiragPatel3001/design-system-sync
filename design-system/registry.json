@@ -1,0 +1,295 @@
+{
+  "$schemaNote": "Maps each Figma component consumed by this POC to its React implementation. manifestSource is the file this registry was generated from; every figmaNodeId/figmaName here must match an entry in that file's components[] array. Re-generate/extend this file, do not hand-edit it out of sync with the manifest.",
+  "manifestSource": "design-system-manifest.json",
+  "manifestExtractedOn": "2026-09-20",
+  "registryGeneratedOn": "2026-09-21",
+  "generator": "manual (POC stage 1 — no automated sync engine yet)",
+  "components": [
+    {
+      "figmaNodeId": "15:664",
+      "figmaName": "Button",
+      "figmaKind": "component_set",
+      "figmaSection": "Buttons (17:80)",
+      "reactName": "Button",
+      "codePath": "src/components/Button/Button.tsx",
+      "stylePath": "src/components/Button/Button.css",
+      "variantCount": 12,
+      "figmaVariantProperties": {
+        "Property 1": ["Default", "Hover", "Focus", "Disabled"],
+        "Type": ["Default", "Outline", "Transparent"]
+      },
+      "reactPropMapping": {
+        "Property 1": "implemented as CSS :hover / :focus-visible / :disabled — not a prop",
+        "Type": "variant: 'default' | 'outline' | 'transparent'",
+        "iconLeft / iconLeft1": "iconLeft?: ReactNode",
+        "iconRight / iconRight1": "iconRight?: ReactNode",
+        "label": "children?: ReactNode"
+      },
+      "tokens": [
+        "Surface/action", "Surface/action-hover", "Surface/default-secondary", "Surface/disabled",
+        "Border/action", "Border/action-hover", "Border/default", "Border/disabled", "Border/focus",
+        "Text/on-action", "Text/on-action-hover", "Text/action", "Text/action-hover", "Text/disabled",
+        "Border radius/lg", "Border width/sm", "Border width/md", "Border width/none",
+        "Body/Medium (font-family/size/line-height)"
+      ],
+      "knownLimitations": [
+        "F09: Disabled/Transparent variant (15:868) measures 141x42 vs 139x40 on its siblings in Figma; not reproduced in code."
+      ]
+    },
+    {
+      "figmaNodeId": "15:880",
+      "figmaName": "Button_Icon",
+      "figmaKind": "component_set",
+      "figmaSection": "Buttons (17:80)",
+      "reactName": "IconButton",
+      "codePath": "src/components/IconButton/IconButton.tsx",
+      "stylePath": "src/components/IconButton/IconButton.css",
+      "variantCount": 12,
+      "figmaVariantProperties": {
+        "Property 1": ["Default", "Hover", "Focus", "Disabled"],
+        "Type": ["Default", "Outline", "Transparent"]
+      },
+      "reactPropMapping": {
+        "Property 1": "implemented as CSS :hover / :focus-visible / :disabled — not a prop",
+        "Type": "variant: 'default' | 'outline' | 'transparent'",
+        "icon": "icon: ReactNode (required)"
+      },
+      "tokens": [
+        "Surface/action", "Surface/action-hover", "Surface/default-secondary", "Surface/disabled",
+        "Border/action", "Border/action-hover", "Border/disabled", "Border/focus",
+        "Icon/on-action", "Icon/on-action-hover", "Icon/action", "Icon/action-hover", "Icon/disabled",
+        "Border radius/lg", "Border width/sm", "Border width/md", "Border width/none"
+      ],
+      "knownLimitations": [
+        "F09: Disabled/Transparent variant (15:928) measures 42x42 vs 40x40 on its siblings in Figma; not reproduced in code.",
+        "aria-label is required in code and is not a Figma component property — added because an icon-only control needs an accessible name."
+      ]
+    },
+    {
+      "figmaNodeId": "17:50",
+      "figmaName": "Label",
+      "figmaKind": "component_set",
+      "figmaSection": "Form Inputs (17:82)",
+      "reactName": "FieldLabel",
+      "codePath": "src/components/FieldLabel/FieldLabel.tsx",
+      "stylePath": "src/components/FieldLabel/FieldLabel.css",
+      "variantCount": 1,
+      "figmaVariantProperties": {
+        "Property 1": ["Required"]
+      },
+      "reactPropMapping": {
+        "Property 1 / required": "required?: boolean (F02: not a real state axis, see manifest)",
+        "label": "children?: ReactNode",
+        "helpIcon / label2": "helpIcon?: ReactNode"
+      },
+      "tokens": ["Text/Body", "Body/Medium (font-family/size/line-height)"],
+      "knownLimitations": [
+        "Manifest has no color token for the required-asterisk glyph; Text/error is used as a reasonable default — see implementation-notes.md."
+      ]
+    },
+    {
+      "figmaNodeId": "18:130",
+      "figmaName": "Field",
+      "figmaKind": "component_set",
+      "figmaSection": "Form Inputs (17:82)",
+      "reactName": "TextField",
+      "codePath": "src/components/TextField/TextField.tsx",
+      "stylePath": "src/components/TextField/TextField.css",
+      "variantCount": 12,
+      "figmaVariantProperties": {
+        "Status": ["Default", "hover", "focus", "disabled"],
+        "Type": ["Default", "Filled", "Error"]
+      },
+      "reactPropMapping": {
+        "Status": "implemented as CSS :hover / :focus-within / :disabled — not a prop",
+        "Type": "variant: 'default' | 'filled' | 'error'",
+        "iconLeft / iconLeft1": "leadingIcon?: ReactNode",
+        "iconRight1 / iconRight": "trailingIcon?: ReactNode",
+        "label": "placeholder?: string (Figma's 'label' property is placeholder text, not an <label> element)"
+      },
+      "tokens": [
+        "Surface/default-secondary", "Surface/action-hover-light", "Surface/error", "Surface/disabled",
+        "Border/default", "Border/action-hover", "Border/error", "Border/disabled", "Border/focus",
+        "Text/placeholder", "Text/Body", "Text/action-hover", "Text/error", "Text/disabled",
+        "Border radius/lg", "Border width/sm", "Border width/md",
+        "Body/Medium (font-family/size/line-height)"
+      ],
+      "knownLimitations": [
+        "Type=Default and Type=Error disabled states are visually identical in Figma; reproduced identically in code (one shared .ds-textfield--disabled rule)."
+      ]
+    },
+    {
+      "figmaNodeId": "18:256",
+      "figmaName": "Input",
+      "figmaKind": "component_set",
+      "figmaSection": "Form Inputs (17:82)",
+      "reactName": "FormField",
+      "codePath": "src/components/FormField/FormField.tsx",
+      "stylePath": "src/components/FormField/FormField.css",
+      "variantCount": 2,
+      "figmaVariantProperties": {
+        "Type": ["Default", "email"]
+      },
+      "reactPropMapping": {
+        "Type": "generalized into label/placeholder/leadingIcon props + native `type` attribute, instead of two fixed content presets — see implementation-notes.md",
+        "caption": "hint?: string",
+        "hintCopy": "hint copy shown whenever `hint` is provided"
+      },
+      "composesReactComponents": ["FieldLabel", "TextField"],
+      "tokens": ["Text/Caption (hint row)"],
+      "knownLimitations": [
+        "Input hardcodes its nested Field to Status=Default, Type=Default in Figma; FormField does not expose a variant prop on the nested TextField, preserving that behavior."
+      ]
+    },
+    {
+      "figmaNodeId": "19:667",
+      "figmaName": ".Checkbox item",
+      "figmaKind": "component_set",
+      "figmaInternal": true,
+      "figmaSection": "Checkbox (27:167)",
+      "reactName": "CheckboxControl",
+      "codePath": "src/components/CheckboxControl/CheckboxControl.tsx",
+      "stylePath": "src/components/CheckboxControl/CheckboxControl.css",
+      "variantCount": 8,
+      "figmaVariantProperties": {
+        "Status": ["Default", "hover", "focus", "disabled"],
+        "Type": ["Unselected", "Selected"]
+      },
+      "reactPropMapping": {
+        "Status": "implemented as CSS :hover / :focus-visible (via :has()) / native disabled attribute — not a prop",
+        "Type": "checked / defaultChecked (native <input type=\"checkbox\"> props)"
+      },
+      "tokens": [
+        "Surface/default-secondary", "Surface/action-hover-light", "Surface/action", "Surface/action-hover", "Surface/disabled",
+        "Border/default", "Border/action", "Border/action-hover", "Border/disabled",
+        "Icon/on-action", "Icon/disabled",
+        "Border radius/xl", "Border width/sm", "Border width/md"
+      ],
+      "knownLimitations": [
+        "F05: no Selected variant has a check-glyph layer in Figma; a checkmark SVG was added in code so the control is legible when checked.",
+        "Unselected/Default (19:666) and Unselected/hover (19:669) intentionally have no border-width variable in Figma (confirmed by the user); implemented at Border width/sm like the other 6 variants."
+      ]
+    },
+    {
+      "figmaNodeId": "19:702",
+      "figmaName": "Checkbox label",
+      "figmaKind": "component",
+      "figmaSection": "Checkbox (27:167)",
+      "reactName": "Checkbox",
+      "codePath": "src/components/Checkbox/Checkbox.tsx",
+      "stylePath": "src/components/Checkbox/Checkbox.css",
+      "variantCount": 0,
+      "figmaVariantProperties": {},
+      "reactPropMapping": {
+        "label": "label?: ReactNode",
+        "label1": "label rendered whenever `label` is provided"
+      },
+      "composesReactComponents": ["CheckboxControl"],
+      "tokens": ["Text/Body", "Body/Medium (font-family/size/line-height)"],
+      "knownLimitations": []
+    },
+    {
+      "figmaNodeId": "18:315",
+      "figmaName": ".menu item",
+      "figmaKind": "component_set",
+      "figmaInternal": true,
+      "figmaSection": "Menu (27:169)",
+      "reactName": "MenuItem",
+      "codePath": "src/components/MenuItem/MenuItem.tsx",
+      "stylePath": "src/components/MenuItem/MenuItem.css",
+      "variantCount": 6,
+      "figmaVariantProperties": {
+        "State": ["Default", "hover", "disabled"],
+        "Status": ["Unselected", "Selected"]
+      },
+      "reactPropMapping": {
+        "State": "implemented as CSS :hover / native disabled attribute — not a prop",
+        "Status": "selected?: boolean",
+        "label": "children?: ReactNode",
+        "icon2 / icon": "icon?: ReactNode"
+      },
+      "tokens": [
+        "Surface/default-secondary", "Surface/action-hover-light", "Surface/action", "Surface/action-hover", "Surface/disabled",
+        "Border/default", "Border/action-hover", "Border/disabled",
+        "Text/Body", "Text/action-hover", "Text/on-action", "Text/on-action-hover", "Text/disabled",
+        "Icon/default", "Icon/action-hover", "Icon/on-action", "Icon/on-action-hover", "Icon/disabled",
+        "Border width/sm", "Body/Medium (font-family/size/line-height)"
+      ],
+      "knownLimitations": [
+        "F11: Figma defines no focus state for .menu item. Rendered as a real <button role=\"menuitem\">, so a :focus-visible outline (Border/focus) was added in code for keyboard accessibility — not a Figma-sourced value.",
+        "Figma measured a fixed 270px label width inside a 323px item; the React label uses flex:1 instead so the component works at any container width."
+      ]
+    },
+    {
+      "figmaNodeId": "18:384",
+      "figmaName": "Menu",
+      "figmaKind": "component",
+      "figmaSection": "Menu (27:169)",
+      "reactName": "Menu",
+      "codePath": "src/components/Menu/Menu.tsx",
+      "stylePath": "src/components/Menu/Menu.css",
+      "variantCount": 0,
+      "figmaVariantProperties": {},
+      "reactPropMapping": {
+        "scrollbar": "not implemented — out of POC scope (see knownLimitations)"
+      },
+      "composesReactComponents": ["MenuItem"],
+      "tokens": ["Border/default", "Border width/sm", "Border radius/lg"],
+      "knownLimitations": [
+        "Figma's .menu item/.scrollbar sub-component is out of scope for this POC (not one of the 10 approved components); native overflow-y:auto scrolling is used instead of a custom scrollbar.",
+        "Figma measured this component at a fixed 323px width; the React version defaults to 100% width (max-width 323px) so it can be reused at other widths."
+      ]
+    },
+    {
+      "figmaNodeId": "18:503",
+      "figmaName": "Link",
+      "figmaKind": "component_set",
+      "figmaSection": "Navigation (27:173)",
+      "reactName": "Link",
+      "codePath": "src/components/Link/Link.tsx",
+      "stylePath": "src/components/Link/Link.css",
+      "variantCount": 4,
+      "figmaVariantProperties": {
+        "Type": ["Default", "Active", "Disabled", "focus"]
+      },
+      "reactPropMapping": {
+        "Type=Default/Active/Disabled": "variant: 'default' | 'active' | 'disabled'",
+        "Type=focus": "implemented as CSS :focus-visible — not a variant value",
+        "iconLeft / iconLeft1": "iconLeft?: ReactNode",
+        "iconRight1 / iconRight": "iconRight?: ReactNode",
+        "label": "children?: ReactNode"
+      },
+      "tokens": [
+        "Text/action", "Text/action-hover", "Text/disabled", "Surface/disabled",
+        "Border/action", "Border width/sm", "Border radius/lg",
+        "Body/Medium (font-family/size/line-height)"
+      ],
+      "knownLimitations": [
+        "F12: Code Connect maps this component's trailing icon to IconArrowUpRight with size=\"48\" on a 20px slot. The React icon slot is sized at 20px (matching the actual Figma layout), not the mismatched 48px mapping.",
+        "variant=\"disabled\" has no native <a disabled> equivalent; implemented via aria-disabled, tabIndex=-1, withheld href, and pointer-events:none."
+      ]
+    }
+  ],
+  "excludedFromPoc": [
+    {
+      "figmaNodeId": "18:473",
+      "figmaName": "Dropdown",
+      "reason": "Zero modeled interaction states in Figma (no open/closed, hover, focus or disabled — manifest F11); deferred to a later phase."
+    },
+    {
+      "figmaNodeId": "18:639",
+      "figmaName": "Breadcrumb",
+      "reason": "Depends on Breadcrumb_items, which is structurally near-identical to Link; deferred to a later phase."
+    },
+    {
+      "figmaNodeId": "18:545",
+      "figmaName": "Breadcrumb_items",
+      "reason": "Structurally near-identical to Link (same Type variant axis and token pattern); deferred to a later phase."
+    },
+    {
+      "figmaNodeId": "18:387",
+      "figmaName": ".menu item/.scrollbar",
+      "reason": "Not one of the 10 approved POC components; Menu uses native overflow scrolling instead."
+    }
+  ]
+}

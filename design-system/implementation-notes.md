@@ -151,7 +151,96 @@ a withheld `href`, and `pointer-events: none`.
 - Storybook, the Figma↔code sync engine, and GitHub automation — explicitly
   deferred per this stage's instructions.
 
-## Build verification
+## Build verification (stage 1)
 `npx tsc --noEmit` and `npm run build` (which runs the same typecheck, then
 `vite build`) both completed with zero errors against this implementation.
 No changes were made to `design-system-manifest.json` to achieve this.
+
+## Storybook setup (stage 2)
+
+Storybook 10.6.0 was added via `npx storybook@latest init --type react
+--builder vite`, which auto-detected the existing Vite + React project and
+configured the `@storybook/react-vite` framework (Storybook builds on top of
+the project's own `vite.config.ts`, it does not replace it).
+
+### Pruned after init, before writing stories
+`storybook init`'s default flow installs more than "Storybook for this
+Vite app": by default it also added `@storybook/addon-vitest` (a
+component-testing integration) plus its `vitest`, `playwright`,
+`@vitest/browser-playwright`, and `@vitest/coverage-v8` dependencies (which
+pull in a Chromium download), `@chromatic-com/storybook` (a SaaS
+publish/visual-review integration), and `@storybook/addon-mcp` (an
+AI-agent integration). None of this was requested — this stage is scoped
+to "React components + Storybook + Registry mapping" — so all of it was
+removed (`npm uninstall`) along with the example `src/stories/` folder
+(boilerplate Button/Header/Page stories + PNG assets) init also scaffolds.
+`vite.config.ts` was reverted to its pre-Storybook state (the automigration
+had added a `test` block wiring in the vitest/playwright addon) and
+`.storybook/main.ts`'s `addons` list was trimmed to
+`@storybook/addon-a11y` and `@storybook/addon-docs` — both lightweight,
+both directly useful for a design-system visual-verification layer (a11y
+checks per story, autodocs pages), neither pulling in a browser-testing
+stack.
+
+One automigration step failed during init on this machine
+(`addon-a11y-addon-test`, a script that wires addon-a11y into the vitest
+addon we removed anyway) — harmless here since that vitest integration was
+pruned, but noted in case a future `storybook upgrade` on this project
+surfaces it again.
+
+### Necessary Storybook-specific adjustment
+Every component consumes CSS custom properties defined in
+`src/tokens/index.css`. The Vite app loads that file once in `src/main.tsx`;
+Storybook renders each story in isolation and never executes `main.tsx`, so
+without a separate import none of the design tokens would resolve inside
+Storybook (every component would render unstyled). `.storybook/preview.tsx`
+imports `../src/tokens/index.css` globally to fix this. This is a
+Storybook-configuration change, not a change to any component.
+
+### Story authoring notes
+- `stories` glob in `.storybook/main.ts` is scoped to
+  `src/components/**/*.stories.@(ts|tsx)` (not the default
+  `src/**/*.stories.*`), so nothing outside the component library can ever
+  appear in Storybook by accident.
+- Where a Figma variant axis is a genuine interaction state implemented as
+  CSS (Hover, Focus — see "Interaction states → CSS, not props" above),
+  the corresponding story uses a `play` function from `storybook/test`
+  (bundled with the core `storybook` package, no extra addon needed) to
+  drive a real `userEvent.hover(...)` or `userEvent.tab()` against the
+  rendered DOM, rather than inventing a `state` prop just to make the
+  variant visible in the sidebar. Because Storybook stories run in an
+  actual browser (not jsdom), these are genuine `:hover`/`:focus-visible`
+  matches, not simulated ones.
+- `MenuItem`'s Focus story is explicitly named "Focus (not in Figma —
+  accessibility addition)" so it can't be mistaken for a Figma-sourced
+  state when browsing the sidebar (manifest finding F11).
+- `CheckboxControl` and `MenuItem` are internal primitives (leading `.` in
+  their Figma names; not meant to be used directly — see Checkbox/Menu,
+  which compose them). Their stories are grouped under
+  `Components/Internal/*` rather than directly under `Components/*`, so
+  they're visually distinguishable from the 8 public components in the
+  sidebar without being hidden or removed.
+- Each story file's `docs.description.component` links to the exact Figma
+  node it implements, using the file URL already recorded in the manifest
+  (`source.url`) with only the node-id query param swapped per component
+  (`src/storybook-utils/figma-link.ts`) — completing the Figma ↔ Storybook
+  half of the traceability chain visibly, inside the Storybook UI itself,
+  not just in the registry.
+
+### Storybook verification (stage 2)
+- `npx tsc --noEmit` — now also covers `.storybook/` (added to
+  `tsconfig.json`'s `include`) and all `*.stories.tsx` files — passed with
+  zero errors.
+- `npm run build` (the existing Vite app build) still passes unchanged;
+  story files are not part of that bundle.
+- `npm run build-storybook` (a static Storybook build — a stronger check
+  than just starting the dev server, since it fails on story-loading or
+  docs-generation errors) completed successfully; output only warned about
+  a large `axe-core`/docs-renderer chunk, which is normal for
+  addon-a11y/addon-docs and not an error.
+- `npm run storybook` was started and confirmed serving at
+  `http://localhost:6006/` (HTTP 200); its `/index.json` endpoint was
+  queried directly and confirmed 48 stories registered across exactly the
+  10 expected component groups, with no load errors.
+- No changes were made to `design-system-manifest.json` or to any existing
+  component's `.tsx`/`.css` implementation to make Storybook work.

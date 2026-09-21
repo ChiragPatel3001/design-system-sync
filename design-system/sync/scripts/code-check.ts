@@ -10,6 +10,7 @@ import { existsSync, mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import {
   COMPONENTS_DIR,
+  TOKENS_DIR,
   ROOT,
   CODE_BASELINE_PATH,
   CODE_CURRENT_PATH,
@@ -29,7 +30,7 @@ function main(): void {
   }
 
   const previous = readCodeSnapshotFile(CODE_BASELINE_PATH);
-  const current = buildCodeSnapshot({ componentsDir: COMPONENTS_DIR, rootForRelativePaths: ROOT });
+  const current = buildCodeSnapshot({ componentsDir: COMPONENTS_DIR, rootForRelativePaths: ROOT, tokensDir: TOKENS_DIR });
 
   writeCodeSnapshotFile(CODE_CURRENT_PATH, current);
   archiveCodeSnapshot(CODE_ARCHIVE_DIR, current);

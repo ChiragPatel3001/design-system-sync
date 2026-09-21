@@ -18,7 +18,12 @@
     "sync:code-test": "node --test design-system/sync/scripts/code-snapshot.test.ts",
     "sync:figma-baseline": "node design-system/sync/scripts/figma-baseline.ts",
     "sync:figma-check": "node design-system/sync/scripts/figma-check.ts",
-    "sync:figma-test": "node --test design-system/sync/scripts/figma-snapshot.test.ts"
+    "sync:figma-test": "node --test design-system/sync/scripts/figma-snapshot.test.ts",
+    "sync:reconcile": "node design-system/sync/scripts/reconcile.ts",
+    "sync:reconcile-test": "node --test design-system/sync/scripts/reconcile-crosswalk.test.ts design-system/sync/scripts/reconcile-compare.test.ts design-system/sync/scripts/reconcile.test.ts",
+    "sync:agent": "node design-system/sync/scripts/agent-run.ts",
+    "dashboard": "vite --open /dashboard.html",
+    "dashboard:test": "node --test design-system/sync/scripts/dashboard-loader.test.ts design-system/sync/scripts/dashboard-agent-handler.test.ts src/dashboard/timeline.test.ts"
   },
   "dependencies": {
     "react": "^18.3.1",

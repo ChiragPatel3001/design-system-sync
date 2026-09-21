@@ -13,6 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const ROOT = path.resolve(__dirname, '../../..');
 
 export const COMPONENTS_DIR = path.join(ROOT, 'src/components');
+export const TOKENS_DIR = path.join(ROOT, 'src/tokens');
 
 export const CODE_SNAPSHOTS_DIR = path.join(ROOT, 'design-system/sync/code-snapshots');
 export const CODE_BASELINE_PATH = path.join(CODE_SNAPSHOTS_DIR, 'baseline.json');

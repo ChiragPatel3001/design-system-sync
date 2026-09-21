@@ -1,8 +1,10 @@
 /**
  * Builds a CodeSnapshot: a deterministic, independent view of the design
  * system's actual implementation, derived ONLY from files under
- * src/components/. This module never reads the registry mapping file, the
- * Figma-extraction manifest, or live Figma data of any kind — see
+ * src/components/ (component structure) and, optionally, src/tokens/
+ * (design-token definitions — see `tokenDefinitions` below). This module
+ * never reads the registry mapping file, the Figma-extraction manifest, or
+ * live Figma data of any kind — see
  * design-system/sync/code-snapshots/README.md for why that independence is
  * the entire point of this stage.
  *
@@ -23,6 +25,7 @@ import type {
   CodeVariantUnion,
   CodeImportEntry,
   CodeStorybookInfo,
+  CodeTokenDefinition,
 } from './code-snapshot-types.ts';
 
 const SCHEMA_VERSION = '1.0.0';
@@ -54,8 +57,11 @@ function sortKeysDeep(value: unknown): unknown {
   return value;
 }
 
-export function computeCodeSnapshotId(components: CodeComponentEntry[]): string {
-  const canonical = JSON.stringify(sortKeysDeep(components));
+export function computeCodeSnapshotId(
+  components: CodeComponentEntry[],
+  tokenDefinitions: CodeTokenDefinition[],
+): string {
+  const canonical = JSON.stringify(sortKeysDeep({ components, tokenDefinitions }));
   return sha256(canonical).slice(0, 16);
 }
 
@@ -105,6 +111,64 @@ function extractCssCustomProperties(cssContent: string): { consumed: string[]; d
   for (const m of cssContent.matchAll(/(?:^|[;{\s])(--[a-zA-Z0-9_-]+)\s*:/gm)) defined.add(m[1]);
 
   return { consumed: [...consumed].sort(), defined: [...defined].sort() };
+}
+
+// ---------------------------------------------------------------------
+// Token-definition extraction (src/tokens/**/*.css). Kept separate from
+// extractCssCustomProperties() above rather than extending it: that
+// function's existing "defined" return value (names only, for a
+// component's own CSS file) is relied on elsewhere and must not change
+// shape or meaning. This is a new, additional capability, not a
+// modification of an existing one. Same underlying approach — a regex
+// requiring a boundary character (start-of-line, `;`, `{`, or whitespace)
+// immediately before `--name`, so `var(--x)` usage is never mistaken for a
+// `--x: ...;` definition — extended to also capture the literal value.
+// ---------------------------------------------------------------------
+
+const TOKEN_DEFINITION_RE = /(?:^|[;{\s])(--[a-zA-Z0-9_-]+)\s*:\s*([^;]+);/gm;
+
+/** Extracts every `--name: value;` custom-property definition in `cssContent`, preserving the value exactly as written (e.g. `"var(--scale-100)"` is NOT resolved to a final value). */
+function extractTokenDefinitionsFromCss(cssContent: string, sourceFilePath: string): CodeTokenDefinition[] {
+  const definitions: CodeTokenDefinition[] = [];
+  for (const m of cssContent.matchAll(TOKEN_DEFINITION_RE)) {
+    definitions.push({ cssVariable: m[1], value: m[2].trim(), sourceFilePath });
+  }
+  return definitions;
+}
+
+/** Recursively lists every `.css` file under `dir`, sorted at each level by filename so the result never depends on the filesystem's own (OS-dependent, unspecified) enumeration order. Returns `[]` if `dir` doesn't exist, rather than throwing — a missing tokens directory is a valid (if unusual) state, not an error. */
+function discoverCssFilesRecursive(dir: string): string[] {
+  if (!existsSync(dir)) return [];
+  const entries = readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name));
+  const results: string[] = [];
+  for (const entry of entries) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      results.push(...discoverCssFilesRecursive(full));
+    } else if (entry.isFile() && entry.name.endsWith('.css')) {
+      results.push(full);
+    }
+  }
+  return results;
+}
+
+/** Builds the full, deterministically-ordered token definition list for a tokens directory. Returns `[]` (not fabricated data) when `tokensDir` wasn't provided. */
+function buildTokenDefinitions(tokensDir: string | undefined, rootForRelativePaths: string): CodeTokenDefinition[] {
+  if (!tokensDir) return [];
+  const definitions: CodeTokenDefinition[] = [];
+  for (const filePath of discoverCssFilesRecursive(tokensDir)) {
+    const content = readFileSync(filePath, 'utf8');
+    definitions.push(...extractTokenDefinitionsFromCss(content, toRelative(filePath, rootForRelativePaths)));
+  }
+  // Sorted as the final step — independent of both directory-traversal
+  // order (already sorted above) and intra-file appearance order, so
+  // determinism doesn't rely on either being stable.
+  return definitions.sort(
+    (a, b) =>
+      a.cssVariable.localeCompare(b.cssVariable) ||
+      a.sourceFilePath.localeCompare(b.sourceFilePath) ||
+      a.value.localeCompare(b.value),
+  );
 }
 
 // ---------------------------------------------------------------------
@@ -267,6 +331,13 @@ export interface BuildCodeSnapshotOptions {
   componentsDir: string;
   /** Used only to compute the relative paths stored in the snapshot (e.g. project root), never read from. */
   rootForRelativePaths: string;
+  /**
+   * Absolute path to the design-token CSS directory (e.g. src/tokens).
+   * Optional: when omitted, `tokenDefinitions` is `[]` rather than a
+   * guessed/derived location — every existing call site that predates this
+   * option keeps working unchanged.
+   */
+  tokensDir?: string;
 }
 
 function toRelative(absolutePath: string, root: string): string {
@@ -342,12 +413,15 @@ export function buildCodeSnapshot(opts: BuildCodeSnapshotOptions): CodeSnapshot 
     });
   }
 
+  const tokenDefinitions = buildTokenDefinitions(opts.tokensDir, opts.rootForRelativePaths);
+
   return {
     schemaVersion: SCHEMA_VERSION,
-    snapshotId: computeCodeSnapshotId(components),
+    snapshotId: computeCodeSnapshotId(components, tokenDefinitions),
     generatedAt: new Date().toISOString(),
     sourceRoot: toRelative(opts.componentsDir, opts.rootForRelativePaths),
     components,
+    tokenDefinitions,
   };
 }
 

@@ -4,14 +4,14 @@ import { existsSync, mkdtempSync, mkdirSync, writeFileSync, rmSync, readFileSync
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { buildCodeSnapshot } from './code-snapshot.ts';
-import { COMPONENTS_DIR, ROOT } from './code-paths.ts';
+import { COMPONENTS_DIR, TOKENS_DIR, ROOT } from './code-paths.ts';
 
 // Integration tests against the real, current repository (read-only — no
 // files are written by these tests; buildCodeSnapshot itself performs no
 // writes).
 
 describe('buildCodeSnapshot — against the real repository', () => {
-  const snapshot = buildCodeSnapshot({ componentsDir: COMPONENTS_DIR, rootForRelativePaths: ROOT });
+  const snapshot = buildCodeSnapshot({ componentsDir: COMPONENTS_DIR, rootForRelativePaths: ROOT, tokensDir: TOKENS_DIR });
 
   test('discovers all 10 current components', () => {
     assert.equal(snapshot.components.length, 10);
@@ -111,6 +111,30 @@ describe('buildCodeSnapshot — against the real repository', () => {
     const menu = snapshot.components.find((c) => c.componentId === 'Menu');
     assert.deepEqual(menu?.variants, []);
   });
+
+  test('captures real token definitions from src/tokens/**/*.css, including literal (unresolved) alias values', () => {
+    // A plain literal value.
+    const purple500 = snapshot.tokenDefinitions.find((t) => t.cssVariable === '--brand-purple-500-default');
+    assert.equal(purple500?.value, '#8a38f5');
+    assert.equal(purple500?.sourceFilePath, 'src/tokens/colors.css');
+
+    // A var()-alias value — must be preserved literally, NOT resolved to "4".
+    const radiusLg = snapshot.tokenDefinitions.find((t) => t.cssVariable === '--radius-lg');
+    assert.equal(radiusLg?.value, 'var(--scale-100)');
+    assert.equal(radiusLg?.sourceFilePath, 'src/tokens/radius.css');
+
+    // Definitions from more than one token file are present.
+    const files = new Set(snapshot.tokenDefinitions.map((t) => t.sourceFilePath));
+    assert.ok(files.has('src/tokens/colors.css'));
+    assert.ok(files.has('src/tokens/radius.css'));
+    assert.ok(files.has('src/tokens/borders.css'));
+    assert.ok(files.has('src/tokens/spacing.css'));
+    assert.ok(files.has('src/tokens/typography.css'));
+
+    // index.css only @imports the others and sets plain (non-custom)
+    // properties on `*`/`body` — it should contribute zero definitions.
+    assert.ok(!files.has('src/tokens/index.css'));
+  });
 });
 
 describe('buildCodeSnapshot — determinism', () => {
@@ -126,6 +150,122 @@ describe('buildCodeSnapshot — determinism', () => {
     const a = buildCodeSnapshot({ componentsDir: COMPONENTS_DIR, rootForRelativePaths: ROOT });
     const b = buildCodeSnapshot({ componentsDir: COMPONENTS_DIR, rootForRelativePaths: ROOT });
     assert.equal(a.snapshotId, b.snapshotId);
+  });
+});
+
+// Uses isolated temp directories (never the real repo) to prove
+// tokenDefinitions extraction/determinism behavior in a controlled way,
+// independent of whatever the real src/tokens/**/*.css happens to contain.
+describe('buildCodeSnapshot — token definitions (isolated fixture)', () => {
+  let tempRoot: string;
+  let componentsDir: string;
+  let tokensDir: string;
+
+  before(() => {
+    tempRoot = mkdtempSync(path.join(tmpdir(), 'code-snapshot-tokens-fixture-'));
+    componentsDir = path.join(tempRoot, 'src', 'components');
+    tokensDir = path.join(tempRoot, 'src', 'tokens');
+    mkdirSync(componentsDir, { recursive: true });
+    mkdirSync(tokensDir, { recursive: true });
+  });
+
+  after(() => {
+    rmSync(tempRoot, { recursive: true, force: true });
+  });
+
+  test('a normal CSS custom-property definition is captured', () => {
+    writeFileSync(path.join(tokensDir, 'colors.css'), ':root {\n  --color-text-primary: #111111;\n}\n', 'utf8');
+    const snapshot = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+    const def = snapshot.tokenDefinitions.find((t) => t.cssVariable === '--color-text-primary');
+    assert.equal(def?.value, '#111111');
+    assert.equal(def?.sourceFilePath, 'src/tokens/colors.css');
+  });
+
+  test('a var() alias definition preserves its literal source value, not a resolved one', () => {
+    writeFileSync(
+      path.join(tokensDir, 'colors.css'),
+      ':root {\n  --brand-purple-500-default: #8a38f5;\n  --color-surface-action: var(--brand-purple-500-default);\n}\n',
+      'utf8',
+    );
+    const snapshot = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+    const alias = snapshot.tokenDefinitions.find((t) => t.cssVariable === '--color-surface-action');
+    assert.equal(alias?.value, 'var(--brand-purple-500-default)');
+  });
+
+  test('definitions from multiple token CSS files are all captured', () => {
+    writeFileSync(path.join(tokensDir, 'colors.css'), ':root {\n  --color-text-primary: #111111;\n}\n', 'utf8');
+    writeFileSync(path.join(tokensDir, 'radius.css'), ':root {\n  --radius-lg: var(--scale-100);\n}\n', 'utf8');
+    const snapshot = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+    const files = new Set(snapshot.tokenDefinitions.map((t) => t.sourceFilePath));
+    assert.ok(files.has('src/tokens/colors.css'));
+    assert.ok(files.has('src/tokens/radius.css'));
+  });
+
+  test('tokenDefinitions ordering is deterministic (sorted by cssVariable)', () => {
+    writeFileSync(
+      path.join(tokensDir, 'colors.css'),
+      ':root {\n  --z-last: 1;\n  --a-first: 2;\n  --m-middle: 3;\n}\n',
+      'utf8',
+    );
+    const snapshot = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+    const names = snapshot.tokenDefinitions.map((t) => t.cssVariable);
+    const sorted = [...names].sort((a, b) => a.localeCompare(b));
+    assert.deepEqual(names, sorted);
+  });
+
+  test('unrelated CSS/component files do not create token definitions', () => {
+    // Reset tokensDir first — earlier tests in this describe block leave
+    // files behind (e.g. radius.css from the "multiple files" test above),
+    // and this test needs to know its token file count precisely.
+    rmSync(tokensDir, { recursive: true, force: true });
+    mkdirSync(tokensDir, { recursive: true });
+    writeFileSync(path.join(tokensDir, 'colors.css'), ':root {\n  --color-text-primary: #111111;\n}\n', 'utf8');
+    const dir = path.join(componentsDir, 'Gadget');
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(path.join(dir, 'Gadget.tsx'), 'export function Gadget() { return null; }\n', 'utf8');
+    writeFileSync(path.join(dir, 'Gadget.css'), '.ds-gadget { --gadget-local: 4px; color: red; }\n', 'utf8');
+
+    const snapshot = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+    assert.equal(snapshot.tokenDefinitions.length, 1);
+    assert.equal(snapshot.tokenDefinitions[0].cssVariable, '--color-text-primary');
+    // The component's own CSS custom property still shows up where it
+    // always has — under the component entry, not tokenDefinitions.
+    assert.ok(snapshot.components[0].cssCustomPropertiesDefined.includes('--gadget-local'));
+  });
+
+  test('snapshot ids change when a token definition changes', () => {
+    writeFileSync(path.join(tokensDir, 'colors.css'), ':root {\n  --color-text-primary: #111111;\n}\n', 'utf8');
+    const before = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+
+    writeFileSync(path.join(tokensDir, 'colors.css'), ':root {\n  --color-text-primary: #222222;\n}\n', 'utf8');
+    const after = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+
+    assert.notEqual(before.snapshotId, after.snapshotId);
+  });
+
+  test('snapshot ids are identical when only filesystem/write ordering differs', () => {
+    rmSync(tokensDir, { recursive: true, force: true });
+    mkdirSync(tokensDir, { recursive: true });
+    writeFileSync(path.join(tokensDir, 'colors.css'), ':root {\n  --color-text-primary: #111111;\n}\n', 'utf8');
+    writeFileSync(path.join(tokensDir, 'radius.css'), ':root {\n  --radius-lg: var(--scale-100);\n}\n', 'utf8');
+    const a = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+
+    // Same two files, same final content — but written in the reverse
+    // order, into a freshly (re)created directory, so any OS-level
+    // creation-order-dependent directory enumeration would differ here.
+    rmSync(tokensDir, { recursive: true, force: true });
+    mkdirSync(tokensDir, { recursive: true });
+    writeFileSync(path.join(tokensDir, 'radius.css'), ':root {\n  --radius-lg: var(--scale-100);\n}\n', 'utf8');
+    writeFileSync(path.join(tokensDir, 'colors.css'), ':root {\n  --color-text-primary: #111111;\n}\n', 'utf8');
+    const b = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot, tokensDir });
+
+    assert.equal(a.snapshotId, b.snapshotId);
+    assert.deepEqual(a.tokenDefinitions, b.tokenDefinitions);
+  });
+
+  test('tokenDefinitions defaults to [] when tokensDir is not provided (existing call sites are unaffected)', () => {
+    const snapshot = buildCodeSnapshot({ componentsDir, rootForRelativePaths: tempRoot });
+    assert.deepEqual(snapshot.tokenDefinitions, []);
   });
 });
 

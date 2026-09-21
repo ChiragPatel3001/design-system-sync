@@ -101,11 +101,36 @@ export interface CodeComponentEntry {
   sourceHashes: CodeSourceHashes;
 }
 
+export interface CodeTokenDefinition {
+  /** e.g. "--radius-lg". */
+  cssVariable: string;
+  /**
+   * The literal, unresolved value text exactly as written between `:` and
+   * `;` — e.g. `"var(--scale-100)"` or `"#f4ecfe"`. Never resolved through
+   * the var() alias chain to a final value; that resolution (and comparing
+   * it against a Figma variable's value) is reconciliation-stage work, out
+   * of scope here. Capturing the literal source text is what lets a
+   * source-hash-style content check detect "this definition's source
+   * changed" even when the final rendered value happens to be unchanged
+   * (e.g. an alias target renamed) or vice versa.
+   */
+  value: string;
+  sourceFilePath: string;
+}
+
 export interface CodeSnapshot {
   schemaVersion: string;
-  /** Deterministic content hash of `components[]` — see code-snapshot.ts computeCodeSnapshotId. */
+  /** Deterministic content hash of `{components, tokenDefinitions}` — see code-snapshot.ts computeCodeSnapshotId. */
   snapshotId: string;
   generatedAt: string;
   sourceRoot: string;
   components: CodeComponentEntry[];
+  /**
+   * Design-token custom-property definitions found under `src/tokens/**\/*.css`
+   * (component-level CSS under `src/components/**` is NOT included here —
+   * see `CodeComponentEntry.cssCustomPropertiesConsumed/Defined` for that).
+   * Sorted by `cssVariable` (then `sourceFilePath`, then `value`) so the
+   * array's order never depends on filesystem enumeration order.
+   */
+  tokenDefinitions: CodeTokenDefinition[];
 }

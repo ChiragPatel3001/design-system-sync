@@ -40,6 +40,32 @@ It never reads the registry mapping file, the Figma-extraction manifest,
 or anything Figma-related, and it never calls a Figma MCP tool. This is
 tested explicitly in `code-snapshot.test.ts`.
 
+## Token definitions (`tokenDefinitions`)
+
+In addition to the component-level view above, `buildCodeSnapshot()`
+optionally reads every `src/tokens/**/*.css` file (passed as `tokensDir`;
+omitted from a call, `tokenDefinitions` is simply `[]`) and records each
+`--name: value;` custom-property definition it finds as a
+`CodeTokenDefinition { cssVariable, value, sourceFilePath }`.
+
+The `value` is captured **exactly as written**, never resolved through a
+`var(...)` alias chain — e.g. `--radius-lg: var(--scale-100);` is recorded
+with `value: "var(--scale-100)"`, not the number that alias ultimately
+resolves to. This is source-derived data only, intended for a later stage
+to compare against Figma variable values; that comparison itself
+(resolving alias chains, matching a code token to a Figma one) is not
+part of this stage.
+
+This is a separate concept from `cssCustomPropertiesConsumed` /
+`cssCustomPropertiesDefined` on each component entry, which record only
+*names* seen in a component's own `.css` file (consumption/local
+definition), not the token system's own source-of-truth definitions.
+
+`tokenDefinitions` is sorted by `cssVariable`, then `sourceFilePath`, then
+`value`, so its order never depends on filesystem enumeration order — and
+it feeds into `snapshotId` exactly like `components` does, so a change to
+a token's source definition changes the snapshot id.
+
 ## Identity is independent, on purpose
 
 Each entry's `componentId` is the literal directory name under

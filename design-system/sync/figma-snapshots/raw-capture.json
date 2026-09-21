@@ -1,0 +1,712 @@
+{
+  "$note": "This is a captured snapshot of Figma MCP tool output at capturedAt — NOT a live connection and NOT a source of truth. It only changes when an agent with Figma MCP access re-runs the investigation and overwrites this file. See design-system/sync/figma-snapshots/README.md.",
+  "captureSchemaVersion": "1.0.0",
+  "fileKey": "opq4Is8eZdXdu920YDUIs1",
+  "fileName": "Design-System-2.0",
+  "capturedAt": "2026-09-21T04:55:58.120Z",
+  "capturedVia": [
+    "mcp__claude_ai_Figma__get_metadata (page list; canvas 14:592 full subtree; canvas 0:1 full subtree)",
+    "mcp__claude_ai_Figma__get_variable_defs (per-component node id, x10; text-styles specimen frame 70:170)"
+  ],
+  "pagesFromNoNodeIdListing": [
+    {
+      "id": "0:1",
+      "name": "Tokens"
+    }
+  ],
+  "pagesConfirmedByDirectRead": [
+    {
+      "id": "0:1",
+      "name": "Tokens"
+    },
+    {
+      "id": "14:592",
+      "name": "Components"
+    }
+  ],
+  "sections": {
+    "17:80": "Buttons",
+    "17:82": "Form Inputs",
+    "27:167": "Checkbox",
+    "27:169": "Menu",
+    "27:171": "Dropdown",
+    "27:173": "Navigation"
+  },
+  "components": [
+    {
+      "figmaNodeId": "15:664",
+      "name": "Button",
+      "nodeType": "frame",
+      "sectionId": "17:80",
+      "width": 844,
+      "height": 346,
+      "variantSymbols": [
+        {
+          "nodeId": "14:595",
+          "name": "State=Default, Type=Default",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:665",
+          "name": "State=Hover, Type=Default",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:671",
+          "name": "State=Focus, Type=Default",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:678",
+          "name": "State=Disabled, Type=Default",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:801",
+          "name": "State=Default, Type=Outline",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:805",
+          "name": "State=Hover, Type=Outline",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:809",
+          "name": "State=Focus, Type=Outline",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:814",
+          "name": "State=Disabled, Type=Outline",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:855",
+          "name": "State=Default, Type=Transparent",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:859",
+          "name": "State=Hover, Type=Transparent",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:863",
+          "name": "State=Focus, Type=Transparent",
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:868",
+          "name": "State=Disabled, Type=Transparent",
+          "width": 139,
+          "height": 40
+        }
+      ],
+      "variableDefs": {
+        "Icon/on-action": "#ffffff",
+        "Text/on-action": "#ffffff",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+        "Border radius/lg": "4",
+        "Border width/sm": "1",
+        "Surface/action": "#8a38f5",
+        "Border/action": "#8a38f5",
+        "Icon/on-action-hover": "#e8d7fd",
+        "Text/on-action-hover": "#e8d7fd",
+        "Surface/action-hover": "#6e2dc4",
+        "Border/action-hover": "#6e2dc4",
+        "Border width/md": "2",
+        "Border/focus": "#8a38f5",
+        "Icon/disabled": "#575756",
+        "Text/disabled": "#575756",
+        "Surface/disabled": "#eaeaea",
+        "Border/disabled": "#eaeaea",
+        "Icon/action": "#8a38f5",
+        "Text/action": "#8a38f5",
+        "Surface/default-secondary": "#ffffff",
+        "Border width/none": "0",
+        "Icon/action-hover": "#6e2dc4",
+        "Text/action-hover": "#6e2dc4",
+        "Surface/action-hover-light": "#f4ecfe"
+      }
+    },
+    {
+      "figmaNodeId": "15:880",
+      "name": "Button_Icon",
+      "nodeType": "frame",
+      "sectionId": "17:80",
+      "width": 844,
+      "height": 346,
+      "variantSymbols": [
+        {
+          "nodeId": "15:881",
+          "name": "Property 1=Default, Type=Default",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:885",
+          "name": "Property 1=Hover, Type=Default",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:889",
+          "name": "Property 1=Focus, Type=Default",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:894",
+          "name": "Property 1=Disabled, Type=Default",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:898",
+          "name": "Property 1=Default, Type=Outline",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:902",
+          "name": "Property 1=Default, Type=Transparent",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:906",
+          "name": "Property 1=Hover, Type=Outline",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:910",
+          "name": "Property 1=Hover, Type=Transparent",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:914",
+          "name": "Property 1=Focus, Type=Outline",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:919",
+          "name": "Property 1=Focus, Type=Transparent",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:924",
+          "name": "Property 1=Disabled, Type=Outline",
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:928",
+          "name": "Property 1=Disabled, Type=Transparent",
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "variableDefs": {
+        "Icon/on-action": "#ffffff",
+        "Border radius/lg": "4",
+        "Border width/sm": "1",
+        "Surface/action": "#8a38f5",
+        "Border/action": "#8a38f5",
+        "Icon/on-action-hover": "#e8d7fd",
+        "Surface/action-hover": "#6e2dc4",
+        "Border/action-hover": "#6e2dc4",
+        "Border width/md": "2",
+        "Border/focus": "#8a38f5",
+        "Icon/disabled": "#575756",
+        "Surface/disabled": "#eaeaea",
+        "Border/disabled": "#eaeaea",
+        "Icon/action": "#8a38f5",
+        "Surface/default-secondary": "#ffffff",
+        "Border width/none": "0",
+        "Icon/action-hover": "#6e2dc4",
+        "Surface/action-hover-light": "#f4ecfe"
+      }
+    },
+    {
+      "figmaNodeId": "17:50",
+      "name": "Label",
+      "nodeType": "frame",
+      "sectionId": "17:82",
+      "width": 121,
+      "height": 42,
+      "variantSymbols": [
+        {
+          "nodeId": "17:65",
+          "name": "Property 1=Required",
+          "width": 84.2272720336914,
+          "height": 20
+        }
+      ],
+      "variableDefs": {
+        "Text/Body": "#1b1b1a",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+        "Icon/action": "#8a38f5",
+        "Icon/error": "#f53838"
+      }
+    },
+    {
+      "figmaNodeId": "18:130",
+      "name": "Field",
+      "nodeType": "frame",
+      "sectionId": "17:82",
+      "width": 1274,
+      "height": 284,
+      "variantSymbols": [
+        {
+          "nodeId": "17:112",
+          "name": "Status=Default, Type=Default",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:131",
+          "name": "Status=hover, Type=Default",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:137",
+          "name": "Status=focus, Type=Default",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:143",
+          "name": "Status=disabled, Type=Default",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:151",
+          "name": "Status=Default, Type=Filled",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:155",
+          "name": "Status=hover, Type=Filled",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:159",
+          "name": "Status=focus, Type=Filled",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:164",
+          "name": "Status=disabled, Type=Filled",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:203",
+          "name": "Status=Default, Type=Error",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:207",
+          "name": "Status=hover, Type=Error",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:211",
+          "name": "Status=focus, Type=Error",
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:216",
+          "name": "Status=disabled, Type=Error",
+          "width": 367,
+          "height": 46
+        }
+      ],
+      "variableDefs": {
+        "Icon/placeholder": "#575756",
+        "Text/placeholder": "#575756",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+        "Border radius/lg": "4",
+        "Border width/sm": "1",
+        "Surface/default-secondary": "#ffffff",
+        "Border/default": "#d5d5d5",
+        "Icon/action-hover": "#6e2dc4",
+        "Text/action-hover": "#6e2dc4",
+        "Surface/action-hover-light": "#f4ecfe",
+        "Border/action-hover": "#6e2dc4",
+        "Border width/md": "2",
+        "Border/focus": "#8a38f5",
+        "Icon/disabled": "#575756",
+        "Text/disabled": "#575756",
+        "Surface/disabled": "#eaeaea",
+        "Border/disabled": "#eaeaea",
+        "Text/Body": "#1b1b1a",
+        "Icon/error": "#f53838",
+        "Text/error": "#f53838",
+        "Border/error": "#f98888",
+        "Surface/error": "#feecec"
+      }
+    },
+    {
+      "figmaNodeId": "18:256",
+      "name": "Input",
+      "nodeType": "frame",
+      "sectionId": "17:82",
+      "width": 407,
+      "height": 284,
+      "variantSymbols": [
+        {
+          "nodeId": "18:242",
+          "name": "Type=Default",
+          "width": 367,
+          "height": 79
+        },
+        {
+          "nodeId": "18:257",
+          "name": "Type=email",
+          "width": 367,
+          "height": 79
+        }
+      ],
+      "variableDefs": {
+        "Text/Body": "#1b1b1a",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+        "Icon/action": "#8a38f5",
+        "Text/placeholder": "#575756",
+        "Border radius/lg": "4",
+        "Border width/sm": "1",
+        "Surface/default-secondary": "#ffffff",
+        "Border/default": "#d5d5d5",
+        "Icon/placeholder": "#575756"
+      }
+    },
+    {
+      "figmaNodeId": "19:667",
+      "name": ".Checkbox item",
+      "nodeType": "frame",
+      "sectionId": "27:167",
+      "width": 162,
+      "height": 268,
+      "variantSymbols": [
+        {
+          "nodeId": "19:666",
+          "name": "Status=Default, Type=Unselected",
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:669",
+          "name": "Status=hover, Type=Unselected",
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:672",
+          "name": "Status=focus, Type=Unselected",
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:675",
+          "name": "Status=disabled, Type=Unselected",
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:681",
+          "name": "Status=Default, Type=Selected",
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:683",
+          "name": "Status=hover, Type=Selected",
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:685",
+          "name": "Status=focus, Type=Selected",
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:688",
+          "name": "Status=disabled, Type=Selected",
+          "width": 42,
+          "height": 42
+        }
+      ],
+      "variableDefs": {
+        "Border radius/xl": "8",
+        "Surface/default-secondary": "#ffffff",
+        "Border/default": "#d5d5d5",
+        "Surface/action-hover-light": "#f4ecfe",
+        "Border/action-hover": "#6e2dc4",
+        "Border width/md": "2",
+        "Border width/sm": "1",
+        "Surface/disabled": "#eaeaea",
+        "Border/disabled": "#eaeaea",
+        "Icon/on-action": "#ffffff",
+        "Surface/action": "#8a38f5",
+        "Border/action": "#8a38f5",
+        "Surface/action-hover": "#6e2dc4",
+        "Icon/disabled": "#575756"
+      }
+    },
+    {
+      "figmaNodeId": "19:702",
+      "name": "Checkbox label",
+      "nodeType": "symbol",
+      "sectionId": "27:167",
+      "width": 96,
+      "height": 42,
+      "variantSymbols": [],
+      "variableDefs": {
+        "Border radius/xl": "8",
+        "Surface/default-secondary": "#ffffff",
+        "Border/default": "#d5d5d5",
+        "Text/Body": "#1b1b1a",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+      }
+    },
+    {
+      "figmaNodeId": "18:315",
+      "name": ".menu item",
+      "nodeType": "frame",
+      "sectionId": "27:169",
+      "width": 829,
+      "height": 197,
+      "variantSymbols": [
+        {
+          "nodeId": "18:309",
+          "name": "State=Default, Status=Unselected",
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:321",
+          "name": "State=hover, Status=Unselected",
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:325",
+          "name": "State=disabled, Status=Unselected",
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:342",
+          "name": "State=Default, Status=Selected",
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:345",
+          "name": "State=hover, Status=Selected",
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:348",
+          "name": "State=disabled, Status=Selected",
+          "width": 322,
+          "height": 45
+        }
+      ],
+      "variableDefs": {
+        "Text/Body": "#1b1b1a",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+        "Icon/default": "#1b1b1a",
+        "Border width/sm": "1",
+        "Surface/default-secondary": "#ffffff",
+        "Border/default": "#d5d5d5",
+        "Text/action-hover": "#6e2dc4",
+        "Icon/action-hover": "#6e2dc4",
+        "Surface/action-hover-light": "#f4ecfe",
+        "Border/action-hover": "#6e2dc4",
+        "Text/disabled": "#575756",
+        "Icon/disabled": "#575756",
+        "Surface/disabled": "#eaeaea",
+        "Border/disabled": "#eaeaea",
+        "Text/on-action": "#ffffff",
+        "Icon/on-action": "#ffffff",
+        "Surface/action": "#8a38f5",
+        "Text/on-action-hover": "#e8d7fd",
+        "Icon/on-action-hover": "#e8d7fd",
+        "Surface/action-hover": "#6e2dc4"
+      }
+    },
+    {
+      "figmaNodeId": "18:384",
+      "name": "Menu",
+      "nodeType": "symbol",
+      "sectionId": "27:169",
+      "width": 323,
+      "height": 270,
+      "variantSymbols": [],
+      "variableDefs": {
+        "Text/Body": "#1b1b1a",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+        "Icon/default": "#1b1b1a",
+        "Border width/sm": "1",
+        "Surface/default-secondary": "#ffffff",
+        "Border/default": "#d5d5d5",
+        "Text/on-action": "#ffffff",
+        "Icon/on-action": "#ffffff",
+        "Surface/action": "#8a38f5",
+        "Border radius/lg": "4"
+      }
+    },
+    {
+      "figmaNodeId": "18:503",
+      "name": "Link",
+      "nodeType": "frame",
+      "sectionId": "27:173",
+      "width": 127,
+      "height": 167,
+      "variantSymbols": [
+        {
+          "nodeId": "18:495",
+          "name": "Type=Default",
+          "width": 87,
+          "height": 20
+        },
+        {
+          "nodeId": "18:510",
+          "name": "Type=Active",
+          "width": 87,
+          "height": 20
+        },
+        {
+          "nodeId": "18:530",
+          "name": "Type=focus",
+          "width": 87,
+          "height": 20
+        },
+        {
+          "nodeId": "18:516",
+          "name": "Type=Disabled",
+          "width": 87,
+          "height": 20
+        }
+      ],
+      "variableDefs": {
+        "Icon/action": "#8a38f5",
+        "Text/action": "#8a38f5",
+        "Paragraph Medium/Line Height": "20",
+        "Font Family/Body": "Inter",
+        "Paragraph Medium/Paragraph Spacing": "8",
+        "Paragraph Medium/Font size": "16",
+        "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+        "Icon/action-hover": "#6e2dc4",
+        "Text/action-hover": "#6e2dc4",
+        "Border radius/lg": "4",
+        "Border width/sm": "1",
+        "Border/action": "#8a38f5",
+        "Icon/disabled": "#575756",
+        "Text/disabled": "#575756",
+        "Surface/disabled": "#eaeaea"
+      }
+    }
+  ],
+  "textStyleVariableDefs": {
+    "Text/heading": "#090909",
+    "H1/Line Height": "92",
+    "Font Family/Heading": "Roboto",
+    "H1/Paragraph Spacing": "40",
+    "H1/Font size": "76",
+    "Heading/H1": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H1/Font size, weight: 600, lineHeight: H1/Line Height, letterSpacing: 0)",
+    "Text/Body": "#1b1b1a",
+    "Paragraph Large/Line Height": "24",
+    "Font Family/Body": "Inter",
+    "Paragraph Large/Paragraph Spacing": "12",
+    "Paragraph Large/Font size": "20",
+    "Body/Large": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Large/Font size, weight: 400, lineHeight: Paragraph Large/Line Height, letterSpacing: 0)",
+    "Paragraph Medium/Line Height": "20",
+    "Paragraph Medium/Paragraph Spacing": "8",
+    "Paragraph Medium/Font size": "16",
+    "Body/Medium": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+    "Paragraph Small/Line Height": "16",
+    "Paragraph Small/Paragraph Spacing": "8",
+    "Paragraph Small/Font size": "12",
+    "Body/Small": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Small/Font size, weight: 400, lineHeight: Paragraph Small/Line Height, letterSpacing: 0)",
+    "Text/Caption": "#2d2d2c",
+    "Caption/Line Height": "16",
+    "Caption/Font size": "12",
+    "Body/caption": "Font(family: \"Inter\", style: Regular, size: Caption/Font size, weight: 400, lineHeight: Caption/Line Height, letterSpacing: 0)",
+    "H2/Line Height": "72",
+    "H2/Paragraph Spacing": "32",
+    "H2/Font size": "60",
+    "Heading/H2": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H2/Font size, weight: 600, lineHeight: H2/Line Height, letterSpacing: 0)",
+    "H3/Line Height": "56",
+    "H3/Paragraph Spacing": "32",
+    "H3/Font size": "48",
+    "Heading/H3": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H3/Font size, weight: 600, lineHeight: H3/Line Height, letterSpacing: 0)",
+    "H4/Line Height": "48",
+    "H4/Paragraph Spacing": "20",
+    "H4/Font size": "40",
+    "Heading/H4": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H4/Font size, weight: 600, lineHeight: H4/Line Height, letterSpacing: 0)",
+    "H5/Line Height": "40",
+    "H5/Paragraph Spacing": "16",
+    "H5/Font size": "32",
+    "Heading/H5": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H5/Font size, weight: 600, lineHeight: H5/Line Height, letterSpacing: 0)",
+    "H6/Line Height": "28",
+    "H6/Paragraph Spacing": "12",
+    "H6/Font size": "24",
+    "Heading/H6": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H6/Font size, weight: 600, lineHeight: H6/Line Height, letterSpacing: 0)"
+  }
+}

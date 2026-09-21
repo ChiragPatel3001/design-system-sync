@@ -1,0 +1,923 @@
+{
+  "schemaVersion": "1.0.0",
+  "snapshotId": "d7d489c45ce362dd",
+  "generatedAt": "2026-09-21T04:37:22.950Z",
+  "sourceRoot": "src/components",
+  "components": [
+    {
+      "componentId": "Button",
+      "sourceFilePath": "src/components/Button/Button.tsx",
+      "cssFilePath": "src/components/Button/Button.css",
+      "exportedComponents": [
+        "Button"
+      ],
+      "exportedTypes": [
+        "ButtonProps",
+        "ButtonVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "optional": true
+        },
+        {
+          "name": "iconLeft",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "iconRight",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>",
+      "variants": [
+        {
+          "name": "ButtonVariant",
+          "values": [
+            "default",
+            "outline",
+            "transparent"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-md",
+        "--border-width-none",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-border-action-hover",
+        "--color-border-disabled",
+        "--color-border-focus",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--color-text-action",
+        "--color-text-action-hover",
+        "--color-text-disabled",
+        "--color-text-on-action",
+        "--color-text-on-action-hover",
+        "--font-size-paragraph-medium",
+        "--font-weight-body",
+        "--line-height-paragraph-medium",
+        "--radius-lg",
+        "--scale-200",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./Button.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/Button/Button.stories.tsx",
+        "title": "Components/Button",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Outline",
+          "Transparent",
+          "WithIcon"
+        ],
+        "computedStoryIds": [
+          "components-button--default",
+          "components-button--disabled",
+          "components-button--focus",
+          "components-button--hover",
+          "components-button--outline",
+          "components-button--transparent",
+          "components-button--with-icon"
+        ]
+      },
+      "sourceHashes": {
+        "component": "832889769bf34058ee3ff5b5776537bc5333ff0ee27e0aed135ca6dd1626079b",
+        "styles": "05e0ac48206a9d4552c8c949922a7ad905f310ed952f5730eecc8a12a3f42c27",
+        "stories": "8fb763b4da86e1f6c85b23bd677eec55b86d683a92767104ae2130003eeb4ba6"
+      }
+    },
+    {
+      "componentId": "Checkbox",
+      "sourceFilePath": "src/components/Checkbox/Checkbox.tsx",
+      "cssFilePath": "src/components/Checkbox/Checkbox.css",
+      "exportedComponents": [
+        "Checkbox"
+      ],
+      "exportedTypes": [
+        "CheckboxProps"
+      ],
+      "props": [
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends CheckboxControlProps",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--color-text-body",
+        "--color-text-disabled",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "../CheckboxControl/CheckboxControl",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": "CheckboxControl"
+        },
+        {
+          "specifier": "../CheckboxControl/CheckboxControl",
+          "isRelative": true,
+          "isTypeOnly": true,
+          "resolvedComponentDir": "CheckboxControl"
+        },
+        {
+          "specifier": "./Checkbox.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [
+        "CheckboxControl"
+      ],
+      "storybook": {
+        "storyFilePath": "src/components/Checkbox/Checkbox.stories.tsx",
+        "title": "Components/Checkbox",
+        "storyExportNames": [
+          "Checked",
+          "Disabled",
+          "Unchecked"
+        ],
+        "computedStoryIds": [
+          "components-checkbox--checked",
+          "components-checkbox--disabled",
+          "components-checkbox--unchecked"
+        ]
+      },
+      "sourceHashes": {
+        "component": "2afc4a33d93b6cb7d7540ecc9a30be385201bb6defe402dd6548119d1f672c8a",
+        "styles": "a180d8c7ea477d2a402b5a44844f83ff62c1fc92192ed8dacf6ce4dab3574805",
+        "stories": "7b97e89d92e1e612c4060b5ec381e14abd604c17eb89aad7613ab872767bd080"
+      }
+    },
+    {
+      "componentId": "CheckboxControl",
+      "sourceFilePath": "src/components/CheckboxControl/CheckboxControl.tsx",
+      "cssFilePath": "src/components/CheckboxControl/CheckboxControl.css",
+      "exportedComponents": [
+        "CheckboxControl"
+      ],
+      "exportedTypes": [
+        "CheckboxControlProps"
+      ],
+      "props": [],
+      "propsBaseType": "Omit<\n  InputHTMLAttributes<HTMLInputElement>,\n  'type' | 'size'\n>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--border-width-md",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-border-action-hover",
+        "--color-border-default",
+        "--color-border-disabled",
+        "--color-icon-disabled",
+        "--color-icon-on-action",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--radius-xl"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./CheckboxControl.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/CheckboxControl/CheckboxControl.stories.tsx",
+        "title": "Components/Internal/CheckboxControl",
+        "storyExportNames": [
+          "Disabled",
+          "DisabledSelected",
+          "Focus",
+          "Hover",
+          "Selected",
+          "Unselected"
+        ],
+        "computedStoryIds": [
+          "components-internal-checkboxcontrol--disabled",
+          "components-internal-checkboxcontrol--disabled-selected",
+          "components-internal-checkboxcontrol--focus",
+          "components-internal-checkboxcontrol--hover",
+          "components-internal-checkboxcontrol--selected",
+          "components-internal-checkboxcontrol--unselected"
+        ]
+      },
+      "sourceHashes": {
+        "component": "d3c8c212a4e43d82524365efb052143b95e40dbb510c59f77f24d3878978c068",
+        "styles": "9ea5ce1e9939e2f83e83cddced6894d18f2dd31938a2688013dc8646a6c3c1a5",
+        "stories": "798fdc5f3071d07349749cd0408b29be8334cb3f41ae013a9e4a38ac3f15ab19"
+      }
+    },
+    {
+      "componentId": "FieldLabel",
+      "sourceFilePath": "src/components/FieldLabel/FieldLabel.tsx",
+      "cssFilePath": "src/components/FieldLabel/FieldLabel.css",
+      "exportedComponents": [
+        "FieldLabel"
+      ],
+      "exportedTypes": [
+        "FieldLabelProps"
+      ],
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": true
+        },
+        {
+          "name": "helpIcon",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends LabelHTMLAttributes<HTMLLabelElement>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--color-icon-default",
+        "--color-text-body",
+        "--color-text-error",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--scale-200"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./FieldLabel.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/FieldLabel/FieldLabel.stories.tsx",
+        "title": "Components/FieldLabel",
+        "storyExportNames": [
+          "Default",
+          "Required",
+          "WithHelpIcon"
+        ],
+        "computedStoryIds": [
+          "components-fieldlabel--default",
+          "components-fieldlabel--required",
+          "components-fieldlabel--with-help-icon"
+        ]
+      },
+      "sourceHashes": {
+        "component": "f32f5ac6652ad89bedb58df1cd3351642a0d6dde89a11a8b2bd8359398f793d7",
+        "styles": "14dcb03b71e12d4c0651f58d6dfe9b9158293ad0080e9565d518e1918e1ba9e9",
+        "stories": "f58e45e1ec449c0cb25a9b1b89a629f9106e1767a83a21b83edbb66cfe91141c"
+      }
+    },
+    {
+      "componentId": "FormField",
+      "sourceFilePath": "src/components/FormField/FormField.tsx",
+      "cssFilePath": "src/components/FormField/FormField.css",
+      "exportedComponents": [
+        "FormField"
+      ],
+      "exportedTypes": [
+        "FormFieldProps"
+      ],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": true
+        },
+        {
+          "name": "helpIcon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "leadingIcon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "hint",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'placeholder'>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--color-text-caption",
+        "--font-size-caption",
+        "--line-height-caption"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "../FieldLabel/FieldLabel",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": "FieldLabel"
+        },
+        {
+          "specifier": "../TextField/TextField",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": "TextField"
+        },
+        {
+          "specifier": "./FormField.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [
+        "FieldLabel",
+        "TextField"
+      ],
+      "storybook": {
+        "storyFilePath": "src/components/FormField/FormField.stories.tsx",
+        "title": "Components/FormField",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Required",
+          "WithHint"
+        ],
+        "computedStoryIds": [
+          "components-formfield--default",
+          "components-formfield--disabled",
+          "components-formfield--required",
+          "components-formfield--with-hint"
+        ]
+      },
+      "sourceHashes": {
+        "component": "bf05587a7ef3965900fa8c98e99396844267050e7056187a445385c74a2b0760",
+        "styles": "b4c15eb8858e0f4e02cda1e412b8c0deb2650824bc91b92a34fefb4ab577f44d",
+        "stories": "d5f6efc72be917242d6b180add746be5e63130cf785af404ca497d5cc2f800f6"
+      }
+    },
+    {
+      "componentId": "IconButton",
+      "sourceFilePath": "src/components/IconButton/IconButton.tsx",
+      "cssFilePath": "src/components/IconButton/IconButton.css",
+      "exportedComponents": [
+        "IconButton"
+      ],
+      "exportedTypes": [
+        "IconButtonProps",
+        "IconButtonVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "IconButtonVariant",
+          "optional": true
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "optional": false
+        }
+      ],
+      "propsBaseType": "extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'aria-label'>",
+      "variants": [
+        {
+          "name": "IconButtonVariant",
+          "values": [
+            "default",
+            "outline",
+            "transparent"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--border-width-md",
+        "--border-width-none",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-border-action-hover",
+        "--color-border-disabled",
+        "--color-border-focus",
+        "--color-icon-action",
+        "--color-icon-action-hover",
+        "--color-icon-disabled",
+        "--color-icon-on-action",
+        "--color-icon-on-action-hover",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--radius-lg",
+        "--scale-200"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./IconButton.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/IconButton/IconButton.stories.tsx",
+        "title": "Components/IconButton",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Outline",
+          "Transparent"
+        ],
+        "computedStoryIds": [
+          "components-iconbutton--default",
+          "components-iconbutton--disabled",
+          "components-iconbutton--focus",
+          "components-iconbutton--hover",
+          "components-iconbutton--outline",
+          "components-iconbutton--transparent"
+        ]
+      },
+      "sourceHashes": {
+        "component": "d035bef58425b102ee9d7fd6dc09ba431673c423d3f4c57720dcac965eae11d6",
+        "styles": "fd4ec4363cf8e719d563582eea82447d6ae519125ad4eebcc6f3d98dc71da3a2",
+        "stories": "4dd4d550a0d6f450d170e37bc4750ba3c5b04979431a63becdf9e51e67cc3c35"
+      }
+    },
+    {
+      "componentId": "Link",
+      "sourceFilePath": "src/components/Link/Link.tsx",
+      "cssFilePath": "src/components/Link/Link.css",
+      "exportedComponents": [
+        "Link"
+      ],
+      "exportedTypes": [
+        "LinkProps",
+        "LinkVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "LinkVariant",
+          "optional": true
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "iconLeft",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "iconRight",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>",
+      "variants": [
+        {
+          "name": "LinkVariant",
+          "values": [
+            "default",
+            "active",
+            "disabled"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-surface-disabled",
+        "--color-text-action",
+        "--color-text-action-hover",
+        "--color-text-disabled",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--radius-lg",
+        "--scale-200"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./Link.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/Link/Link.stories.tsx",
+        "title": "Components/Link",
+        "storyExportNames": [
+          "Active",
+          "Default",
+          "Disabled",
+          "Focus",
+          "WithIcons"
+        ],
+        "computedStoryIds": [
+          "components-link--active",
+          "components-link--default",
+          "components-link--disabled",
+          "components-link--focus",
+          "components-link--with-icons"
+        ]
+      },
+      "sourceHashes": {
+        "component": "96fd64b6586d01c6cc81b5035651ea569238e64ad304aa869358db3d7964d838",
+        "styles": "255f3cbe2583b6256efa318d2e806bc17b35ba925c385e9d13748eb41633b9c9",
+        "stories": "2864000ea7a23f4d40156854bc5948147ce26b5182889837f19aea92811bc3db"
+      }
+    },
+    {
+      "componentId": "Menu",
+      "sourceFilePath": "src/components/Menu/Menu.tsx",
+      "cssFilePath": "src/components/Menu/Menu.css",
+      "exportedComponents": [
+        "Menu"
+      ],
+      "exportedTypes": [
+        "MenuProps"
+      ],
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": false
+        }
+      ],
+      "propsBaseType": "extends HTMLAttributes<HTMLDivElement>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--border-width-sm",
+        "--color-border-default",
+        "--radius-lg"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./Menu.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/Menu/Menu.stories.tsx",
+        "title": "Components/Menu",
+        "storyExportNames": [
+          "Default",
+          "WithDisabledItem"
+        ],
+        "computedStoryIds": [
+          "components-menu--default",
+          "components-menu--with-disabled-item"
+        ]
+      },
+      "sourceHashes": {
+        "component": "8b2fce9936cce710dc02ba25c91bb6262d501678aad9a524701b056d2c4e7aca",
+        "styles": "44d40a2bbda923ea85cfde525f8f8d7072c4b6eb37ee67f18ca16df7b396d2f0",
+        "stories": "191243f106d866d06bcc93cd3b6af236857eaa51333369ddf22e9caef7849599"
+      }
+    },
+    {
+      "componentId": "MenuItem",
+      "sourceFilePath": "src/components/MenuItem/MenuItem.tsx",
+      "cssFilePath": "src/components/MenuItem/MenuItem.css",
+      "exportedComponents": [
+        "MenuItem"
+      ],
+      "exportedTypes": [
+        "MenuItemProps"
+      ],
+      "props": [
+        {
+          "name": "selected",
+          "type": "boolean",
+          "optional": true
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-md",
+        "--border-width-sm",
+        "--color-border-action-hover",
+        "--color-border-default",
+        "--color-border-disabled",
+        "--color-border-focus",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--color-text-action-hover",
+        "--color-text-body",
+        "--color-text-disabled",
+        "--color-text-on-action",
+        "--color-text-on-action-hover",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./MenuItem.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/MenuItem/MenuItem.stories.tsx",
+        "title": "Components/Internal/MenuItem",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Selected"
+        ],
+        "computedStoryIds": [
+          "components-internal-menuitem--default",
+          "components-internal-menuitem--disabled",
+          "components-internal-menuitem--focus",
+          "components-internal-menuitem--hover",
+          "components-internal-menuitem--selected"
+        ]
+      },
+      "sourceHashes": {
+        "component": "71cf43e60738df6893fedc62283d7eef7a9c59c5f2b8b733bdd818c8134d4129",
+        "styles": "2fc543f9aaedd42a829ad9ce4e771aec70081ad45a1ae26a4d45e76034f886b2",
+        "stories": "615b8e59546343a7f62c9b38689640e4e99b446d357fce70b91130b8488d9da4"
+      }
+    },
+    {
+      "componentId": "TextField",
+      "sourceFilePath": "src/components/TextField/TextField.tsx",
+      "cssFilePath": "src/components/TextField/TextField.css",
+      "exportedComponents": [
+        "TextField"
+      ],
+      "exportedTypes": [
+        "TextFieldProps",
+        "TextFieldVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "TextFieldVariant",
+          "optional": true
+        },
+        {
+          "name": "leadingIcon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "trailingIcon",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>",
+      "variants": [
+        {
+          "name": "TextFieldVariant",
+          "values": [
+            "default",
+            "filled",
+            "error"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-md",
+        "--border-width-sm",
+        "--color-border-action-hover",
+        "--color-border-default",
+        "--color-border-disabled",
+        "--color-border-error",
+        "--color-border-focus",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--color-surface-error",
+        "--color-text-action-hover",
+        "--color-text-body",
+        "--color-text-disabled",
+        "--color-text-error",
+        "--color-text-placeholder",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--radius-lg",
+        "--scale-200",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./TextField.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/TextField/TextField.stories.tsx",
+        "title": "Components/TextField",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Error",
+          "Filled",
+          "Focus",
+          "Hover",
+          "WithIcons"
+        ],
+        "computedStoryIds": [
+          "components-textfield--default",
+          "components-textfield--disabled",
+          "components-textfield--error",
+          "components-textfield--filled",
+          "components-textfield--focus",
+          "components-textfield--hover",
+          "components-textfield--with-icons"
+        ]
+      },
+      "sourceHashes": {
+        "component": "24dc03b3513bd5240e371033ffd1c373f2f3f9f9990dde95cbe897f3b1c729ba",
+        "styles": "35101428dc5d97ff380607d0d50cf45b708d70101a7f22836a5c7504c654deed",
+        "stories": "ac6c24028ab2bdc70150d5ad19c696f0ac2d7991f95a1515696b2387cd26dd59"
+      }
+    }
+  ]
+}

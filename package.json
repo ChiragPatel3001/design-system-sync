@@ -9,7 +9,13 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "sync:baseline": "node design-system/sync/scripts/baseline.ts",
+    "sync:check": "node design-system/sync/scripts/check.ts",
+    "sync:test": "node --test design-system/sync/scripts/compare.test.ts design-system/sync/scripts/snapshot.test.ts",
+    "sync:code-baseline": "node design-system/sync/scripts/code-baseline.ts",
+    "sync:code-check": "node design-system/sync/scripts/code-check.ts",
+    "sync:code-test": "node --test design-system/sync/scripts/code-snapshot.test.ts"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -19,6 +25,7 @@
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/addon-docs": "^10.6.0",
     "@storybook/react-vite": "^10.6.0",
+    "@types/node": "^26.6.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",

@@ -37,6 +37,11 @@ function makeAudit(overrides: Partial<AgentAuditRecord> & { policyDecision: Poli
     findingAfter: 'unresolved',
     outcome: 'no-safe-action',
     stopReason: 'fixture',
+    humanReauthorized: false,
+    codeBaselinePromoted: false,
+    figmaBaselinePromoted: false,
+    humanDirected: false,
+    sourceOfTruth: null,
     ...overrides,
   };
 }
@@ -132,5 +137,63 @@ describe('deriveTimeline', () => {
     const timeline = deriveTimeline(record);
     assert.equal(timeline.find((s) => s.label === 'Finding verified')!.state, 'failed');
     assert.equal(timeline[timeline.length - 1].label, 'Edit reverted');
+  });
+
+  test('applied-verification-incomplete (Level 6 failure): "Edit applied" and "Validation passed" are genuinely done, "Code snapshot refreshed" is done, "Reconciliation completed" is failed — never a fabricated "Finding verified"/"Edit reverted" step', () => {
+    const record = makeAudit({
+      policyDecision: { reconciliationId: 'f1', status: 'figma-only-change', verdict: 'SAFE', reason: 'safe', requiredEvidence: [], requiredValidationLevels: [1, 2, 3, 4, 5, 6], requiresHumanApproval: false },
+      editTarget,
+      outcome: 'applied-verification-incomplete',
+      change: { before: '20px', after: '24px' },
+      filesModified: ['src/tokens/typography.css'],
+      codeBaselinePromoted: false,
+      figmaBaselinePromoted: false,
+      validation: [
+        { level: 1, command: 'tsc', passed: true },
+        { level: 2, command: 'test', passed: true },
+        { level: 3, command: 'build', passed: true },
+        { level: 4, command: 'storybook', passed: true },
+        { level: 5, command: 'sync:code-check (refresh current CodeSnapshot)', passed: true },
+        { level: 6, command: 'sync:reconcile', passed: false, output: 'rate limit exceeded' },
+      ],
+      stopReason:
+        'The edit was applied and passed all pre-apply validation (levels 1-4), but post-apply verification (sync:reconcile) failed before it could confirm resolution or promote any baseline: rate limit exceeded. The edit was NOT reverted — it was already independently validated. Once the underlying issue is resolved, run reconciliation and re-invoke the agent on this finding to complete verification and baseline promotion.',
+    });
+    const timeline = deriveTimeline(record);
+    assert.deepEqual(
+      timeline.map((s) => s.label),
+      ['Finding detected', 'Policy classified SAFE', 'Target resolved', 'Claude proposed edit', 'Edit applied', 'Validation passed', 'Code snapshot refreshed', 'Reconciliation completed'],
+    );
+    assert.equal(timeline.find((s) => s.label === 'Edit applied')!.state, 'done');
+    assert.equal(timeline.find((s) => s.label === 'Validation passed')!.state, 'done');
+    assert.equal(timeline.find((s) => s.label === 'Code snapshot refreshed')!.state, 'done');
+    assert.equal(timeline[timeline.length - 1].label, 'Reconciliation completed');
+    assert.equal(timeline[timeline.length - 1].state, 'failed');
+    assert.ok(!timeline.some((s) => s.label === 'Finding verified' || s.label === 'Edit reverted'));
+  });
+
+  test('applied-verification-incomplete (Level 5 failure): "Code snapshot refreshed" itself is the failed step, "Reconciliation completed" never appears at all', () => {
+    const record = makeAudit({
+      policyDecision: { reconciliationId: 'f1', status: 'figma-only-change', verdict: 'SAFE', reason: 'safe', requiredEvidence: [], requiredValidationLevels: [1, 2, 3, 4, 5, 6], requiresHumanApproval: false },
+      editTarget,
+      outcome: 'applied-verification-incomplete',
+      change: { before: '20px', after: '24px' },
+      filesModified: ['src/tokens/typography.css'],
+      validation: [
+        { level: 1, command: 'tsc', passed: true },
+        { level: 2, command: 'test', passed: true },
+        { level: 3, command: 'build', passed: true },
+        { level: 4, command: 'storybook', passed: true },
+        { level: 5, command: 'sync:code-check (refresh current CodeSnapshot)', passed: false, output: 'disk full' },
+      ],
+      stopReason:
+        'The edit was applied and passed all pre-apply validation (levels 1-4), but post-apply verification (sync:code-check (refresh current CodeSnapshot)) failed before it could confirm resolution or promote any baseline: disk full. The edit was NOT reverted — it was already independently validated. Once the underlying issue is resolved, run reconciliation and re-invoke the agent on this finding to complete verification and baseline promotion.',
+    });
+    const timeline = deriveTimeline(record);
+    assert.deepEqual(
+      timeline.map((s) => s.label),
+      ['Finding detected', 'Policy classified SAFE', 'Target resolved', 'Claude proposed edit', 'Edit applied', 'Validation passed', 'Code snapshot refreshed'],
+    );
+    assert.equal(timeline[timeline.length - 1].state, 'failed');
   });
 });

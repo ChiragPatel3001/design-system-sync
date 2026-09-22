@@ -1,0 +1,119 @@
+{
+  "reconciliationRunId": "35cdc19c67b9179a",
+  "reconciliationId": "7040b679cc81",
+  "findingBefore": {
+    "reconciliationId": "7040b679cc81",
+    "entityType": "token",
+    "entityId": "line-height-paragraph-medium",
+    "registryId": "line-height-paragraph-medium",
+    "field": "value",
+    "status": "figma-only-change",
+    "figma": {
+      "current": "28",
+      "baseline": "20",
+      "changed": true
+    },
+    "code": {
+      "current": "20px",
+      "baseline": "20px",
+      "changed": false
+    },
+    "registryExpected": null,
+    "affectedComponents": [
+      "button",
+      "checkbox",
+      "field-label",
+      "link",
+      "menu-item",
+      "text-field"
+    ],
+    "sources": {
+      "figmaBaselineId": "568bde3637c3c8bc",
+      "figmaCurrentId": "31238181b31c8a71",
+      "codeBaselineId": "6ad9f34eea3bc282",
+      "codeCurrentId": "6ad9f34eea3bc282"
+    },
+    "detail": "Figma variable \"Paragraph Medium/Line Height\" changed since baseline; code definition \"--line-height-paragraph-medium\" did not."
+  },
+  "humanReauthorized": false,
+  "policyDecision": {
+    "reconciliationId": "7040b679cc81",
+    "status": "figma-only-change",
+    "verdict": "SAFE",
+    "reason": "All 9 SAFE conditions satisfied: registry-mapped, unambiguous crosswalk mapping, single code declaration, raw literal value, token-value synchronization only.",
+    "requiredEvidence": [
+      "entity is registry-mapped (registryId is non-null)",
+      "finding is a token value-synchronization change (entityType \"token\", field \"value\")",
+      "crosswalk token mapping for \"line-height-paragraph-medium\" is unambiguous (status \"resolved\")",
+      "exactly one code declaration exists for \"--line-height-paragraph-medium\" (in src/tokens/typography.css)",
+      "code declaration value \"20px\" is a raw literal, not a var() alias"
+    ],
+    "requiredValidationLevels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "requiresHumanApproval": false
+  },
+  "editTarget": {
+    "filePath": "src/tokens/typography.css",
+    "kind": "css-custom-property-value",
+    "declarationIdentifier": "--line-height-paragraph-medium",
+    "currentValue": "20px"
+  },
+  "filesInspected": [
+    "src/tokens/typography.css"
+  ],
+  "filesModified": [
+    "src/tokens/typography.css"
+  ],
+  "change": {
+    "before": "20px",
+    "after": "28px"
+  },
+  "validation": [
+    {
+      "level": 1,
+      "command": "npx tsc --noEmit",
+      "passed": true,
+      "output": ""
+    },
+    {
+      "level": 2,
+      "command": "npm run sync:code-test",
+      "passed": true,
+      "output": "\n> design-system-sync@0.1.0 sync:code-test\n> node --test design-system/sync/scripts/code-snapshot.test.ts\n\n▶ buildCodeSnapshot — against the real repository\n  ✔ discovers all 10 current components (5.1757ms)\n  ✔ source file paths resolve to real files under src/components (4.4377ms)\n  ✔ CSS file paths resolve to real files for every component (5.5541ms)\n  ✔ CSS custom properties are extracted correctly (0.8277ms)\n  ✔ cross-component React imports/dependencies are detected from real import statements (0.5915ms)\n  ✔ Storybook story files are detected with title, export names, and computed ids (0.5108ms)\n  ✔ locates each Props type and reports its declared members without fabricating inherited ones (0.896ms)\n  ✔ captures declared string-literal variant unions where present (0.6928ms)\n  ✔ captures real token definitions from src/tokens/**/*.css, including literal (unresolved) alias values (0.8057ms)\n✔ buildCodeSnapshot — against the real repository (23.3054ms)\n▶ buildCodeSnapshot — determinism\n  ✔ source hashes are deterministic across repeated builds (81.8475ms)\n  ✔ identical code produces identical snapshot ids (81.1619ms)\n✔ buildCodeSnapshot — determinism (163.821ms)\n▶ buildCodeSnapshot — token definitions (isolated fixture)\n  ✔ a normal CSS custom-property definition is captured (5.638ms)\n  ✔ a var() alias definition preserves its literal source value, not a resolved one (4.8145ms)\n  ✔ definitions from multiple token CSS files are all captured (7.1741ms)\n  ✔ tokenDefinitions ordering is deterministic (sorted by cssVariable) (5.8175ms)\n  ✔ unrelated CSS/component files do not create token definitions (13.3924ms)\n  ✔ snapshot ids change when a token definition changes (15.1907ms)\n  ✔ snapshot ids are identical when only filesystem/write ordering differs (26.4928ms)\n  ✔ tokenDefinitions defaults to [] when tokensDir is not provided (existing call sites are unaffected) (4.5338ms)\n✔ buildCodeSnapshot — token definitions (isolated fixture) (93.3226ms)\n▶ buildCodeSnapshot — controlled source change (isolated fixture)\n  ✔ missing Storybook file is represented as null, not fabricated (5.5163ms)\n  ✔ a controlled source change produces a different snapshot id and source hash (12.1687ms)\n  ✔ reverting the content reproduces the original snapshot id (content-addressed, not append-only) (19.4812ms)\n✔ buildCodeSnapshot — controlled source change (isolated fixture) (47.5462ms)\n▶ CodeSnapshot independence from registry.json and Figma\n  ✔ registry.json is not required to build the CodeSnapshot (real build already proves this — no registry read occurred above) (34.3147ms)\n  ✔ the CodeSnapshot source files never reference registry.json or the Figma manifest file (3.1129ms)\n✔ CodeSnapshot independence from registry.json and Figma (37.717ms)\nℹ tests 24\nℹ suites 5\nℹ pass 24\nℹ fail 0\nℹ cancelled 0\nℹ skipped 0\nℹ todo 0\nℹ duration_ms 1647.8489\n"
+    },
+    {
+      "level": 3,
+      "command": "npm run build",
+      "passed": true,
+      "output": "\n> design-system-sync@0.1.0 build\n> tsc --noEmit && vite build\n\n\u001b[36mvite v5.4.21 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\ntransforming...\n\u001b[32m✓\u001b[39m 64 modules transformed.\nrendering chunks...\ncomputing gzip size...\n\u001b[2mdist/\u001b[22m\u001b[32mindex.html                     \u001b[39m\u001b[1m\u001b[2m  0.55 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.31 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[32mdashboard.html                 \u001b[39m\u001b[1m\u001b[2m  0.55 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  0.31 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/index-BfNy9eRE.css      \u001b[39m\u001b[1m\u001b[2m  8.88 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.79 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/dashboard-BvoG-5Ao.css  \u001b[39m\u001b[1m\u001b[2m 11.94 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  2.14 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[35massets/main-BoCS1S1_.css       \u001b[39m\u001b[1m\u001b[2m 12.27 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  1.55 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/main-DQVf23LW.js        \u001b[39m\u001b[1m\u001b[2m 24.00 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  3.24 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/dashboard-C-COGF9O.js   \u001b[39m\u001b[1m\u001b[2m 45.93 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  5.92 kB\u001b[22m\n\u001b[2mdist/\u001b[22m\u001b[36massets/index-DQUEAO54.js       \u001b[39m\u001b[1m\u001b[2m327.82 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip: 99.64 kB\u001b[22m\n\u001b[32m✓ built in 4.27s\u001b[39m\n"
+    },
+    {
+      "level": 4,
+      "command": "npm run build-storybook",
+      "passed": true,
+      "output": "\n> design-system-sync@0.1.0 build-storybook\n> storybook build\n\n\n\u001b[90m┌\u001b[39m  Building storybook v10.6.0\n\u001b[90m│\u001b[39m\n\u001b[32m◇\u001b[39m  Cleaning outputDir: \u001b[36mstorybook-static\u001b[39m\n\u001b[90m│\u001b[39m\n\u001b[32m◇\u001b[39m  Loading presets\n\u001b[90m│\u001b[39m\n\u001b[32m◇\u001b[39m  Building manager..\n\u001b[90m│\u001b[39m\n\u001b[34m●\u001b[39m  Building open services..\n\u001b[90m│\u001b[39m\n\u001b[34m●\u001b[39m  Building preview..\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[36mvite v5.4.21 \u001b[32mbuilding for production...\u001b[36m\u001b[39m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m transforming...\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[32m✓\u001b[39m 265 modules transformed.\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m rendering chunks...\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m computing gzip size...\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[32miframe.html\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m18.87 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   5.28 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/Menu-C42fhHe2.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m0.23 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.16 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/FormField-B4aF8hNC.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m0.25 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.17 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/Checkbox-TNbacqgV.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m0.33 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.19 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/FieldLabel-Dc1gUTPx.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m0.44 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.23 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/Link-xlkm58j3.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m0.92 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.35 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/CheckboxControl-CFwuQa0z.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.55 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.46 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/MenuItem-BUPNKKOV.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.74 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.55 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/TextField-B50UAs6F.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m2.06 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.53 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/IconButton-DUytDzSg.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m2.07 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.45 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/Button-B7g735VA.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m2.23 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.53 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[35massets/iframe-BfNy9eRE.css\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m8.88 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.79 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/formatter-L2YTDE3Q-5H1lEs_P.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m0.29 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.24 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/react-18-DPjGCJ64.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m0.98 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.58 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/preload-helper-C1FmrZbK.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.14 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.68 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/CheckboxControl-DFtGX5Tt.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.32 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.53 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/MenuItem-B4W_LRaC.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.48 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.64 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/FieldLabel-CytFCR4s.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.67 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.63 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/FieldLabel.stories-B3hJT0i5.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.98 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.83 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/TextField-DQRi7PsZ.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m1.98 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   0.71 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/Checkbox.stories-BsZhs-U-.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m2.59 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.02 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/CheckboxControl.stories-Bsj3Mczr.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m3.02 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.07 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/MenuItem.stories-It0IoTnG.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m3.04 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.21 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/Menu.stories-CloU3pUf.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m4.16 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.22 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/IconButton.stories-D5BBqtxa.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m4.18 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.45 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/TextField.stories-sF4bfl8S.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m4.35 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.36 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/Link.stories-CwEexJ8X.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m4.96 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.55 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/FormField.stories-C6Bo1Gsn.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m5.04 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.57 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/Button.stories-CURFdl-B.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m5.48 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   1.65 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/figma-link-D64xsk7s.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m13.11 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   5.33 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/test-utils-CgD3b7vX.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m17.43 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   6.74 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36mvite-inject-mocker-entry.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m28.53 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:   9.94 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/matchers-JIUQ3HVY-T3xScrR7.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m29.79 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  10.30 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/Color-6AOWCN3U-3SzFsIxA.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m30.40 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  11.52 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/WithTooltip-CDUNV5IS-TbYfmwlV.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m33.73 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  11.89 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/syntaxhighlighter-4REYKNEV-DDTbGr-E.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m77.84 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  27.30 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/index-s6Ss9o6h.js\u001b[39m\u001b[1m\u001b[2m\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[2m285.89 kB\u001b[22m\u001b[1m\u001b[22m\u001b[2m │ gzip:  87.52 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/axe-BjvAampi.js\u001b[39m\u001b[1m\u001b[33m\u001b[39m\n\u001b[90m│\u001b[39m  \u001b[33m601.10 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 165.85 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/DocsRenderer-JROSPFPF-qD7FFViv.js\u001b[39m\u001b[1m\u001b[33m\u001b[39m\n\u001b[90m│\u001b[39m  \u001b[33m885.21 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 282.91 kB\u001b[22m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[2mstorybook-static/\u001b[22m\u001b[36massets/iframe-D2xk9Uex.js\u001b[39m\n\u001b[90m│\u001b[39m  \u001b[36m\u001b[39m\u001b[1m\u001b[33m1,176.30 kB\u001b[39m\u001b[22m\u001b[2m │ gzip: 340.31 kB\u001b[22m\n\u001b[90m│\u001b[39m\n\u001b[33m▲\u001b[39m  \u001b[43mVite\u001b[49m\u001b[33m\n\u001b[90m│\u001b[39m  (!) Some chunks are larger than 500 kB after minification. Consider:\n\u001b[90m│\u001b[39m  - Using dynamic import() to code-split the application\n\u001b[90m│\u001b[39m  - Use build.rollupOptions.output.manualChunks to improve chunking:\n\u001b[90m│\u001b[39m  \u001b]8;;https://rollupjs.org/configuration-options/#output-manualchunks\u0007https://rollupjs.org/configuration-options/#output-manualchunks\u001b]8;;\u0007\n\u001b[90m│\u001b[39m  - Adjust chunk size limit for this warning via\n\u001b[90m│\u001b[39m  build.chunkSizeWarningLimit.\u001b[39m\n\u001b[90m│\u001b[39m  \u001b[43mVite\u001b[49m \u001b[32m✓ built in 26.07s\u001b[39m\n\u001b[90m│\u001b[39m\n\u001b[32m◇\u001b[39m  Output directory:\n\u001b[90m│\u001b[39m  C:/Users/User/OneDrive/Documents/design-system-sync/storybook-static\n\u001b[90m│\u001b[39m\n\u001b[90m└\u001b[39m  Storybook build completed successfully\n\n"
+    },
+    {
+      "level": 5,
+      "command": "sync:code-check (refresh current CodeSnapshot)",
+      "passed": true
+    },
+    {
+      "level": 6,
+      "command": "sync:reconcile",
+      "passed": true
+    }
+  ],
+  "reconciliationAfterRunId": "f036224ea8466bea",
+  "findingAfter": "resolved",
+  "outcome": "applied",
+  "stopReason": "Completed successfully: the targeted finding resolved, no new findings, no unrelated mutations.",
+  "auditId": "fb4c2dc556b033dd",
+  "generatedAt": "2026-09-21T18:37:39.343Z"
+}

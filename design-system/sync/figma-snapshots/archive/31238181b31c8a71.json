@@ -1,0 +1,2005 @@
+{
+  "schemaVersion": "1.0.0",
+  "snapshotId": "31238181b31c8a71",
+  "generatedAt": "2026-09-21T18:31:28.240Z",
+  "source": {
+    "fileKey": "opq4Is8eZdXdu920YDUIs1",
+    "fileName": "Design-System-2.0",
+    "capturedAt": "2026-09-21T18:31:28.228Z"
+  },
+  "pages": [
+    {
+      "id": "0:1",
+      "name": "Tokens"
+    },
+    {
+      "id": "14:592",
+      "name": "Components"
+    }
+  ],
+  "components": [
+    {
+      "figmaNodeId": "15:664",
+      "name": "Button",
+      "kind": "component_set",
+      "sectionId": "17:80",
+      "sectionName": "Buttons",
+      "containerWidth": 844,
+      "containerHeight": 346,
+      "variantCount": 12,
+      "variantPropertyNames": [
+        "State",
+        "Type"
+      ],
+      "variantPropertyValues": {
+        "State": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover"
+        ],
+        "Type": [
+          "Default",
+          "Outline",
+          "Transparent"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "14:595",
+          "properties": {
+            "State": "Default",
+            "Type": "Default"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:665",
+          "properties": {
+            "State": "Hover",
+            "Type": "Default"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:671",
+          "properties": {
+            "State": "Focus",
+            "Type": "Default"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:678",
+          "properties": {
+            "State": "Disabled",
+            "Type": "Default"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:801",
+          "properties": {
+            "State": "Default",
+            "Type": "Outline"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:805",
+          "properties": {
+            "State": "Hover",
+            "Type": "Outline"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:809",
+          "properties": {
+            "State": "Focus",
+            "Type": "Outline"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:814",
+          "properties": {
+            "State": "Disabled",
+            "Type": "Outline"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:855",
+          "properties": {
+            "State": "Default",
+            "Type": "Transparent"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:859",
+          "properties": {
+            "State": "Hover",
+            "Type": "Transparent"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:863",
+          "properties": {
+            "State": "Focus",
+            "Type": "Transparent"
+          },
+          "width": 139,
+          "height": 40
+        },
+        {
+          "nodeId": "15:868",
+          "properties": {
+            "State": "Disabled",
+            "Type": "Transparent"
+          },
+          "width": 139,
+          "height": 40
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Border radius/lg",
+          "value": "4"
+        },
+        {
+          "name": "Border width/md",
+          "value": "2"
+        },
+        {
+          "name": "Border width/none",
+          "value": "0"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Border/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Border/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Border/focus",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Icon/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Icon/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Icon/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Icon/on-action",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Icon/on-action-hover",
+          "value": "#e8d7fd"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Surface/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Surface/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Surface/action-hover-light",
+          "value": "#f4ecfe"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Surface/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Text/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Text/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Text/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Text/on-action",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Text/on-action-hover",
+          "value": "#e8d7fd"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "15:880",
+      "name": "Button_Icon",
+      "kind": "component_set",
+      "sectionId": "17:80",
+      "sectionName": "Buttons",
+      "containerWidth": 844,
+      "containerHeight": 346,
+      "variantCount": 12,
+      "variantPropertyNames": [
+        "Property 1",
+        "Type"
+      ],
+      "variantPropertyValues": {
+        "Property 1": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover"
+        ],
+        "Type": [
+          "Default",
+          "Outline",
+          "Transparent"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "15:881",
+          "properties": {
+            "Property 1": "Default",
+            "Type": "Default"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:885",
+          "properties": {
+            "Property 1": "Hover",
+            "Type": "Default"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:889",
+          "properties": {
+            "Property 1": "Focus",
+            "Type": "Default"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:894",
+          "properties": {
+            "Property 1": "Disabled",
+            "Type": "Default"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:898",
+          "properties": {
+            "Property 1": "Default",
+            "Type": "Outline"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:902",
+          "properties": {
+            "Property 1": "Default",
+            "Type": "Transparent"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:906",
+          "properties": {
+            "Property 1": "Hover",
+            "Type": "Outline"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:910",
+          "properties": {
+            "Property 1": "Hover",
+            "Type": "Transparent"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:914",
+          "properties": {
+            "Property 1": "Focus",
+            "Type": "Outline"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:919",
+          "properties": {
+            "Property 1": "Focus",
+            "Type": "Transparent"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:924",
+          "properties": {
+            "Property 1": "Disabled",
+            "Type": "Outline"
+          },
+          "width": 40,
+          "height": 40
+        },
+        {
+          "nodeId": "15:928",
+          "properties": {
+            "Property 1": "Disabled",
+            "Type": "Transparent"
+          },
+          "width": 40,
+          "height": 40
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Border radius/lg",
+          "value": "4"
+        },
+        {
+          "name": "Border width/md",
+          "value": "2"
+        },
+        {
+          "name": "Border width/none",
+          "value": "0"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Border/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Border/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Border/focus",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Icon/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Icon/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Icon/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Icon/on-action",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Icon/on-action-hover",
+          "value": "#e8d7fd"
+        },
+        {
+          "name": "Surface/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Surface/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Surface/action-hover-light",
+          "value": "#f4ecfe"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Surface/disabled",
+          "value": "#eaeaea"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "17:50",
+      "name": "Label",
+      "kind": "component",
+      "sectionId": "17:82",
+      "sectionName": "Form Inputs",
+      "containerWidth": 121,
+      "containerHeight": 42,
+      "variantCount": 1,
+      "variantPropertyNames": [
+        "Property 1"
+      ],
+      "variantPropertyValues": {
+        "Property 1": [
+          "Required"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "17:65",
+          "properties": {
+            "Property 1": "Required"
+          },
+          "width": 84.2272720336914,
+          "height": 20
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Icon/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Icon/error",
+          "value": "#f53838"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Text/Body",
+          "value": "#1b1b1a"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "18:130",
+      "name": "Field",
+      "kind": "component_set",
+      "sectionId": "17:82",
+      "sectionName": "Form Inputs",
+      "containerWidth": 1274,
+      "containerHeight": 284,
+      "variantCount": 12,
+      "variantPropertyNames": [
+        "Status",
+        "Type"
+      ],
+      "variantPropertyValues": {
+        "Status": [
+          "Default",
+          "disabled",
+          "focus",
+          "hover"
+        ],
+        "Type": [
+          "Default",
+          "Error",
+          "Filled"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "17:112",
+          "properties": {
+            "Status": "Default",
+            "Type": "Default"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:131",
+          "properties": {
+            "Status": "hover",
+            "Type": "Default"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:137",
+          "properties": {
+            "Status": "focus",
+            "Type": "Default"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:143",
+          "properties": {
+            "Status": "disabled",
+            "Type": "Default"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:151",
+          "properties": {
+            "Status": "Default",
+            "Type": "Filled"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:155",
+          "properties": {
+            "Status": "hover",
+            "Type": "Filled"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:159",
+          "properties": {
+            "Status": "focus",
+            "Type": "Filled"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:164",
+          "properties": {
+            "Status": "disabled",
+            "Type": "Filled"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:203",
+          "properties": {
+            "Status": "Default",
+            "Type": "Error"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:207",
+          "properties": {
+            "Status": "hover",
+            "Type": "Error"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:211",
+          "properties": {
+            "Status": "focus",
+            "Type": "Error"
+          },
+          "width": 367,
+          "height": 46
+        },
+        {
+          "nodeId": "18:216",
+          "properties": {
+            "Status": "disabled",
+            "Type": "Error"
+          },
+          "width": 367,
+          "height": 46
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Border radius/lg",
+          "value": "4"
+        },
+        {
+          "name": "Border width/md",
+          "value": "2"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Border/default",
+          "value": "#d5d5d5"
+        },
+        {
+          "name": "Border/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Border/error",
+          "value": "#f98888"
+        },
+        {
+          "name": "Border/focus",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Icon/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Icon/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Icon/error",
+          "value": "#f53838"
+        },
+        {
+          "name": "Icon/placeholder",
+          "value": "#575756"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Surface/action-hover-light",
+          "value": "#f4ecfe"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Surface/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Surface/error",
+          "value": "#feecec"
+        },
+        {
+          "name": "Text/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Text/Body",
+          "value": "#1b1b1a"
+        },
+        {
+          "name": "Text/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Text/error",
+          "value": "#f53838"
+        },
+        {
+          "name": "Text/placeholder",
+          "value": "#575756"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "18:256",
+      "name": "Input",
+      "kind": "component_set",
+      "sectionId": "17:82",
+      "sectionName": "Form Inputs",
+      "containerWidth": 407,
+      "containerHeight": 284,
+      "variantCount": 2,
+      "variantPropertyNames": [
+        "Type"
+      ],
+      "variantPropertyValues": {
+        "Type": [
+          "Default",
+          "email"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "18:242",
+          "properties": {
+            "Type": "Default"
+          },
+          "width": 367,
+          "height": 79
+        },
+        {
+          "nodeId": "18:257",
+          "properties": {
+            "Type": "email"
+          },
+          "width": 367,
+          "height": 79
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Border radius/lg",
+          "value": "4"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/default",
+          "value": "#d5d5d5"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Icon/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Icon/placeholder",
+          "value": "#575756"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Text/Body",
+          "value": "#1b1b1a"
+        },
+        {
+          "name": "Text/placeholder",
+          "value": "#575756"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "18:315",
+      "name": ".menu item",
+      "kind": "component_set",
+      "sectionId": "27:169",
+      "sectionName": "Menu",
+      "containerWidth": 829,
+      "containerHeight": 197,
+      "variantCount": 6,
+      "variantPropertyNames": [
+        "State",
+        "Status"
+      ],
+      "variantPropertyValues": {
+        "State": [
+          "Default",
+          "disabled",
+          "hover"
+        ],
+        "Status": [
+          "Selected",
+          "Unselected"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "18:309",
+          "properties": {
+            "State": "Default",
+            "Status": "Unselected"
+          },
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:321",
+          "properties": {
+            "State": "hover",
+            "Status": "Unselected"
+          },
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:325",
+          "properties": {
+            "State": "disabled",
+            "Status": "Unselected"
+          },
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:342",
+          "properties": {
+            "State": "Default",
+            "Status": "Selected"
+          },
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:345",
+          "properties": {
+            "State": "hover",
+            "Status": "Selected"
+          },
+          "width": 322,
+          "height": 45
+        },
+        {
+          "nodeId": "18:348",
+          "properties": {
+            "State": "disabled",
+            "Status": "Selected"
+          },
+          "width": 322,
+          "height": 45
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Border/default",
+          "value": "#d5d5d5"
+        },
+        {
+          "name": "Border/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Icon/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Icon/default",
+          "value": "#1b1b1a"
+        },
+        {
+          "name": "Icon/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Icon/on-action",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Icon/on-action-hover",
+          "value": "#e8d7fd"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Surface/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Surface/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Surface/action-hover-light",
+          "value": "#f4ecfe"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Surface/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Text/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Text/Body",
+          "value": "#1b1b1a"
+        },
+        {
+          "name": "Text/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Text/on-action",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Text/on-action-hover",
+          "value": "#e8d7fd"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "18:384",
+      "name": "Menu",
+      "kind": "component",
+      "sectionId": "27:169",
+      "sectionName": "Menu",
+      "containerWidth": null,
+      "containerHeight": null,
+      "variantCount": 0,
+      "variantPropertyNames": [],
+      "variantPropertyValues": {},
+      "variants": [],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Border radius/lg",
+          "value": "4"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/default",
+          "value": "#d5d5d5"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Icon/default",
+          "value": "#1b1b1a"
+        },
+        {
+          "name": "Icon/on-action",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Surface/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Text/Body",
+          "value": "#1b1b1a"
+        },
+        {
+          "name": "Text/on-action",
+          "value": "#ffffff"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "18:503",
+      "name": "Link",
+      "kind": "component_set",
+      "sectionId": "27:173",
+      "sectionName": "Navigation",
+      "containerWidth": 127,
+      "containerHeight": 167,
+      "variantCount": 4,
+      "variantPropertyNames": [
+        "Type"
+      ],
+      "variantPropertyValues": {
+        "Type": [
+          "Active",
+          "Default",
+          "Disabled",
+          "focus"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "18:495",
+          "properties": {
+            "Type": "Default"
+          },
+          "width": 87,
+          "height": 20
+        },
+        {
+          "nodeId": "18:510",
+          "properties": {
+            "Type": "Active"
+          },
+          "width": 87,
+          "height": 20
+        },
+        {
+          "nodeId": "18:516",
+          "properties": {
+            "Type": "Disabled"
+          },
+          "width": 87,
+          "height": 20
+        },
+        {
+          "nodeId": "18:530",
+          "properties": {
+            "Type": "focus"
+          },
+          "width": 87,
+          "height": 20
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Border radius/lg",
+          "value": "4"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Icon/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Icon/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Icon/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Surface/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Text/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Text/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Text/disabled",
+          "value": "#575756"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "19:667",
+      "name": ".Checkbox item",
+      "kind": "component_set",
+      "sectionId": "27:167",
+      "sectionName": "Checkbox",
+      "containerWidth": 162,
+      "containerHeight": 268,
+      "variantCount": 8,
+      "variantPropertyNames": [
+        "Status",
+        "Type"
+      ],
+      "variantPropertyValues": {
+        "Status": [
+          "Default",
+          "disabled",
+          "focus",
+          "hover"
+        ],
+        "Type": [
+          "Selected",
+          "Unselected"
+        ]
+      },
+      "variants": [
+        {
+          "nodeId": "19:666",
+          "properties": {
+            "Status": "Default",
+            "Type": "Unselected"
+          },
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:669",
+          "properties": {
+            "Status": "hover",
+            "Type": "Unselected"
+          },
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:672",
+          "properties": {
+            "Status": "focus",
+            "Type": "Unselected"
+          },
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:675",
+          "properties": {
+            "Status": "disabled",
+            "Type": "Unselected"
+          },
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:681",
+          "properties": {
+            "Status": "Default",
+            "Type": "Selected"
+          },
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:683",
+          "properties": {
+            "Status": "hover",
+            "Type": "Selected"
+          },
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:685",
+          "properties": {
+            "Status": "focus",
+            "Type": "Selected"
+          },
+          "width": 42,
+          "height": 42
+        },
+        {
+          "nodeId": "19:688",
+          "properties": {
+            "Status": "disabled",
+            "Type": "Selected"
+          },
+          "width": 42,
+          "height": 42
+        }
+      ],
+      "variableBindings": [
+        {
+          "name": "Border radius/xl",
+          "value": "8"
+        },
+        {
+          "name": "Border width/md",
+          "value": "2"
+        },
+        {
+          "name": "Border width/sm",
+          "value": "1"
+        },
+        {
+          "name": "Border/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Border/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Border/default",
+          "value": "#d5d5d5"
+        },
+        {
+          "name": "Border/disabled",
+          "value": "#eaeaea"
+        },
+        {
+          "name": "Icon/disabled",
+          "value": "#575756"
+        },
+        {
+          "name": "Icon/on-action",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Surface/action",
+          "value": "#8a38f5"
+        },
+        {
+          "name": "Surface/action-hover",
+          "value": "#6e2dc4"
+        },
+        {
+          "name": "Surface/action-hover-light",
+          "value": "#f4ecfe"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Surface/disabled",
+          "value": "#eaeaea"
+        }
+      ]
+    },
+    {
+      "figmaNodeId": "19:702",
+      "name": "Checkbox label",
+      "kind": "component",
+      "sectionId": "27:167",
+      "sectionName": "Checkbox",
+      "containerWidth": null,
+      "containerHeight": null,
+      "variantCount": 0,
+      "variantPropertyNames": [],
+      "variantPropertyValues": {},
+      "variants": [],
+      "variableBindings": [
+        {
+          "name": "Body/Medium",
+          "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)"
+        },
+        {
+          "name": "Border radius/xl",
+          "value": "8"
+        },
+        {
+          "name": "Border/default",
+          "value": "#d5d5d5"
+        },
+        {
+          "name": "Font Family/Body",
+          "value": "Inter"
+        },
+        {
+          "name": "Paragraph Medium/Font size",
+          "value": "16"
+        },
+        {
+          "name": "Paragraph Medium/Line Height",
+          "value": "28"
+        },
+        {
+          "name": "Paragraph Medium/Paragraph Spacing",
+          "value": "8"
+        },
+        {
+          "name": "Surface/default-secondary",
+          "value": "#ffffff"
+        },
+        {
+          "name": "Text/Body",
+          "value": "#1b1b1a"
+        }
+      ]
+    }
+  ],
+  "variables": [
+    {
+      "name": "Body/Medium",
+      "value": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+      "inferredType": "FONT_COMPOSITE",
+      "consumedBy": [
+        "15:664",
+        "17:50",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "18:503",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Border radius/lg",
+      "value": "4",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:256",
+        "18:384",
+        "18:503"
+      ]
+    },
+    {
+      "name": "Border radius/xl",
+      "value": "8",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "19:667",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Border width/md",
+      "value": "2",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Border width/none",
+      "value": "0",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "15:664",
+        "15:880"
+      ]
+    },
+    {
+      "name": "Border width/sm",
+      "value": "1",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "18:503",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Border/action",
+      "value": "#8a38f5",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:503",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Border/action-hover",
+      "value": "#6e2dc4",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:315",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Border/default",
+      "value": "#d5d5d5",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "19:667",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Border/disabled",
+      "value": "#eaeaea",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:315",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Border/error",
+      "value": "#f98888",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "18:130"
+      ]
+    },
+    {
+      "name": "Border/focus",
+      "value": "#8a38f5",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130"
+      ]
+    },
+    {
+      "name": "Font Family/Body",
+      "value": "Inter",
+      "inferredType": "STRING",
+      "consumedBy": [
+        "15:664",
+        "17:50",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "18:503",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Icon/action",
+      "value": "#8a38f5",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "17:50",
+        "18:256",
+        "18:503"
+      ]
+    },
+    {
+      "name": "Icon/action-hover",
+      "value": "#6e2dc4",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:315",
+        "18:503"
+      ]
+    },
+    {
+      "name": "Icon/default",
+      "value": "#1b1b1a",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "18:315",
+        "18:384"
+      ]
+    },
+    {
+      "name": "Icon/disabled",
+      "value": "#575756",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:315",
+        "18:503",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Icon/error",
+      "value": "#f53838",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "17:50",
+        "18:130"
+      ]
+    },
+    {
+      "name": "Icon/on-action",
+      "value": "#ffffff",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:315",
+        "18:384",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Icon/on-action-hover",
+      "value": "#e8d7fd",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:315"
+      ]
+    },
+    {
+      "name": "Icon/placeholder",
+      "value": "#575756",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "18:130",
+        "18:256"
+      ]
+    },
+    {
+      "name": "Paragraph Medium/Font size",
+      "value": "16",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "15:664",
+        "17:50",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "18:503",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Paragraph Medium/Line Height",
+      "value": "28",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "15:664",
+        "17:50",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "18:503",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Paragraph Medium/Paragraph Spacing",
+      "value": "8",
+      "inferredType": "FLOAT",
+      "consumedBy": [
+        "15:664",
+        "17:50",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "18:503",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Surface/action",
+      "value": "#8a38f5",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:315",
+        "18:384",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Surface/action-hover",
+      "value": "#6e2dc4",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:315",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Surface/action-hover-light",
+      "value": "#f4ecfe",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:315",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Surface/default-secondary",
+      "value": "#ffffff",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "19:667",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Surface/disabled",
+      "value": "#eaeaea",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "15:880",
+        "18:130",
+        "18:315",
+        "18:503",
+        "19:667"
+      ]
+    },
+    {
+      "name": "Surface/error",
+      "value": "#feecec",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "18:130"
+      ]
+    },
+    {
+      "name": "Text/action",
+      "value": "#8a38f5",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "18:503"
+      ]
+    },
+    {
+      "name": "Text/action-hover",
+      "value": "#6e2dc4",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "18:130",
+        "18:315",
+        "18:503"
+      ]
+    },
+    {
+      "name": "Text/Body",
+      "value": "#1b1b1a",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "17:50",
+        "18:130",
+        "18:256",
+        "18:315",
+        "18:384",
+        "19:702"
+      ]
+    },
+    {
+      "name": "Text/disabled",
+      "value": "#575756",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "18:130",
+        "18:315",
+        "18:503"
+      ]
+    },
+    {
+      "name": "Text/error",
+      "value": "#f53838",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "18:130"
+      ]
+    },
+    {
+      "name": "Text/on-action",
+      "value": "#ffffff",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "18:315",
+        "18:384"
+      ]
+    },
+    {
+      "name": "Text/on-action-hover",
+      "value": "#e8d7fd",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "15:664",
+        "18:315"
+      ]
+    },
+    {
+      "name": "Text/placeholder",
+      "value": "#575756",
+      "inferredType": "COLOR",
+      "consumedBy": [
+        "18:130",
+        "18:256"
+      ]
+    }
+  ],
+  "textStyles": [
+    {
+      "name": "Body/caption",
+      "rawDescriptor": "Font(family: \"Inter\", style: Regular, size: Caption/Font size, weight: 400, lineHeight: Caption/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Inter",
+      "fontFamilyIsVariableRef": false,
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSizeRef": "Caption/Font size",
+      "lineHeightRef": "Caption/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Body/Large",
+      "rawDescriptor": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Large/Font size, weight: 400, lineHeight: Paragraph Large/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Body",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSizeRef": "Paragraph Large/Font size",
+      "lineHeightRef": "Paragraph Large/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Body/Medium",
+      "rawDescriptor": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Medium/Font size, weight: 400, lineHeight: Paragraph Medium/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Body",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSizeRef": "Paragraph Medium/Font size",
+      "lineHeightRef": "Paragraph Medium/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Body/Small",
+      "rawDescriptor": "Font(family: \"Font Family/Body\", style: Regular, size: Paragraph Small/Font size, weight: 400, lineHeight: Paragraph Small/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Body",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "Regular",
+      "fontWeight": 400,
+      "fontSizeRef": "Paragraph Small/Font size",
+      "lineHeightRef": "Paragraph Small/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Heading/H1",
+      "rawDescriptor": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H1/Font size, weight: 600, lineHeight: H1/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Heading",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSizeRef": "H1/Font size",
+      "lineHeightRef": "H1/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Heading/H2",
+      "rawDescriptor": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H2/Font size, weight: 600, lineHeight: H2/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Heading",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSizeRef": "H2/Font size",
+      "lineHeightRef": "H2/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Heading/H3",
+      "rawDescriptor": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H3/Font size, weight: 600, lineHeight: H3/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Heading",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSizeRef": "H3/Font size",
+      "lineHeightRef": "H3/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Heading/H4",
+      "rawDescriptor": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H4/Font size, weight: 600, lineHeight: H4/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Heading",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSizeRef": "H4/Font size",
+      "lineHeightRef": "H4/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Heading/H5",
+      "rawDescriptor": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H5/Font size, weight: 600, lineHeight: H5/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Heading",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSizeRef": "H5/Font size",
+      "lineHeightRef": "H5/Line Height",
+      "letterSpacing": 0
+    },
+    {
+      "name": "Heading/H6",
+      "rawDescriptor": "Font(family: \"Font Family/Heading\", style: SemiBold, size: H6/Font size, weight: 600, lineHeight: H6/Line Height, letterSpacing: 0)",
+      "fontFamilyRef": "Font Family/Heading",
+      "fontFamilyIsVariableRef": true,
+      "fontStyle": "SemiBold",
+      "fontWeight": 600,
+      "fontSizeRef": "H6/Font size",
+      "lineHeightRef": "H6/Line Height",
+      "letterSpacing": 0
+    }
+  ]
+}

@@ -91,7 +91,7 @@ changes (the file didn't change), which is expected behavior, not a bug.
 ```
 design-system/sync/figma-snapshots/
   README.md
-  raw-capture.json     the last live MCP capture (refreshed by an agent, not by any npm script)
+  raw-capture.json     the last live MCP capture (variableDefs auto-refreshed by `npm run sync:reconcile`; structural fields still require an agent — see "Automatic capture refresh" below)
   baseline.json          the reference FigmaSnapshot (replaced only via --force)
   current.json             the most recently built FigmaSnapshot (overwritten every run)
   archive/
@@ -122,6 +122,63 @@ design-system/sync/figma-snapshots/
 - Both are enforced by a test (`figma-snapshot.test.ts`, "independence
   from registry.json and design-system-manifest.json") that greps every
   new script file for either filename.
+
+## Automatic capture refresh (`npm run sync:reconcile`)
+
+The "Capture" step above was, until now, always manual: an agent with
+Figma MCP access had to re-run the investigation and overwrite
+`raw-capture.json` before `sync:figma-check`/`sync:reconcile` would see
+anything new. That is still true for `sync:figma-check` and for the
+one-time/onboarding investigation itself (new pages, new components,
+renamed variant properties, and everything else in the capability table
+above).
+
+**What changed:** `npm run sync:reconcile` now automatically refreshes
+just the *variable values* (`variableDefs`) of the component node ids
+`raw-capture.json` already knows about, before reconciling — no agent
+step required for the common case of "a token value changed in Figma."
+It does this via `figma-capture-source.ts`'s
+`createFigmaDevModeMcpCaptureSource`, which talks to **Figma's own Dev
+Mode MCP Server** — a local HTTP server the Figma desktop app runs when
+Dev Mode MCP is enabled for a file (see
+<https://developers.figma.com/docs/figma-mcp-server/>). This is a real,
+independent Figma product feature, not the same thing as
+`mcp__claude_ai_Figma__*` (Claude's own hosted connector, only reachable
+from inside an interactive agent session) — the Dev Mode MCP Server is
+reachable over plain HTTP by any client, including an unattended
+`node reconcile.ts` process, which is exactly what makes automating this
+possible. It was verified live (a real `initialize` handshake and a real
+`get_variable_defs` call returning the file's actual current values)
+while building this adapter.
+
+No API token or credential is required for this mechanism — the server
+authenticates via the already-signed-in Figma desktop app. The only
+configuration is *where* the server is, `FIGMA_MCP_SERVER_URL` (defaults
+to `http://127.0.0.1:3845/mcp`), which is not a secret.
+
+Deliberately narrow scope — this refreshes `variableDefs` only, never
+pages, sections, the component list, dimensions, or variant symbols
+(those still require the manual/agent-assisted investigation above if
+they change). `textStyleVariableDefs` is also carried over unchanged: the
+forward token-value reconciliation pass (`reconcile-compare.ts`) reads
+`FigmaSnapshot.variables`, which is derived entirely from
+`components[].variableDefs` — never from `textStyleVariableDefs` — so
+refreshing component-level variable defs alone is sufficient to detect a
+real value change like `line-height-paragraph-medium: 20 → 24`.
+
+If the Dev Mode MCP Server isn't reachable (Figma desktop not running,
+Dev Mode not enabled, wrong port), `sync:reconcile` fails closed with a
+clear error rather than silently reconciling against stale data. Set
+`FIGMA_SKIP_AUTO_REFRESH=1` to explicitly reconcile against whatever is
+already on disk instead (offline work, or no Figma desktop app running).
+
+See `../scripts/figma-capture-source.ts` and `../scripts/figma-refresh.ts`
+for the implementation, and their `.test.ts` files for coverage — the
+automated test suite never makes a real network/MCP call; it injects a
+deterministic mock `fetch` (for the adapter) and a deterministic
+`FigmaCaptureSource` (for the refresh orchestration), the same
+dependency-injection pattern this project already uses for the Claude
+adapter (`agent-claude-reasoner.ts`'s `createMockClaudeClient`).
 
 ## Room to grow: adding variable IDs, aliases, collections, modes, effects later
 

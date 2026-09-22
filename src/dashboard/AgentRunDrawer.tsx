@@ -20,6 +20,8 @@ export function AgentRunDrawer({ run, onClose }: { run: DashboardAgentRun; onClo
 
         <section className="ds-dash-drawer__section">
           <StatusBadge {...outcomeBadge(run.outcome)} />
+          {run.humanReauthorized && <span className="ds-dash-reauthorized-badge">Human re-authorized</span>}
+          {run.humanDirected && <span className="ds-dash-reauthorized-badge">Human-directed: {run.sourceOfTruth}</span>}
           <p className="ds-dash-detail-text">{run.stopReason}</p>
         </section>
 

@@ -61,7 +61,16 @@ function loadFindings(paths: DashboardLoaderPaths, run: ReconciliationRun): Dash
     const policy = classifyRecord({ record, crosswalk: input.crosswalk, codeCurrent: input.codeCurrent });
     if (policy.verdict === 'NOT_APPLICABLE') continue; // out-of-scope-entity / intentional-documented-deviation / already-converged — not a "finding" a human or the agent needs to act on
 
-    const editTarget = policy.verdict === 'SAFE' ? resolveEditTarget({ record, crosswalk: input.crosswalk, codeCurrent: input.codeCurrent }) : null;
+    // Part 18: also resolve editTarget for a token-level both-changed-conflict
+    // finding, even though its policyVerdict is (honestly) BLOCKED — this is
+    // the same shape check the "Resolve" UI action gates on, and
+    // resolveEditTarget() is already independent of policyVerdict by design
+    // (see agent-targeting.ts's own header). Never for any other BLOCKED
+    // status (registry-expectation-mismatch, unmapped-figma-entity) or any
+    // component-level finding — those have no single-value editTarget at all.
+    const isHumanDirectableConflict = record.entityType === 'token' && record.status === 'both-changed-conflict';
+    const editTarget =
+      policy.verdict === 'SAFE' || isHumanDirectableConflict ? resolveEditTarget({ record, crosswalk: input.crosswalk, codeCurrent: input.codeCurrent }) : null;
 
     findings.push({
       reconciliationId: record.reconciliationId,
@@ -90,14 +99,22 @@ function loadFindings(paths: DashboardLoaderPaths, run: ReconciliationRun): Dash
 function computeMetrics(findings: DashboardFinding[]): DashboardMetrics {
   const safe = findings.filter((f) => f.policyVerdict === 'SAFE').length;
   const review = findings.filter((f) => f.policyVerdict === 'REVIEW').length;
-  const blocked = findings.filter((f) => f.policyVerdict === 'BLOCKED').length;
-  return { findings: findings.length, safe, review, blocked };
+  // Display-only split of policyVerdict === 'BLOCKED' by the finding's
+  // existing `status` — never a re-derived verdict (see DashboardMetrics's
+  // own doc comment). `unmapped-figma-entity` is the only status that maps
+  // to BLOCKED and represents a coverage gap rather than a genuinely
+  // ambiguous finding (see agent-policy.ts's fixed BLOCKED cases:
+  // both-changed-conflict, registry-expectation-mismatch, unmapped-figma-entity).
+  const unmapped = findings.filter((f) => f.policyVerdict === 'BLOCKED' && f.status === 'unmapped-figma-entity').length;
+  const blocked = findings.filter((f) => f.policyVerdict === 'BLOCKED' && f.status !== 'unmapped-figma-entity').length;
+  return { findings: findings.length, safe, review, blocked, unmapped };
 }
 
 function computeSystemStatus(reconciliationAvailable: boolean, metrics: DashboardMetrics): DashboardSystemStatus {
   if (!reconciliationAvailable) return { tone: 'unknown', label: 'No reconciliation data' };
   if (metrics.blocked > 0) return { tone: 'critical', label: `${metrics.blocked} blocked finding${metrics.blocked === 1 ? '' : 's'}` };
   if (metrics.review > 0) return { tone: 'warning', label: `${metrics.review} finding${metrics.review === 1 ? '' : 's'} need review` };
+  if (metrics.unmapped > 0) return { tone: 'warning', label: `${metrics.unmapped} unmapped finding${metrics.unmapped === 1 ? '' : 's'}` };
   return { tone: 'healthy', label: 'System healthy' };
 }
 
@@ -132,6 +149,9 @@ function loadAgentRuns(recordsDir: string): DashboardAgentRun[] {
     validationSummary: summarizeValidation(record.validation),
     findingAfter: record.findingAfter,
     stopReason: record.stopReason,
+    humanReauthorized: record.humanReauthorized,
+    humanDirected: record.humanDirected,
+    sourceOfTruth: record.sourceOfTruth,
     record,
   }));
 }
@@ -162,5 +182,6 @@ export function loadDashboardViewModel(paths: DashboardLoaderPaths): DashboardVi
     metrics,
     findings,
     agentRuns,
+    registryPath: paths.reconciliationInputPaths.registryPath,
   };
 }

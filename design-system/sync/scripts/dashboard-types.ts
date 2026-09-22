@@ -35,7 +35,15 @@ export interface DashboardFinding {
   policyReason: string;
   requiredEvidence: string[];
   requiresHumanApproval: boolean;
-  /** Only ever non-null when policyVerdict is SAFE AND agent-targeting.ts's own (stricter) resolveEditTarget() independently agrees — see dashboard-loader.ts. Never constructed by the dashboard itself. */
+  /**
+   * Non-null when policyVerdict is SAFE, OR when this is a token-level
+   * `both-changed-conflict` finding (Part 18 — the only status eligible
+   * for human-directed resolution), AND agent-targeting.ts's own
+   * (stricter) resolveEditTarget() independently agrees — see
+   * dashboard-loader.ts. Never constructed by the dashboard itself; this
+   * is the SAME shape check the "Resolve" UI action gates on client-side
+   * AND the same one runAgentForFinding re-derives server-side.
+   */
   editTarget: EditTarget | null;
   /** Whether a PRIOR agent run already failed against this exact reconciliationId (agent-run.ts's own loop-prevention signal, surfaced read-only — see hasPriorFailedAttempt). */
   hasPriorFailedAttempt: boolean;
@@ -58,6 +66,12 @@ export interface DashboardAgentRun {
   validationSummary: string; // e.g. "6/6 passed" or "1/6 passed"
   findingAfter: AgentAuditRecord['findingAfter'];
   stopReason: string;
+  /** Whether this run was an explicit human re-authorization of a finding loop prevention had refused — see agent-run.ts's RunAgentForFindingOptions. */
+  humanReauthorized: boolean;
+  /** Whether this run was an explicit human-directed resolution of a both-changed-conflict finding (Part 18) — see agent-run.ts's RunAgentForFindingOptions.humanDirectedSourceOfTruth. */
+  humanDirected: boolean;
+  /** The human's chosen direction for a humanDirected run — null otherwise. */
+  sourceOfTruth: 'figma' | 'code' | null;
   /** The full underlying record — the timeline view (Part 7) reads directly from this rather than a second copy of the same facts. */
   record: AgentAuditRecord;
 }
@@ -70,11 +84,22 @@ export interface DashboardSystemStatus {
 }
 
 export interface DashboardMetrics {
-  /** SAFE + REVIEW + BLOCKED — deliberately excludes NOT_APPLICABLE verdicts (out-of-scope-entity, intentional-documented-deviation, already-converged both-changed-compatible), per agent-policy.ts's own classification — never a hand-picked status list in the dashboard. */
+  /** SAFE + REVIEW + BLOCKED + UNMAPPED — deliberately excludes NOT_APPLICABLE verdicts (out-of-scope-entity, intentional-documented-deviation, already-converged both-changed-compatible), per agent-policy.ts's own classification — never a hand-picked status list in the dashboard. */
   findings: number;
   safe: number;
   review: number;
+  /**
+   * Display-layer split of policyVerdict === 'BLOCKED' — never a
+   * re-derived verdict, purely a count bucketed by the finding's
+   * EXISTING `status` field (see dashboard-loader.ts's computeMetrics):
+   * genuinely ambiguous findings only (`both-changed-conflict`,
+   * `registry-expectation-mismatch`). `unmapped-figma-entity` findings
+   * (a coverage gap, not a safety block) are counted in `unmapped`
+   * instead — see that field.
+   */
   blocked: number;
+  /** BLOCKED-verdict findings whose status is `unmapped-figma-entity` — a registry coverage gap, not an ambiguous/unsafe finding. Split out of `blocked` for display only; policyVerdict itself is untouched. */
+  unmapped: number;
 }
 
 export interface DashboardViewModel {
@@ -91,6 +116,8 @@ export interface DashboardViewModel {
   findings: DashboardFinding[];
   /** Most recent first, capped (see dashboard-loader.ts). */
   agentRuns: DashboardAgentRun[];
+  /** The registry's own absolute path (registry.json), for the "Add to registry"/"Fix mapping" UI actions on an unmapped-figma-entity finding — never read or written by the dashboard itself, purely a display convenience so a human can open it in their editor. */
+  registryPath: string;
 }
 
 export function summarizeValidation(validation: ValidationStepResult[]): string {

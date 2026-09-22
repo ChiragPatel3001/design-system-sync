@@ -22,6 +22,7 @@ const PROPOSAL_REJECTED_PREFIX = 'Reasoner proposal rejected by the deterministi
 const APPLY_FAILED_PREFIX = 'Edit could not be safely applied';
 const VALIDATION_FAILED_PREFIX = 'Validation level';
 const VERIFICATION_FAILED_PREFIX = 'Re-reconciliation did not confirm';
+const VERIFICATION_INCOMPLETE_PREFIX = 'The edit was applied and passed all pre-apply validation (levels 1-4), but post-apply verification';
 
 export function deriveTimeline(record: AgentAuditRecord): TimelineStep[] {
   const step = (label: string, state: TimelineStepState): TimelineStep => ({ label, state });
@@ -64,6 +65,26 @@ export function deriveTimeline(record: AgentAuditRecord): TimelineStep[] {
     return steps;
   }
   steps.push(step('Validation passed', 'done'));
+
+  // applied-verification-incomplete (see agent-run.ts): levels 5-6
+  // (refresh/reconcile) are wrapped in their own try/catch, separate
+  // from the validation-failure path above — an already-applied,
+  // already-validated edit is never reverted just because this
+  // unrelated, external, post-apply step failed (e.g. a live Figma MCP
+  // rate limit). Read WHICH of the two failed off the real, persisted
+  // `validation` array (level 5 or 6, passed: false) rather than
+  // re-parsing that distinction out of stopReason text.
+  if (record.stopReason.startsWith(VERIFICATION_INCOMPLETE_PREFIX)) {
+    const failedStep = record.validation.find((v) => !v.passed && (v.level === 5 || v.level === 6));
+    if (failedStep?.level === 5) {
+      steps.push(step('Code snapshot refreshed', 'failed'));
+    } else {
+      steps.push(step('Code snapshot refreshed', 'done'));
+      steps.push(step('Reconciliation completed', 'failed'));
+    }
+    return steps;
+  }
+
   steps.push(step('Code snapshot refreshed', 'done'));
   steps.push(step('Reconciliation completed', 'done'));
 

@@ -16,8 +16,8 @@ stage and belongs to a future one.
 
 ## What it reads
 
-Five files, exactly as they currently sit on disk — this command never
-rebuilds or refreshes any of them:
+Five files, exactly as they currently sit on disk when the actual
+comparison runs:
 
 - `design-system/registry.json` (plus `design-system-manifest.json`, only
   for the one metadata field `buildSnapshot()` already needs)
@@ -28,9 +28,22 @@ The identity crosswalk is built fresh from the current `registry.json`
 using the unmodified Stage 5B logic (`buildReconciliationCrosswalk`) —
 never read from a persisted file (Stage 5B never persists one).
 
-It never calls a Figma MCP tool, never re-derives a snapshot from source,
-and never modifies any of the five files above, any snapshot archive, any
-history record, or `registry.json` itself.
+**The pure computation itself** (`loadReconciliationInputs`,
+`reconcileSnapshots`, `buildReconciliationRun` — everything this file's
+own tests exercise directly) never calls a Figma MCP tool, never
+re-derives a snapshot from source, and never modifies any of the five
+files above, any snapshot archive, any history record, `registry.json`,
+or either baseline. That has not changed.
+
+**The `npm run sync:reconcile` CLI**, however, now takes one additional
+step *before* that pure computation runs: it attempts to automatically
+refresh `figma-snapshots/current.json`'s variable values from Figma's own
+local Dev Mode MCP Server, so a real Figma edit is picked up without a
+separate manual/agent-assisted capture step first. This never touches a
+baseline, the registry, or the comparison logic — see
+`../figma-snapshots/README.md`'s "Automatic capture refresh" section for
+exactly what it does and does not refresh, and `FIGMA_SKIP_AUTO_REFRESH=1`
+to opt out and reconcile against whatever is already on disk instead.
 
 ## What it writes
 

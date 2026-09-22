@@ -1,0 +1,2125 @@
+{
+  "schemaVersion": "1.0.0",
+  "snapshotId": "12a8f7db7db73913",
+  "generatedAt": "2026-09-21T18:16:52.073Z",
+  "sourceRoot": "src/components",
+  "components": [
+    {
+      "componentId": "Button",
+      "sourceFilePath": "src/components/Button/Button.tsx",
+      "cssFilePath": "src/components/Button/Button.css",
+      "exportedComponents": [
+        "Button"
+      ],
+      "exportedTypes": [
+        "ButtonProps",
+        "ButtonVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "ButtonVariant",
+          "optional": true
+        },
+        {
+          "name": "iconLeft",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "iconRight",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>",
+      "variants": [
+        {
+          "name": "ButtonVariant",
+          "values": [
+            "default",
+            "outline",
+            "transparent"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-md",
+        "--border-width-none",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-border-action-hover",
+        "--color-border-disabled",
+        "--color-border-focus",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--color-text-action",
+        "--color-text-action-hover",
+        "--color-text-disabled",
+        "--color-text-on-action",
+        "--color-text-on-action-hover",
+        "--font-size-paragraph-medium",
+        "--font-weight-body",
+        "--line-height-paragraph-medium",
+        "--radius-lg",
+        "--scale-200",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./Button.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/Button/Button.stories.tsx",
+        "title": "Components/Button",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Outline",
+          "Transparent",
+          "WithIcon"
+        ],
+        "computedStoryIds": [
+          "components-button--default",
+          "components-button--disabled",
+          "components-button--focus",
+          "components-button--hover",
+          "components-button--outline",
+          "components-button--transparent",
+          "components-button--with-icon"
+        ]
+      },
+      "sourceHashes": {
+        "component": "832889769bf34058ee3ff5b5776537bc5333ff0ee27e0aed135ca6dd1626079b",
+        "styles": "05e0ac48206a9d4552c8c949922a7ad905f310ed952f5730eecc8a12a3f42c27",
+        "stories": "8fb763b4da86e1f6c85b23bd677eec55b86d683a92767104ae2130003eeb4ba6"
+      }
+    },
+    {
+      "componentId": "Checkbox",
+      "sourceFilePath": "src/components/Checkbox/Checkbox.tsx",
+      "cssFilePath": "src/components/Checkbox/Checkbox.css",
+      "exportedComponents": [
+        "Checkbox"
+      ],
+      "exportedTypes": [
+        "CheckboxProps"
+      ],
+      "props": [
+        {
+          "name": "label",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends CheckboxControlProps",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--color-text-body",
+        "--color-text-disabled",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "../CheckboxControl/CheckboxControl",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": "CheckboxControl"
+        },
+        {
+          "specifier": "../CheckboxControl/CheckboxControl",
+          "isRelative": true,
+          "isTypeOnly": true,
+          "resolvedComponentDir": "CheckboxControl"
+        },
+        {
+          "specifier": "./Checkbox.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [
+        "CheckboxControl"
+      ],
+      "storybook": {
+        "storyFilePath": "src/components/Checkbox/Checkbox.stories.tsx",
+        "title": "Components/Checkbox",
+        "storyExportNames": [
+          "Checked",
+          "Disabled",
+          "Unchecked"
+        ],
+        "computedStoryIds": [
+          "components-checkbox--checked",
+          "components-checkbox--disabled",
+          "components-checkbox--unchecked"
+        ]
+      },
+      "sourceHashes": {
+        "component": "2afc4a33d93b6cb7d7540ecc9a30be385201bb6defe402dd6548119d1f672c8a",
+        "styles": "a180d8c7ea477d2a402b5a44844f83ff62c1fc92192ed8dacf6ce4dab3574805",
+        "stories": "7b97e89d92e1e612c4060b5ec381e14abd604c17eb89aad7613ab872767bd080"
+      }
+    },
+    {
+      "componentId": "CheckboxControl",
+      "sourceFilePath": "src/components/CheckboxControl/CheckboxControl.tsx",
+      "cssFilePath": "src/components/CheckboxControl/CheckboxControl.css",
+      "exportedComponents": [
+        "CheckboxControl"
+      ],
+      "exportedTypes": [
+        "CheckboxControlProps"
+      ],
+      "props": [],
+      "propsBaseType": "Omit<\n  InputHTMLAttributes<HTMLInputElement>,\n  'type' | 'size'\n>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--border-width-md",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-border-action-hover",
+        "--color-border-default",
+        "--color-border-disabled",
+        "--color-icon-disabled",
+        "--color-icon-on-action",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--radius-xl"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./CheckboxControl.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/CheckboxControl/CheckboxControl.stories.tsx",
+        "title": "Components/Internal/CheckboxControl",
+        "storyExportNames": [
+          "Disabled",
+          "DisabledSelected",
+          "Focus",
+          "Hover",
+          "Selected",
+          "Unselected"
+        ],
+        "computedStoryIds": [
+          "components-internal-checkboxcontrol--disabled",
+          "components-internal-checkboxcontrol--disabled-selected",
+          "components-internal-checkboxcontrol--focus",
+          "components-internal-checkboxcontrol--hover",
+          "components-internal-checkboxcontrol--selected",
+          "components-internal-checkboxcontrol--unselected"
+        ]
+      },
+      "sourceHashes": {
+        "component": "d3c8c212a4e43d82524365efb052143b95e40dbb510c59f77f24d3878978c068",
+        "styles": "9ea5ce1e9939e2f83e83cddced6894d18f2dd31938a2688013dc8646a6c3c1a5",
+        "stories": "798fdc5f3071d07349749cd0408b29be8334cb3f41ae013a9e4a38ac3f15ab19"
+      }
+    },
+    {
+      "componentId": "FieldLabel",
+      "sourceFilePath": "src/components/FieldLabel/FieldLabel.tsx",
+      "cssFilePath": "src/components/FieldLabel/FieldLabel.css",
+      "exportedComponents": [
+        "FieldLabel"
+      ],
+      "exportedTypes": [
+        "FieldLabelProps"
+      ],
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": true
+        },
+        {
+          "name": "helpIcon",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends LabelHTMLAttributes<HTMLLabelElement>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--color-icon-default",
+        "--color-text-body",
+        "--color-text-error",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--scale-200"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./FieldLabel.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/FieldLabel/FieldLabel.stories.tsx",
+        "title": "Components/FieldLabel",
+        "storyExportNames": [
+          "Default",
+          "Required",
+          "WithHelpIcon"
+        ],
+        "computedStoryIds": [
+          "components-fieldlabel--default",
+          "components-fieldlabel--required",
+          "components-fieldlabel--with-help-icon"
+        ]
+      },
+      "sourceHashes": {
+        "component": "f32f5ac6652ad89bedb58df1cd3351642a0d6dde89a11a8b2bd8359398f793d7",
+        "styles": "14dcb03b71e12d4c0651f58d6dfe9b9158293ad0080e9565d518e1918e1ba9e9",
+        "stories": "f58e45e1ec449c0cb25a9b1b89a629f9106e1767a83a21b83edbb66cfe91141c"
+      }
+    },
+    {
+      "componentId": "FormField",
+      "sourceFilePath": "src/components/FormField/FormField.tsx",
+      "cssFilePath": "src/components/FormField/FormField.css",
+      "exportedComponents": [
+        "FormField"
+      ],
+      "exportedTypes": [
+        "FormFieldProps"
+      ],
+      "props": [
+        {
+          "name": "id",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "optional": false
+        },
+        {
+          "name": "required",
+          "type": "boolean",
+          "optional": true
+        },
+        {
+          "name": "helpIcon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "leadingIcon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "hint",
+          "type": "string",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 'placeholder'>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--color-text-caption",
+        "--font-size-caption",
+        "--line-height-caption"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "../FieldLabel/FieldLabel",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": "FieldLabel"
+        },
+        {
+          "specifier": "../TextField/TextField",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": "TextField"
+        },
+        {
+          "specifier": "./FormField.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [
+        "FieldLabel",
+        "TextField"
+      ],
+      "storybook": {
+        "storyFilePath": "src/components/FormField/FormField.stories.tsx",
+        "title": "Components/FormField",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Required",
+          "WithHint"
+        ],
+        "computedStoryIds": [
+          "components-formfield--default",
+          "components-formfield--disabled",
+          "components-formfield--required",
+          "components-formfield--with-hint"
+        ]
+      },
+      "sourceHashes": {
+        "component": "bf05587a7ef3965900fa8c98e99396844267050e7056187a445385c74a2b0760",
+        "styles": "b4c15eb8858e0f4e02cda1e412b8c0deb2650824bc91b92a34fefb4ab577f44d",
+        "stories": "d5f6efc72be917242d6b180add746be5e63130cf785af404ca497d5cc2f800f6"
+      }
+    },
+    {
+      "componentId": "IconButton",
+      "sourceFilePath": "src/components/IconButton/IconButton.tsx",
+      "cssFilePath": "src/components/IconButton/IconButton.css",
+      "exportedComponents": [
+        "IconButton"
+      ],
+      "exportedTypes": [
+        "IconButtonProps",
+        "IconButtonVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "IconButtonVariant",
+          "optional": true
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "optional": false
+        }
+      ],
+      "propsBaseType": "extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type' | 'aria-label'>",
+      "variants": [
+        {
+          "name": "IconButtonVariant",
+          "values": [
+            "default",
+            "outline",
+            "transparent"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--border-width-md",
+        "--border-width-none",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-border-action-hover",
+        "--color-border-disabled",
+        "--color-border-focus",
+        "--color-icon-action",
+        "--color-icon-action-hover",
+        "--color-icon-disabled",
+        "--color-icon-on-action",
+        "--color-icon-on-action-hover",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--radius-lg",
+        "--scale-200"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./IconButton.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/IconButton/IconButton.stories.tsx",
+        "title": "Components/IconButton",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Outline",
+          "Transparent"
+        ],
+        "computedStoryIds": [
+          "components-iconbutton--default",
+          "components-iconbutton--disabled",
+          "components-iconbutton--focus",
+          "components-iconbutton--hover",
+          "components-iconbutton--outline",
+          "components-iconbutton--transparent"
+        ]
+      },
+      "sourceHashes": {
+        "component": "d035bef58425b102ee9d7fd6dc09ba431673c423d3f4c57720dcac965eae11d6",
+        "styles": "fd4ec4363cf8e719d563582eea82447d6ae519125ad4eebcc6f3d98dc71da3a2",
+        "stories": "4dd4d550a0d6f450d170e37bc4750ba3c5b04979431a63becdf9e51e67cc3c35"
+      }
+    },
+    {
+      "componentId": "Link",
+      "sourceFilePath": "src/components/Link/Link.tsx",
+      "cssFilePath": "src/components/Link/Link.css",
+      "exportedComponents": [
+        "Link"
+      ],
+      "exportedTypes": [
+        "LinkProps",
+        "LinkVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "LinkVariant",
+          "optional": true
+        },
+        {
+          "name": "href",
+          "type": "string",
+          "optional": true
+        },
+        {
+          "name": "iconLeft",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "iconRight",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'>",
+      "variants": [
+        {
+          "name": "LinkVariant",
+          "values": [
+            "default",
+            "active",
+            "disabled"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-sm",
+        "--color-border-action",
+        "--color-surface-disabled",
+        "--color-text-action",
+        "--color-text-action-hover",
+        "--color-text-disabled",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--radius-lg",
+        "--scale-200"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./Link.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/Link/Link.stories.tsx",
+        "title": "Components/Link",
+        "storyExportNames": [
+          "Active",
+          "Default",
+          "Disabled",
+          "Focus",
+          "WithIcons"
+        ],
+        "computedStoryIds": [
+          "components-link--active",
+          "components-link--default",
+          "components-link--disabled",
+          "components-link--focus",
+          "components-link--with-icons"
+        ]
+      },
+      "sourceHashes": {
+        "component": "96fd64b6586d01c6cc81b5035651ea569238e64ad304aa869358db3d7964d838",
+        "styles": "255f3cbe2583b6256efa318d2e806bc17b35ba925c385e9d13748eb41633b9c9",
+        "stories": "2864000ea7a23f4d40156854bc5948147ce26b5182889837f19aea92811bc3db"
+      }
+    },
+    {
+      "componentId": "Menu",
+      "sourceFilePath": "src/components/Menu/Menu.tsx",
+      "cssFilePath": "src/components/Menu/Menu.css",
+      "exportedComponents": [
+        "Menu"
+      ],
+      "exportedTypes": [
+        "MenuProps"
+      ],
+      "props": [
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": false
+        }
+      ],
+      "propsBaseType": "extends HTMLAttributes<HTMLDivElement>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--border-width-sm",
+        "--color-border-default",
+        "--radius-lg"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./Menu.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/Menu/Menu.stories.tsx",
+        "title": "Components/Menu",
+        "storyExportNames": [
+          "Default",
+          "WithDisabledItem"
+        ],
+        "computedStoryIds": [
+          "components-menu--default",
+          "components-menu--with-disabled-item"
+        ]
+      },
+      "sourceHashes": {
+        "component": "8b2fce9936cce710dc02ba25c91bb6262d501678aad9a524701b056d2c4e7aca",
+        "styles": "44d40a2bbda923ea85cfde525f8f8d7072c4b6eb37ee67f18ca16df7b396d2f0",
+        "stories": "191243f106d866d06bcc93cd3b6af236857eaa51333369ddf22e9caef7849599"
+      }
+    },
+    {
+      "componentId": "MenuItem",
+      "sourceFilePath": "src/components/MenuItem/MenuItem.tsx",
+      "cssFilePath": "src/components/MenuItem/MenuItem.css",
+      "exportedComponents": [
+        "MenuItem"
+      ],
+      "exportedTypes": [
+        "MenuItemProps"
+      ],
+      "props": [
+        {
+          "name": "selected",
+          "type": "boolean",
+          "optional": true
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "children",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'>",
+      "variants": [],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-md",
+        "--border-width-sm",
+        "--color-border-action-hover",
+        "--color-border-default",
+        "--color-border-disabled",
+        "--color-border-focus",
+        "--color-surface-action",
+        "--color-surface-action-hover",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--color-text-action-hover",
+        "--color-text-body",
+        "--color-text-disabled",
+        "--color-text-on-action",
+        "--color-text-on-action-hover",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./MenuItem.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/MenuItem/MenuItem.stories.tsx",
+        "title": "Components/Internal/MenuItem",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Focus",
+          "Hover",
+          "Selected"
+        ],
+        "computedStoryIds": [
+          "components-internal-menuitem--default",
+          "components-internal-menuitem--disabled",
+          "components-internal-menuitem--focus",
+          "components-internal-menuitem--hover",
+          "components-internal-menuitem--selected"
+        ]
+      },
+      "sourceHashes": {
+        "component": "71cf43e60738df6893fedc62283d7eef7a9c59c5f2b8b733bdd818c8134d4129",
+        "styles": "2fc543f9aaedd42a829ad9ce4e771aec70081ad45a1ae26a4d45e76034f886b2",
+        "stories": "615b8e59546343a7f62c9b38689640e4e99b446d357fce70b91130b8488d9da4"
+      }
+    },
+    {
+      "componentId": "TextField",
+      "sourceFilePath": "src/components/TextField/TextField.tsx",
+      "cssFilePath": "src/components/TextField/TextField.css",
+      "exportedComponents": [
+        "TextField"
+      ],
+      "exportedTypes": [
+        "TextFieldProps",
+        "TextFieldVariant"
+      ],
+      "props": [
+        {
+          "name": "variant",
+          "type": "TextFieldVariant",
+          "optional": true
+        },
+        {
+          "name": "leadingIcon",
+          "type": "ReactNode",
+          "optional": true
+        },
+        {
+          "name": "trailingIcon",
+          "type": "ReactNode",
+          "optional": true
+        }
+      ],
+      "propsBaseType": "extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'>",
+      "variants": [
+        {
+          "name": "TextFieldVariant",
+          "values": [
+            "default",
+            "filled",
+            "error"
+          ],
+          "source": "exported-type-alias"
+        }
+      ],
+      "cssCustomPropertiesConsumed": [
+        "--alias-font-family-body",
+        "--border-width-md",
+        "--border-width-sm",
+        "--color-border-action-hover",
+        "--color-border-default",
+        "--color-border-disabled",
+        "--color-border-error",
+        "--color-border-focus",
+        "--color-surface-action-hover-light",
+        "--color-surface-default-secondary",
+        "--color-surface-disabled",
+        "--color-surface-error",
+        "--color-text-action-hover",
+        "--color-text-body",
+        "--color-text-disabled",
+        "--color-text-error",
+        "--color-text-placeholder",
+        "--font-size-paragraph-medium",
+        "--line-height-paragraph-medium",
+        "--radius-lg",
+        "--scale-200",
+        "--scale-300"
+      ],
+      "cssCustomPropertiesDefined": [],
+      "imports": [
+        {
+          "specifier": "react",
+          "isRelative": false,
+          "isTypeOnly": true,
+          "resolvedComponentDir": null
+        },
+        {
+          "specifier": "./TextField.css",
+          "isRelative": true,
+          "isTypeOnly": false,
+          "resolvedComponentDir": null
+        }
+      ],
+      "componentDependencies": [],
+      "storybook": {
+        "storyFilePath": "src/components/TextField/TextField.stories.tsx",
+        "title": "Components/TextField",
+        "storyExportNames": [
+          "Default",
+          "Disabled",
+          "Error",
+          "Filled",
+          "Focus",
+          "Hover",
+          "WithIcons"
+        ],
+        "computedStoryIds": [
+          "components-textfield--default",
+          "components-textfield--disabled",
+          "components-textfield--error",
+          "components-textfield--filled",
+          "components-textfield--focus",
+          "components-textfield--hover",
+          "components-textfield--with-icons"
+        ]
+      },
+      "sourceHashes": {
+        "component": "24dc03b3513bd5240e371033ffd1c373f2f3f9f9990dde95cbe897f3b1c729ba",
+        "styles": "35101428dc5d97ff380607d0d50cf45b708d70101a7f22836a5c7504c654deed",
+        "stories": "ac6c24028ab2bdc70150d5ad19c696f0ac2d7991f95a1515696b2387cd26dd59"
+      }
+    }
+  ],
+  "tokenDefinitions": [
+    {
+      "cssVariable": "--alias-error-100",
+      "value": "var(--brand-red-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-200",
+      "value": "var(--brand-red-200)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-300",
+      "value": "var(--brand-red-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-400",
+      "value": "var(--brand-red-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-50",
+      "value": "var(--brand-red-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-500",
+      "value": "var(--brand-red-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-600",
+      "value": "var(--brand-red-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-700",
+      "value": "var(--brand-red-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-800",
+      "value": "var(--brand-red-800)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-900",
+      "value": "var(--brand-red-900)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-error-950",
+      "value": "var(--brand-red-950)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-font-family-body",
+      "value": "var(--brand-font-body)",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--alias-font-family-heading",
+      "value": "var(--brand-font-heading)",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--alias-foundation-black",
+      "value": "var(--brand-foundation-black)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-foundation-white",
+      "value": "var(--brand-foundation-white)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-100",
+      "value": "var(--brand-blue-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-200",
+      "value": "var(--brand-blue-200)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-300",
+      "value": "var(--brand-blue-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-400",
+      "value": "var(--brand-blue-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-50",
+      "value": "var(--brand-blue-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-500",
+      "value": "var(--brand-blue-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-600",
+      "value": "var(--brand-blue-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-700",
+      "value": "var(--brand-blue-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-800",
+      "value": "var(--brand-blue-800)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-900",
+      "value": "var(--brand-blue-900)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-information-950",
+      "value": "var(--brand-blue-950)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-100",
+      "value": "var(--brand-gray-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-200",
+      "value": "var(--brand-gray-200)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-300",
+      "value": "var(--brand-gray-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-400",
+      "value": "var(--brand-gray-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-50",
+      "value": "var(--brand-gray-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-500",
+      "value": "var(--brand-gray-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-600",
+      "value": "var(--brand-gray-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-700",
+      "value": "var(--brand-gray-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-800",
+      "value": "var(--brand-gray-800)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-900",
+      "value": "var(--brand-gray-900)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-neutral-950",
+      "value": "var(--brand-gray-950)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-100",
+      "value": "var(--brand-purple-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-200",
+      "value": "var(--brand-purple-200)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-300",
+      "value": "var(--brand-purple-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-400",
+      "value": "var(--brand-purple-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-50",
+      "value": "var(--brand-purple-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-500",
+      "value": "var(--brand-purple-500-default)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-600",
+      "value": "var(--brand-purple-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-700",
+      "value": "var(--brand-purple-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-800",
+      "value": "var(--brand-purple-800)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-900",
+      "value": "var(--brand-purple-900)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-primary-950",
+      "value": "var(--brand-purple-950)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-100",
+      "value": "var(--brand-green-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-200",
+      "value": "var(--brand-green-200)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-300",
+      "value": "var(--brand-green-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-400",
+      "value": "var(--brand-green-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-50",
+      "value": "var(--brand-green-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-500",
+      "value": "var(--brand-green-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-600",
+      "value": "var(--brand-green-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-700",
+      "value": "var(--brand-green-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-800",
+      "value": "var(--brand-green-800)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-900",
+      "value": "var(--brand-green-900)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-success-950",
+      "value": "var(--brand-green-950)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-100",
+      "value": "var(--brand-orange-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-200",
+      "value": "var(--brand-orange-200)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-300",
+      "value": "var(--brand-orange-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-400",
+      "value": "var(--brand-orange-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-50",
+      "value": "var(--brand-orange-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-500",
+      "value": "var(--brand-orange-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-600",
+      "value": "var(--brand-orange-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-700",
+      "value": "var(--brand-orange-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-800",
+      "value": "var(--brand-orange-800)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-900",
+      "value": "var(--brand-orange-900)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--alias-warning-950",
+      "value": "var(--brand-orange-950)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--border-width-lg",
+      "value": "var(--scale-100)",
+      "sourceFilePath": "src/tokens/borders.css"
+    },
+    {
+      "cssVariable": "--border-width-md",
+      "value": "var(--scale-50)",
+      "sourceFilePath": "src/tokens/borders.css"
+    },
+    {
+      "cssVariable": "--border-width-none",
+      "value": "var(--scale-0)",
+      "sourceFilePath": "src/tokens/borders.css"
+    },
+    {
+      "cssVariable": "--border-width-sm",
+      "value": "var(--scale-25)",
+      "sourceFilePath": "src/tokens/borders.css"
+    },
+    {
+      "cssVariable": "--brand-blue-100",
+      "value": "#d4d8f6",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-200",
+      "value": "#a9b2ec",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-300",
+      "value": "#7e8be3",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-400",
+      "value": "#5365d9",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-50",
+      "value": "#eaecfb",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-500",
+      "value": "#283ed0",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-600",
+      "value": "#2032a6",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-700",
+      "value": "#18257d",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-800",
+      "value": "#101953",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-900",
+      "value": "#080c2a",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-blue-950",
+      "value": "#040615",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-font-body",
+      "value": "'Inter', sans-serif",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--brand-font-heading",
+      "value": "'Roboto', sans-serif",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--brand-foundation-black",
+      "value": "#000000",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-foundation-white",
+      "value": "#ffffff",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-100",
+      "value": "#d5d5d5",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-200",
+      "value": "#ababab",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-300",
+      "value": "#818180",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-400",
+      "value": "#575756",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-50",
+      "value": "#eaeaea",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-500",
+      "value": "#2d2d2c",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-600",
+      "value": "#242423",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-700",
+      "value": "#1b1b1a",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-800",
+      "value": "#121212",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-900",
+      "value": "#090909",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-gray-950",
+      "value": "#040404",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-100",
+      "value": "#d6f4d5",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-200",
+      "value": "#ade9ab",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-300",
+      "value": "#83dd82",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-400",
+      "value": "#5ad258",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-50",
+      "value": "#ebfaeb",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-500",
+      "value": "#31c72e",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-600",
+      "value": "#279f25",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-700",
+      "value": "#1d771c",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-800",
+      "value": "#145012",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-900",
+      "value": "#0a2809",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-green-950",
+      "value": "#051405",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-100",
+      "value": "#ffe5cd",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-200",
+      "value": "#ffca9c",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-300",
+      "value": "#ffb06a",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-400",
+      "value": "#ff9539",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-50",
+      "value": "#fff2e7",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-500",
+      "value": "#ff7b07",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-600",
+      "value": "#cc6206",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-700",
+      "value": "#994a04",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-800",
+      "value": "#663103",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-900",
+      "value": "#331901",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-orange-950",
+      "value": "#190c01",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-100",
+      "value": "#e8d7fd",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-200",
+      "value": "#d0affb",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-300",
+      "value": "#b988f9",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-400",
+      "value": "#a160f7",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-50",
+      "value": "#f4ecfe",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-500-default",
+      "value": "#8a38f5",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-600",
+      "value": "#6e2dc4",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-700",
+      "value": "#532293",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-800",
+      "value": "#371662",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-900",
+      "value": "#1c0b31",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-purple-950",
+      "value": "#0e0618",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-100",
+      "value": "#fdd7d7",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-200",
+      "value": "#fbafaf",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-300",
+      "value": "#f98888",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-400",
+      "value": "#f76060",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-50",
+      "value": "#feecec",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-500",
+      "value": "#f53838",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-600",
+      "value": "#c42d2d",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-700",
+      "value": "#932222",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-800",
+      "value": "#621616",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-900",
+      "value": "#310b0b",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--brand-red-950",
+      "value": "#180606",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-action",
+      "value": "var(--alias-primary-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-action-hover",
+      "value": "var(--alias-primary-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-default",
+      "value": "var(--alias-neutral-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-disabled",
+      "value": "var(--alias-neutral-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-error",
+      "value": "var(--alias-error-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-focus",
+      "value": "var(--alias-primary-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-information",
+      "value": "var(--alias-information-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-success",
+      "value": "var(--alias-success-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-border-warning",
+      "value": "var(--alias-warning-300)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-action",
+      "value": "var(--alias-primary-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-action-hover",
+      "value": "var(--alias-primary-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-default",
+      "value": "var(--alias-neutral-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-disabled",
+      "value": "var(--alias-neutral-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-error",
+      "value": "var(--alias-error-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-information",
+      "value": "var(--alias-information-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-on-action",
+      "value": "var(--alias-foundation-white)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-on-action-hover",
+      "value": "var(--alias-primary-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-placeholder",
+      "value": "var(--alias-neutral-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-success",
+      "value": "var(--alias-success-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-icon-warning",
+      "value": "var(--alias-warning-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-action",
+      "value": "var(--alias-primary-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-action-hover",
+      "value": "var(--alias-primary-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-action-hover-light",
+      "value": "var(--alias-primary-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-default",
+      "value": "var(--alias-neutral-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-default-secondary",
+      "value": "var(--alias-foundation-white)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-disabled",
+      "value": "var(--alias-neutral-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-error",
+      "value": "var(--alias-error-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-information",
+      "value": "var(--alias-information-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-page",
+      "value": "var(--alias-foundation-white)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-success",
+      "value": "var(--alias-success-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-surface-warning",
+      "value": "var(--alias-warning-50)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-action",
+      "value": "var(--alias-primary-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-action-hover",
+      "value": "var(--alias-primary-600)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-body",
+      "value": "var(--alias-neutral-700)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-caption",
+      "value": "var(--alias-neutral-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-disabled",
+      "value": "var(--alias-neutral-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-error",
+      "value": "var(--alias-error-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-heading",
+      "value": "var(--alias-neutral-900)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-information",
+      "value": "var(--alias-information-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-on-action",
+      "value": "var(--alias-foundation-white)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-on-action-hover",
+      "value": "var(--alias-primary-100)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-placeholder",
+      "value": "var(--alias-neutral-400)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-success",
+      "value": "var(--alias-success-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--color-text-warning",
+      "value": "var(--alias-warning-500)",
+      "sourceFilePath": "src/tokens/colors.css"
+    },
+    {
+      "cssVariable": "--font-size-caption",
+      "value": "12px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-h1",
+      "value": "76px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-h2",
+      "value": "60px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-h3",
+      "value": "48px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-h4",
+      "value": "40px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-h5",
+      "value": "32px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-h6",
+      "value": "24px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-paragraph-large",
+      "value": "20px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-paragraph-medium",
+      "value": "17px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-size-paragraph-small",
+      "value": "12px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-weight-body",
+      "value": "400",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--font-weight-heading",
+      "value": "600",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-caption",
+      "value": "16px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-h1",
+      "value": "92px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-h2",
+      "value": "72px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-h3",
+      "value": "56px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-h4",
+      "value": "48px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-h5",
+      "value": "40px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-h6",
+      "value": "28px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-paragraph-large",
+      "value": "24px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-paragraph-medium",
+      "value": "20px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--line-height-paragraph-small",
+      "value": "16px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-caption",
+      "value": "8px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-h1",
+      "value": "40px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-h2",
+      "value": "32px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-h3",
+      "value": "32px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-h4",
+      "value": "20px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-h5",
+      "value": "16px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-h6",
+      "value": "12px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-paragraph-large",
+      "value": "12px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-paragraph-medium",
+      "value": "8px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--paragraph-spacing-paragraph-small",
+      "value": "8px",
+      "sourceFilePath": "src/tokens/typography.css"
+    },
+    {
+      "cssVariable": "--radius-lg",
+      "value": "var(--scale-100)",
+      "sourceFilePath": "src/tokens/radius.css"
+    },
+    {
+      "cssVariable": "--radius-md",
+      "value": "var(--scale-50)",
+      "sourceFilePath": "src/tokens/radius.css"
+    },
+    {
+      "cssVariable": "--radius-none",
+      "value": "var(--scale-0)",
+      "sourceFilePath": "src/tokens/radius.css"
+    },
+    {
+      "cssVariable": "--radius-sm",
+      "value": "var(--scale-25)",
+      "sourceFilePath": "src/tokens/radius.css"
+    },
+    {
+      "cssVariable": "--radius-xl",
+      "value": "var(--scale-200)",
+      "sourceFilePath": "src/tokens/radius.css"
+    },
+    {
+      "cssVariable": "--scale-0",
+      "value": "0px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-100",
+      "value": "4px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-1000",
+      "value": "56px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-1100",
+      "value": "64px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-1200",
+      "value": "72px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-200",
+      "value": "8px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-25",
+      "value": "1px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-300",
+      "value": "12px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-400",
+      "value": "16px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-50",
+      "value": "2px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-500",
+      "value": "20px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-600",
+      "value": "24px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-700",
+      "value": "32px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-800",
+      "value": "40px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    },
+    {
+      "cssVariable": "--scale-900",
+      "value": "48px",
+      "sourceFilePath": "src/tokens/spacing.css"
+    }
+  ]
+}

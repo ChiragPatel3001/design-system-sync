@@ -1,0 +1,58 @@
+{
+  "reconciliationRunId": "987a61388f078959",
+  "reconciliationId": "3999133fc5c3",
+  "findingBefore": {
+    "reconciliationId": "3999133fc5c3",
+    "entityType": "token",
+    "entityId": "line-height-paragraph-medium",
+    "registryId": "line-height-paragraph-medium",
+    "field": "value",
+    "status": "figma-only-change",
+    "figma": {
+      "current": "24",
+      "baseline": "20",
+      "changed": true
+    },
+    "code": {
+      "current": "20px",
+      "baseline": "20px",
+      "changed": false
+    },
+    "registryExpected": null,
+    "affectedComponents": [
+      "button",
+      "checkbox",
+      "field-label",
+      "link",
+      "menu-item",
+      "text-field"
+    ],
+    "sources": {
+      "figmaBaselineId": "568bde3637c3c8bc",
+      "figmaCurrentId": "2f2ed9bbeca16476",
+      "codeBaselineId": "6ad9f34eea3bc282",
+      "codeCurrentId": "6ad9f34eea3bc282"
+    },
+    "detail": "Figma variable \"Paragraph Medium/Line Height\" changed since baseline; code definition \"--line-height-paragraph-medium\" did not."
+  },
+  "policyDecision": {
+    "reconciliationId": "3999133fc5c3",
+    "status": "figma-only-change",
+    "verdict": "BLOCKED",
+    "reason": "refused: a previous attempt at this exact finding already failed",
+    "requiredEvidence": [],
+    "requiredValidationLevels": [],
+    "requiresHumanApproval": true
+  },
+  "editTarget": null,
+  "filesInspected": [],
+  "filesModified": [],
+  "change": null,
+  "validation": [],
+  "reconciliationAfterRunId": null,
+  "findingAfter": "unresolved",
+  "outcome": "no-safe-action",
+  "stopReason": "A previous automatic attempt at this exact finding already failed. Automatic re-execution is refused; a human must re-authorize it explicitly (no override mechanism exists yet).",
+  "auditId": "0ad0142b02f2e33b",
+  "generatedAt": "2026-09-21T17:17:17.848Z"
+}

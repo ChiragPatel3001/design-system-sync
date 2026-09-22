@@ -89,6 +89,11 @@
   margin-bottom: var(--scale-500);
   font-size: var(--font-size-paragraph-small);
 }
+.ds-dash-banner--safe {
+  background: var(--color-surface-success);
+  color: var(--color-text-success);
+  border: var(--border-width-sm) solid var(--color-border-success);
+}
 .ds-dash-banner--critical {
   background: var(--color-surface-error);
   color: var(--color-text-error);
@@ -99,7 +104,7 @@
 
 .ds-dash-metrics {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: var(--scale-400);
   margin-bottom: var(--scale-800);
 }
@@ -124,6 +129,7 @@
 .ds-dash-metric-card__value--safe { color: var(--color-text-success); }
 .ds-dash-metric-card__value--warning { color: var(--color-text-warning); }
 .ds-dash-metric-card__value--critical { color: var(--color-text-error); }
+.ds-dash-metric-card__value--neutral { color: var(--color-text-caption); }
 
 .ds-dash-metric-card__label {
   font-size: var(--font-size-caption);
@@ -262,6 +268,19 @@
   background: var(--color-surface-default);
   color: var(--color-text-caption);
   border-color: var(--color-border-default);
+}
+
+.ds-dash-reauthorized-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-left: var(--scale-200);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text-warning);
+  background: var(--color-surface-warning);
+  border: var(--border-width-sm) solid var(--color-border-warning);
+  border-radius: var(--radius-xl);
+  padding: 2px var(--scale-300);
 }
 
 /* --------------------------------------------------------- Activity / attention */
@@ -438,12 +457,14 @@
 }
 
 .ds-dash-button {
+  display: inline-block;
   font-size: var(--font-size-paragraph-small);
   font-weight: var(--font-weight-heading);
   border-radius: var(--radius-md);
   padding: var(--scale-300) var(--scale-500);
   cursor: pointer;
   border: var(--border-width-sm) solid transparent;
+  text-decoration: none;
 }
 .ds-dash-button--primary {
   background: var(--color-surface-action);
@@ -451,6 +472,35 @@
 }
 .ds-dash-button--primary:hover { background: var(--color-surface-action-hover); }
 .ds-dash-button--primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.ds-dash-button--secondary {
+  background: var(--color-surface-default-secondary);
+  color: var(--color-text-action);
+  border-color: var(--color-border-default);
+}
+.ds-dash-button--secondary:hover { background: var(--color-surface-action-hover-light); }
+
+.ds-dash-unmapped-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--scale-300);
+}
+
+.ds-dash-resolve-action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--scale-300);
+}
+.ds-dash-resolve-action__buttons {
+  display: flex;
+  gap: var(--scale-300);
+}
+
+.ds-dash-reconcile-cta {
+  margin-top: var(--scale-300);
+}
 
 /* ----------------------------------------------------------------- Timeline */
 

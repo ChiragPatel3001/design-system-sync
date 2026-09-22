@@ -6,6 +6,8 @@ import path from 'node:path';
 
 import { createClaudeReasoner, createMockClaudeClient, createAnthropicClaudeClient, buildPrompt, ClaudeReasoningError } from './agent-claude-reasoner.ts';
 import { runAgentForFinding, validateProposedEdit, type ReasonerContext, type AgentRunDeps } from './agent-run.ts';
+import { promoteCodeBaselineForToken } from './code-baseline-promote.ts';
+import { promoteFigmaBaselineForVariable } from './figma-baseline-promote.ts';
 import { loadReconciliationInputs, buildReconciliationRun, persistReconciliationRun, type ReconcileInputPaths, type ReconciliationOutputPaths } from './reconcile.ts';
 import { reconcileSnapshots } from './reconcile-compare.ts';
 import { buildCodeSnapshot, writeCodeSnapshotFile } from './code-snapshot.ts';
@@ -305,6 +307,22 @@ describe('createClaudeReasoner — integration with the real deterministic agent
         runLevel4: () => ({ level: 4, command: 'fixture: storybook not applicable', passed: true }),
         refreshCodeSnapshot: () => buildAndWriteCode(reconciliationInputPaths.codeCurrentPath),
         reRunReconciliation: (generatedAt: string) => reconcileAndPersist(generatedAt),
+        promoteCodeBaseline: (cssVariable: string, previousValue: string, newValue: string) => {
+          promoteCodeBaselineForToken(
+            { codeBaselinePath: reconciliationInputPaths.codeBaselinePath, codeArchiveDir: path.join(tempRoot, 'code-snapshots', 'archive') },
+            cssVariable,
+            previousValue,
+            newValue,
+          );
+        },
+        promoteFigmaBaseline: (variableName: string, previousValue: string, newValue: string) => {
+          promoteFigmaBaselineForVariable(
+            { figmaBaselinePath: reconciliationInputPaths.figmaBaselinePath, figmaArchiveDir: path.join(tempRoot, 'figma-snapshots', 'archive') },
+            variableName,
+            previousValue,
+            newValue,
+          );
+        },
       };
 
       const audit = await runAgentForFinding(targetedRecord!.reconciliationId, deps, '2026-01-02T00:00:00.000Z');

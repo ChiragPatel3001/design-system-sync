@@ -7,20 +7,23 @@
  * dev` / `npm run dashboard` — never part of the production `dist/`
  * build (see `configureServer`'s own contract: dev-server only).
  *
- * Two endpoints, both thin pass-throughs to the real engines:
+ * Three endpoints, all thin pass-throughs to the real engines:
  *   GET  /api/dashboard    -> dashboard-loader.ts's loadDashboardViewModel()
  *   POST /api/agent/run    -> dashboard-agent-handler.ts's handleRunAgentRequest()
+ *   POST /api/reconcile    -> dashboard-reconcile-handler.ts's handleReconcileRequest()
  *
- * Neither endpoint contains policy, targeting, edit, or reconciliation
- * logic — see those two files' own header comments for where that logic
- * actually lives (agent-policy.ts / agent-targeting.ts / agent-run.ts,
- * completely unmodified).
+ * None of the three endpoints contains policy, targeting, edit, or
+ * reconciliation logic itself — see those files' own header comments for
+ * where that logic actually lives (agent-policy.ts / agent-targeting.ts /
+ * agent-run.ts / reconcile.ts / reconcile-compare.ts, all completely
+ * unmodified).
  */
 import type { Plugin, ViteDevServer, Connect } from 'vite';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 
 import { loadDashboardViewModel } from './dashboard-loader.ts';
 import { handleRunAgentRequest, DashboardAgentRequestError } from './dashboard-agent-handler.ts';
+import { handleReconcileRequest, createProductionReconcileDeps, ReconcileAlreadyRunningError, DashboardReconcileError } from './dashboard-reconcile-handler.ts';
 import {
   createProductionAgentRunDeps,
   createProductionReconciliationInputPaths,
@@ -85,12 +88,31 @@ const handleAgentRunPost: Connect.NextHandleFunction = (req, res) => {
     });
 };
 
+/**
+ * The request body is never read — `handleReconcileRequest` takes no
+ * arguments at all (see its own header). This endpoint starts exactly
+ * one fixed operation; there is nothing for a client to parameterize.
+ */
+const handleReconcilePost: Connect.NextHandleFunction = (req, res) => {
+  if (req.method !== 'POST') {
+    sendJson(res, 405, { error: 'Method not allowed.' });
+    return;
+  }
+  handleReconcileRequest(createProductionReconcileDeps())
+    .then((summary) => sendJson(res, 200, summary))
+    .catch((err: unknown) => {
+      const statusCode = err instanceof ReconcileAlreadyRunningError ? 409 : err instanceof DashboardReconcileError ? 502 : 500;
+      sendJson(res, statusCode, { error: err instanceof Error ? err.message : String(err) });
+    });
+};
+
 export function dashboardApiPlugin(): Plugin {
   return {
     name: 'sync-agent-dashboard-api',
     configureServer(server: ViteDevServer) {
       server.middlewares.use('/api/dashboard', handleDashboardGet);
       server.middlewares.use('/api/agent/run', handleAgentRunPost);
+      server.middlewares.use('/api/reconcile', handleReconcilePost);
     },
   };
 }

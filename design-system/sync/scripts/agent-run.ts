@@ -61,6 +61,8 @@ import { resolveEditTarget } from './agent-targeting.ts';
 import type { EditTarget } from './agent-targeting-types.ts';
 import type { ReconciliationRecord, ReconciliationRun } from './reconcile-types.ts';
 import { createAnthropicClaudeClient, createClaudeReasoner } from './agent-claude-reasoner.ts';
+import { promoteCodeBaselineForToken, createProductionPromoteCodeBaselinePaths } from './code-baseline-promote.ts';
+import { promoteFigmaBaselineForVariable, createProductionPromoteFigmaBaselinePaths } from './figma-baseline-promote.ts';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '../../..');
@@ -91,6 +93,18 @@ export interface ReasonerContext {
   editTarget: EditTarget;
   fileContent: string;
   siblingDeclarations: SiblingDeclaration[];
+  /**
+   * Present ONLY for an explicit human-directed resolution (Part 18) of a
+   * token-level `both-changed-conflict` finding toward Figma — tells the
+   * reasoner which side a human has already decided is authoritative, so
+   * it isn't misled by `policyDecision` (which, correctly and honestly,
+   * still reads BLOCKED — that fact is never altered, only the gate that
+   * would otherwise have refused to reach the reasoner at all). Never set
+   * for a normal SAFE run, and never for the `sourceOfTruth: 'code'`
+   * direction, which never reaches the reasoner at all (see
+   * runAgentForFinding's own comment on why).
+   */
+  humanDirected?: { sourceOfTruth: 'figma' };
 }
 
 export interface ProposedEdit {
@@ -270,11 +284,33 @@ export interface AgentRunDeps {
   refreshCodeSnapshot: () => void;
   /** Level 6 — re-runs reconciliation and returns the newly persisted run. */
   reRunReconciliation: (generatedAt: string) => ReconciliationRun;
+  /**
+   * Called ONLY after `verifyResolution()` has already confirmed a
+   * successful edit resolved its targeted finding — promotes exactly
+   * the one CSS custom-property value this run changed in the CODE
+   * baseline (never the Figma baseline, never any other declaration).
+   * See code-baseline-promote.ts. May throw `CodeBaselinePromoteError`;
+   * `runAgentForFinding` treats that as non-fatal to an already-verified
+   * successful run (see its own comment at the call site).
+   */
+  promoteCodeBaseline: (cssVariable: string, previousValue: string, newValue: string) => void;
+  /**
+   * Called ONLY after `promoteCodeBaseline` has already succeeded for a
+   * `figma-only-change` SAFE apply — promotes exactly the one Figma
+   * variable this run's finding was about in the FIGMA baseline (never
+   * any other variable, never `components[]`/`pages`/`textStyles`). See
+   * figma-baseline-promote.ts.
+   */
+  promoteFigmaBaseline: (variableName: string, previousValue: string, newValue: string) => void;
 }
 
 function runShellValidation(level: number, label: string, command: string, args: string[], cwd: string): ValidationStepResult {
   try {
-    const output = execFileSync(command, args, { cwd, stdio: 'pipe', encoding: 'utf8' });
+    // Windows resolves `npx`/`npm` to a `.cmd` shim, which execFileSync
+    // cannot spawn directly without shell involvement (throws ENOENT
+    // before the command ever runs) — shell: true on win32 only, same
+    // command/args/cwd/output handling otherwise.
+    const output = execFileSync(command, args, { cwd, stdio: 'pipe', encoding: 'utf8', shell: process.platform === 'win32' });
     return { level, command: label, passed: true, output };
   } catch (err) {
     const output = err instanceof Error ? err.message : String(err);
@@ -286,7 +322,19 @@ function runShellValidation(level: number, label: string, command: string, args:
 // Audit record (Part 11).
 // =======================================================================
 
-export type AgentOutcome = 'applied' | 'no-safe-action' | 'blocked' | 'failed-validation' | 'failed-verification';
+/**
+ * `applied-verification-incomplete` — the edit was applied and passed
+ * every PRE-apply check (levels 1-4: typecheck/targeted test/build/
+ * storybook), but the POST-apply refresh/reconcile (levels 5-6) failed
+ * before it could confirm resolution or promote any baseline — e.g. a
+ * live Figma MCP rate limit. Deliberately distinct from both `applied`
+ * (would overclaim verification that never completed) and
+ * `failed-verification` (would wrongly suggest the edit itself was
+ * reverted/rejected, and would wrongly block a future retry via
+ * hasPriorFailedAttempt — see that function's own comment). See
+ * runAgentForFinding's Level 5/6 handling.
+ */
+export type AgentOutcome = 'applied' | 'no-safe-action' | 'blocked' | 'failed-validation' | 'failed-verification' | 'applied-verification-incomplete';
 
 export interface AgentAuditRecord {
   auditId: string;
@@ -304,6 +352,54 @@ export interface AgentAuditRecord {
   findingAfter: 'resolved' | 'unresolved' | 'new-findings-introduced';
   outcome: AgentOutcome;
   stopReason: string;
+  /**
+   * True iff this invocation was an explicit human re-authorization of a
+   * finding with a recorded prior failed attempt (see
+   * `runAgentForFinding`'s `options.humanReauthorized` and
+   * `hasPriorFailedAttempt`, both otherwise completely unchanged) —
+   * false for every normal run (CLI, first-time dashboard click, or any
+   * finding with no prior failure at all). Always present so the audit
+   * trail makes the distinction explicit rather than leaving it
+   * inferable only by cross-referencing other records.
+   */
+  humanReauthorized: boolean;
+  /**
+   * True iff this run's outcome was 'applied' AND the one CODE
+   * baseline entry this run changed was successfully promoted to the
+   * newly-applied value (see code-baseline-promote.ts). False for
+   * every non-'applied' outcome, and also false — never fatal to an
+   * already-verified-successful run — if promotion itself failed (the
+   * failure reason, if any, is folded into `stopReason` on that
+   * specific finalize() call; the run's own outcome stays 'applied').
+   */
+  codeBaselinePromoted: boolean;
+  /**
+   * True iff this run's outcome was 'applied' AND the finding was a
+   * `figma-only-change` SAFE apply AND the one FIGMA baseline variable
+   * this run's finding was about was successfully promoted to Figma's
+   * own current value (see figma-baseline-promote.ts). False for every
+   * other outcome/status, and also false — never fatal — if promotion
+   * itself failed (folded into `stopReason`, same discipline as
+   * `codeBaselinePromoted`).
+   */
+  figmaBaselinePromoted: boolean;
+  /**
+   * True iff this run was an explicit human-directed resolution of a
+   * token-level `both-changed-conflict` finding (see
+   * `RunAgentForFindingOptions.humanDirectedSourceOfTruth`) — false for
+   * every normal run (CLI, first-time dashboard click, reauthorized
+   * retry of a SAFE finding). Always present so the audit trail makes
+   * explicit WHY a run against a finding whose `policyDecision.verdict`
+   * still (correctly, honestly) reads BLOCKED was nonetheless acted on.
+   */
+  humanDirected: boolean;
+  /**
+   * The human's own explicit choice of which side is authoritative, for
+   * a `humanDirected` run — `null` for every other run. Never inferred;
+   * always exactly what the human passed in (see
+   * `RunAgentForFindingOptions`).
+   */
+  sourceOfTruth: 'figma' | 'code' | null;
 }
 
 function sha256(content: string): string {
@@ -352,7 +448,18 @@ export function persistAuditRecord(record: AgentAuditRecord, outputPaths: AgentH
   return { recordPath };
 }
 
-/** Part 10 — loop prevention: true iff a prior audit record for this exact reconciliationId exists with a failure outcome. */
+/**
+ * Part 10 — loop prevention: true iff a prior audit record for this
+ * exact reconciliationId exists with a failure outcome
+ * (`failed-validation` or `failed-verification` — an explicit allowlist,
+ * not "anything other than applied"). `applied-verification-incomplete`
+ * is deliberately NOT in this list: that outcome means the edit itself
+ * succeeded and passed every pre-apply check — only the post-apply
+ * refresh/reconcile (an unrelated external dependency, e.g. a live
+ * Figma MCP rate limit) didn't complete. Treating it as a failure here
+ * would wrongly block a legitimate future retry over a problem that has
+ * nothing to do with whether the edit itself was safe or correct.
+ */
 export function hasPriorFailedAttempt(recordsDir: string, reconciliationId: string): boolean {
   if (!existsSync(recordsDir)) return false;
   for (const fileName of readdirSync(recordsDir)) {
@@ -539,17 +646,100 @@ function finalize(
   return record;
 }
 
-export async function runAgentForFinding(reconciliationId: string, deps: AgentRunDeps, generatedAt: string): Promise<AgentAuditRecord> {
+export interface RunAgentForFindingOptions {
+  /**
+   * Explicit human re-authorization of a finding with a recorded prior
+   * failed attempt — the ONLY thing this does is let execution proceed
+   * past the loop-prevention early-return below when
+   * `hasPriorFailedAttempt` is true; `hasPriorFailedAttempt` itself, and
+   * every check after it (policy re-classification, targeting, the
+   * reasoner boundary, deterministic proposal validation, validation
+   * levels, verification, rollback), are completely unaffected and run
+   * exactly as they do for any other SAFE finding. In particular this is
+   * NOT a generic "skip safety" flag: if the freshly-reclassified policy
+   * verdict is REVIEW or BLOCKED, or targeting fails, the run is refused
+   * exactly as before — reauthorization only ever un-blocks one prior
+   * loop-prevention refusal, nothing else. Defaults to false, preserving
+   * every existing call site (the CLI, and every existing test)
+   * unchanged.
+   */
+  humanReauthorized?: boolean;
+  /**
+   * Present ONLY for an explicit human-directed resolution of a
+   * token-level `both-changed-conflict` finding (Part 18) — the human's
+   * own choice of which side is authoritative, passed in explicitly
+   * rather than inferred. The ONLY thing this does is let execution
+   * proceed past the policy-verdict SAFE gate for THIS one entry point,
+   * for a finding that is STRUCTURALLY VALIDATED (immediately, by
+   * throwing `AgentError` otherwise) to be `entityType: 'token'` and
+   * `status: 'both-changed-conflict'` — this can never be used to
+   * bypass the gate for a `registry-expectation-mismatch` or any
+   * component-level finding (e.g. "button"), which have no single-value
+   * editTarget and are explicitly out of scope. Every other check (loop
+   * prevention via `hasPriorFailedAttempt`, targeting via
+   * `resolveEditTarget`, deterministic proposal validation, validation
+   * levels, verification) is completely unaffected — in particular loop
+   * prevention is NOT bypassed by this option; a previously-failed
+   * human-directed attempt still requires `humanReauthorized: true` the
+   * same as any other retry. `'figma'` reuses the SAME reasoner ->
+   * validate -> apply -> verify -> promote-both-baselines pipeline
+   * proven for SAFE findings (see the reasoner's own `humanDirected`
+   * context). `'code'` never reaches the reasoner or the edit engine at
+   * all — the code side already holds the chosen value, so there is
+   * nothing to propose (and `validateProposedEdit`'s own no-op rule,
+   * unmodified, would correctly refuse a same-value edit); it instead
+   * promotes both baselines directly to their own current values, which
+   * is what actually resolves the conflict (see runAgentForFinding's
+   * own comment at that branch). Defaults to undefined, preserving
+   * every existing call site unchanged.
+   */
+  humanDirectedSourceOfTruth?: 'figma' | 'code';
+}
+
+export async function runAgentForFinding(
+  reconciliationId: string,
+  deps: AgentRunDeps,
+  generatedAt: string,
+  options: RunAgentForFindingOptions = {},
+): Promise<AgentAuditRecord> {
+  const humanReauthorized = options.humanReauthorized ?? false;
+
   const beforeRun = readReconciliationRun(deps.reconciliationOutputPaths.latestPath);
   const record = beforeRun.records.find((r) => r.reconciliationId === reconciliationId);
   if (!record) {
     throw new AgentError(`No reconciliation record with id "${reconciliationId}" exists in the latest run (${beforeRun.runId}).`);
   }
 
-  const commonFields = { reconciliationRunId: beforeRun.runId, reconciliationId, findingBefore: record };
+  // Part 18 — human-directed resolution: STRUCTURALLY scoped to
+  // token-level both-changed-conflict findings only, checked immediately
+  // and unconditionally (never trusting the client further than this) —
+  // see RunAgentForFindingOptions.humanDirectedSourceOfTruth's own
+  // comment for why this can never reach a registry-expectation-mismatch
+  // or a component-level finding.
+  const humanDirectedSourceOfTruth = options.humanDirectedSourceOfTruth ?? null;
+  const isHumanDirected = humanDirectedSourceOfTruth !== null;
+  if (isHumanDirected && (record.entityType !== 'token' || record.status !== 'both-changed-conflict')) {
+    throw new AgentError(
+      `Human-directed resolution is only supported for token-level both-changed-conflict findings (got entityType="${record.entityType}", status="${record.status}").`,
+    );
+  }
 
-  // Part 10 — loop prevention: refuse automatic re-execution of a previously-failed finding.
-  if (hasPriorFailedAttempt(deps.agentHistoryPaths.recordsDir, reconciliationId)) {
+  const commonFields = {
+    reconciliationRunId: beforeRun.runId,
+    reconciliationId,
+    findingBefore: record,
+    humanReauthorized,
+    codeBaselinePromoted: false,
+    figmaBaselinePromoted: false,
+    humanDirected: isHumanDirected,
+    sourceOfTruth: humanDirectedSourceOfTruth,
+  };
+
+  // Part 10 — loop prevention: refuse automatic re-execution of a
+  // previously-failed finding, UNLESS a human has explicitly
+  // re-authorized this exact invocation (see RunAgentForFindingOptions
+  // above). hasPriorFailedAttempt() itself is unmodified.
+  if (hasPriorFailedAttempt(deps.agentHistoryPaths.recordsDir, reconciliationId) && !humanReauthorized) {
     const placeholderPolicy: PolicyDecision = {
       reconciliationId,
       status: record.status,
@@ -591,7 +781,7 @@ export async function runAgentForFinding(reconciliationId: string, deps: AgentRu
 
   const policyDecision = classifyRecord({ record, crosswalk: freshInput.crosswalk, codeCurrent: freshInput.codeCurrent });
 
-  if (policyDecision.verdict !== 'SAFE') {
+  if (policyDecision.verdict !== 'SAFE' && !isHumanDirected) {
     const outcome: AgentOutcome = policyDecision.verdict === 'BLOCKED' ? 'blocked' : 'no-safe-action';
     return finalize(
       {
@@ -626,7 +816,135 @@ export async function runAgentForFinding(reconciliationId: string, deps: AgentRu
         reconciliationAfterRunId: null,
         findingAfter: 'unresolved',
         outcome: 'no-safe-action',
-        stopReason: 'Policy verdict was SAFE, but targeting (the stricter, final gate) could not resolve a unique single-file/single-declaration edit target. Refusing to act.',
+        stopReason: isHumanDirected
+          ? 'Human-directed resolution was requested, but targeting (the stricter, final gate) could not resolve a unique single-file/single-declaration edit target. Refusing to act.'
+          : 'Policy verdict was SAFE, but targeting (the stricter, final gate) could not resolve a unique single-file/single-declaration edit target. Refusing to act.',
+      },
+      generatedAt,
+      deps.agentHistoryPaths,
+    );
+  }
+
+  // Part 18 — human-directed resolution toward CODE: the human has
+  // reviewed this both-changed-conflict and decided the code's current
+  // value is correct; Figma's divergent current value is not to be
+  // adopted. There is nothing to EDIT (code already holds the chosen
+  // value) — `validateProposedEdit`'s own no-op rule (unmodified) would
+  // correctly refuse a before===after edit, so this branch never invokes
+  // the reasoner or the edit engine at all. Instead it promotes BOTH
+  // baselines directly to their own current values — the same promotion
+  // functions the SAFE/figma-directed path uses — which is what actually
+  // resolves the conflict: reconcile-compare.ts (unmodified) compares
+  // each side only against its OWN baseline, so once neither side
+  // differs from its own (now-promoted) baseline, no record is produced
+  // for this entity at all. Unlike the file-edit path, a promotion
+  // failure here is NOT bookkeeping-only for the CODE baseline — since no
+  // edit happened, a failed code-baseline promotion means this action
+  // accomplished nothing and must be reported as a failure. The FIGMA
+  // baseline promotion keeps the SAME bookkeeping-only discipline the
+  // SAFE path already established (a partial promotion is a safe,
+  // honestly-reportable state, not a corrupted one).
+  if (isHumanDirected && humanDirectedSourceOfTruth === 'code') {
+    if (record.code === null || typeof record.code.baseline !== 'string' || typeof record.code.current !== 'string') {
+      return finalize(
+        {
+          ...commonFields,
+          policyDecision,
+          editTarget,
+          filesInspected: [],
+          filesModified: [],
+          change: null,
+          validation: [],
+          reconciliationAfterRunId: null,
+          findingAfter: 'unresolved',
+          outcome: 'failed-verification',
+          stopReason: 'Human-directed resolution toward "code" requires a string code.baseline/code.current observation, which this finding does not have — refusing.',
+        },
+        generatedAt,
+        deps.agentHistoryPaths,
+      );
+    }
+    if (record.figma === null || typeof record.figma.baseline !== 'string' || typeof record.figma.current !== 'string') {
+      return finalize(
+        {
+          ...commonFields,
+          policyDecision,
+          editTarget,
+          filesInspected: [],
+          filesModified: [],
+          change: null,
+          validation: [],
+          reconciliationAfterRunId: null,
+          findingAfter: 'unresolved',
+          outcome: 'failed-verification',
+          stopReason: 'Human-directed resolution toward "code" requires a string figma.baseline/figma.current observation, which this finding does not have — refusing.',
+        },
+        generatedAt,
+        deps.agentHistoryPaths,
+      );
+    }
+
+    let codeBaselinePromoted = false;
+    try {
+      deps.promoteCodeBaseline(editTarget.declarationIdentifier, record.code.baseline, record.code.current);
+      codeBaselinePromoted = true;
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      return finalize(
+        {
+          ...commonFields,
+          policyDecision,
+          editTarget,
+          filesInspected: [],
+          filesModified: [],
+          change: null,
+          validation: [],
+          reconciliationAfterRunId: null,
+          findingAfter: 'unresolved',
+          outcome: 'failed-verification',
+          stopReason: `Human-directed resolution toward "code" could not promote the CODE baseline, so nothing was resolved: ${message}`,
+        },
+        generatedAt,
+        deps.agentHistoryPaths,
+      );
+    }
+
+    let figmaBaselinePromoted = false;
+    let promotionNote = '';
+    try {
+      const figmaMapping = freshInput.crosswalk.tokens.find((t) => t.registryTokenId === record.registryId);
+      const variableName = figmaMapping && figmaMapping.status === 'resolved' ? figmaMapping.normalizedFigmaName : null;
+      if (!variableName) {
+        throw new AgentError(`No resolved Figma variable name is available for registry token "${record.registryId}" — refusing to promote the Figma baseline.`);
+      }
+      deps.promoteFigmaBaseline(variableName, record.figma.baseline, record.figma.current);
+      figmaBaselinePromoted = true;
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      promotionNote = ` (Figma baseline promotion did not complete: ${message})`;
+    }
+
+    const finalAfterRun = deps.reRunReconciliation(new Date().toISOString());
+    const verification = verifyResolution(record, beforeRun, finalAfterRun);
+    const cleanlyResolved = verification.resolved && verification.newFindings.length === 0 && verification.unrelatedMutations.length === 0;
+
+    return finalize(
+      {
+        ...commonFields,
+        policyDecision,
+        editTarget,
+        filesInspected: [],
+        filesModified: [],
+        change: null,
+        validation: [],
+        reconciliationAfterRunId: finalAfterRun.runId,
+        findingAfter: cleanlyResolved ? 'resolved' : verification.newFindings.length > 0 ? 'new-findings-introduced' : 'unresolved',
+        outcome: cleanlyResolved ? 'applied' : 'failed-verification',
+        codeBaselinePromoted,
+        figmaBaselinePromoted,
+        stopReason: cleanlyResolved
+          ? `Completed successfully: human-directed resolution toward "code" — both baselines were promoted to their own current values, and re-reconciliation confirms the conflict no longer appears.${promotionNote}`
+          : `Baselines were promoted, but re-reconciliation did not confirm a clean resolution (resolved=${verification.resolved}, newFindings=${verification.newFindings.length}, unrelatedMutations=${verification.unrelatedMutations.length}). No file was changed by this action, and baseline promotions are never reverted (reverting would reintroduce a known-stale baseline value) — investigate manually.${promotionNote}`,
       },
       generatedAt,
       deps.agentHistoryPaths,
@@ -638,7 +956,17 @@ export async function runAgentForFinding(reconciliationId: string, deps: AgentRu
   const siblingDeclarations = extractSiblingDeclarations(fileContent, editTarget.declarationIdentifier);
   const filesInspected = [editTarget.filePath];
 
-  const context: ReasonerContext = { record, policyDecision, editTarget, fileContent, siblingDeclarations };
+  // Reaching this line with isHumanDirected true means humanDirectedSourceOfTruth === 'figma'
+  // ('code' already returned above) — pass that through so the reasoner
+  // isn't misled by policyDecision still (correctly) reading BLOCKED.
+  const context: ReasonerContext = {
+    record,
+    policyDecision,
+    editTarget,
+    fileContent,
+    siblingDeclarations,
+    ...(isHumanDirected ? { humanDirected: { sourceOfTruth: 'figma' as const } } : {}),
+  };
   let proposed: ProposedEdit;
   try {
     proposed = await deps.reasoner(context);
@@ -740,13 +1068,64 @@ export async function runAgentForFinding(reconciliationId: string, deps: AgentRu
     }
   }
 
+  // Levels 5-6 (re-snapshot, re-reconcile) are wrapped separately from
+  // levels 1-4: by this point the edit has ALREADY been applied and has
+  // ALREADY independently passed every pre-apply check (typecheck,
+  // targeted test, build, storybook) — it is real and correct regardless
+  // of what happens next. Levels 5-6 depend on external, unrelated
+  // machinery (in production, a live Figma MCP refresh as part of
+  // `npm run sync:reconcile`) that can fail for reasons that have
+  // nothing to do with the edit's own safety or correctness — e.g. a
+  // rate limit (this happened for real during Phase 3 real-repo
+  // verification: the edit was left on disk, correct and validated, but
+  // with no audit record at all, since an uncaught exception here used
+  // to propagate straight out of this function). If either throws, the
+  // edit is deliberately NOT reverted (reverting an already-validated
+  // fix over an unrelated downstream failure would be wrong), and a
+  // complete audit record is still written — honestly labeled
+  // `applied-verification-incomplete`, never silently dropped, never
+  // misrepresented as a normal `applied` or as a `failed-*` outcome
+  // (which would also wrongly block a future retry — see
+  // hasPriorFailedAttempt's own comment).
+  const finalizeVerificationIncomplete = (level: number, command: string, message: string): AgentAuditRecord => {
+    validation.push({ level, command, passed: false, output: message });
+    return finalize(
+      {
+        ...commonFields,
+        policyDecision,
+        editTarget,
+        filesInspected,
+        filesModified,
+        change,
+        validation,
+        reconciliationAfterRunId: null,
+        findingAfter: 'unresolved',
+        outcome: 'applied-verification-incomplete',
+        codeBaselinePromoted: false,
+        figmaBaselinePromoted: false,
+        stopReason: `The edit was applied and passed all pre-apply validation (levels 1-4), but post-apply verification (${command}) failed before it could confirm resolution or promote any baseline: ${message}. The edit was NOT reverted — it was already independently validated. Once the underlying issue is resolved, run reconciliation and re-invoke the agent on this finding to complete verification and baseline promotion.`,
+      },
+      generatedAt,
+      deps.agentHistoryPaths,
+    );
+  };
+
   // Level 5 — re-snapshot (current only, never a baseline).
-  deps.refreshCodeSnapshot();
-  validation.push({ level: 5, command: 'sync:code-check (refresh current CodeSnapshot)', passed: true });
+  try {
+    deps.refreshCodeSnapshot();
+    validation.push({ level: 5, command: 'sync:code-check (refresh current CodeSnapshot)', passed: true });
+  } catch (err) {
+    return finalizeVerificationIncomplete(5, 'sync:code-check (refresh current CodeSnapshot)', err instanceof Error ? err.message : String(err));
+  }
 
   // Level 6 — re-reconcile.
-  const afterRun = deps.reRunReconciliation(generatedAt);
-  validation.push({ level: 6, command: 'sync:reconcile', passed: true });
+  let afterRun: ReconciliationRun;
+  try {
+    afterRun = deps.reRunReconciliation(generatedAt);
+    validation.push({ level: 6, command: 'sync:reconcile', passed: true });
+  } catch (err) {
+    return finalizeVerificationIncomplete(6, 'sync:reconcile', err instanceof Error ? err.message : String(err));
+  }
 
   const verification = verifyResolution(record, beforeRun, afterRun);
   if (!verification.resolved || verification.newFindings.length > 0 || verification.unrelatedMutations.length > 0) {
@@ -775,6 +1154,69 @@ export async function runAgentForFinding(reconciliationId: string, deps: AgentRu
     );
   }
 
+  // Baseline promotion (Phase 1) — runs ONLY after verifyResolution() has
+  // already independently confirmed a clean resolution above. Promotes
+  // exactly the one CODE baseline entry this run changed, then
+  // re-reconciles once more so the persisted Stage 5 record reflects the
+  // promoted baseline. A promotion (or post-promotion reconcile) failure
+  // is bookkeeping-only and must never roll back or fail an
+  // already-verified-successful edit — it is folded into stopReason and
+  // codeBaselinePromoted stays false.
+  //
+  // The expected PRIOR baseline value is `record.code?.baseline` — the
+  // baseline this run actually started with — NOT `proposed.before`
+  // (editTarget.currentValue, i.e. code's CURRENT value). For a
+  // figma-only-change SAFE apply those two are always equal (code hasn't
+  // drifted, so its current IS its baseline), but for a human-directed
+  // resolution of a both-changed-conflict (Part 18) code has already
+  // drifted from its own baseline BEFORE this run's edit — using
+  // `proposed.before` there would ask promoteCodeBaselineForToken to
+  // verify against the wrong prior value and spuriously fail every time.
+  let finalAfterRun = afterRun;
+  let codeBaselinePromoted = false;
+  let figmaBaselinePromoted = false;
+  let promotionNote = '';
+  try {
+    if (typeof record.code?.baseline !== 'string') {
+      throw new AgentError('The targeted finding\'s code.baseline observation is missing or non-string — refusing to promote the code baseline.');
+    }
+    deps.promoteCodeBaseline(editTarget.declarationIdentifier, record.code.baseline, proposed.after);
+    codeBaselinePromoted = true;
+    finalAfterRun = deps.reRunReconciliation(new Date().toISOString());
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    promotionNote += ` (Code baseline promotion did not complete: ${message})`;
+  }
+
+  // Figma baseline promotion — scoped to a figma-only-change SAFE apply,
+  // OR a human-directed resolution of a both-changed-conflict toward
+  // 'figma' (Part 18; the 'code' direction promotes both baselines in
+  // its own dedicated branch above and never reaches this line). Never
+  // for code-only-change/REVIEW. Without this, code and Figma being
+  // genuinely converged still leaves Figma's OWN baseline stale relative
+  // to Figma's OWN current value, so the entity would resurface as a
+  // fresh SAFE figma-only-change on every subsequent reconcile forever.
+  // Runs only once the code baseline promotion above has already
+  // succeeded, so both sides promote together or not at all.
+  if (codeBaselinePromoted && (record.status === 'figma-only-change' || (isHumanDirected && humanDirectedSourceOfTruth === 'figma'))) {
+    try {
+      const figmaMapping = freshInput.crosswalk.tokens.find((t) => t.registryTokenId === record.registryId);
+      const variableName = figmaMapping && figmaMapping.status === 'resolved' ? figmaMapping.normalizedFigmaName : null;
+      if (!variableName) {
+        throw new AgentError(`No resolved Figma variable name is available for registry token "${record.registryId}" — refusing to promote the Figma baseline.`);
+      }
+      if (record.figma === null || typeof record.figma.baseline !== 'string' || typeof record.figma.current !== 'string') {
+        throw new AgentError('The targeted finding\'s Figma observation is missing or non-string — refusing to promote the Figma baseline.');
+      }
+      deps.promoteFigmaBaseline(variableName, record.figma.baseline, record.figma.current);
+      figmaBaselinePromoted = true;
+      finalAfterRun = deps.reRunReconciliation(new Date().toISOString());
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err);
+      promotionNote += ` (Figma baseline promotion did not complete: ${message})`;
+    }
+  }
+
   return finalize(
     {
       ...commonFields,
@@ -784,10 +1226,12 @@ export async function runAgentForFinding(reconciliationId: string, deps: AgentRu
       filesModified,
       change,
       validation,
-      reconciliationAfterRunId: afterRun.runId,
+      reconciliationAfterRunId: finalAfterRun.runId,
       findingAfter: 'resolved',
       outcome: 'applied',
-      stopReason: 'Completed successfully: the targeted finding resolved, no new findings, no unrelated mutations.',
+      codeBaselinePromoted,
+      figmaBaselinePromoted,
+      stopReason: `Completed successfully: the targeted finding resolved, no new findings, no unrelated mutations.${promotionNote}`,
     },
     generatedAt,
     deps.agentHistoryPaths,
@@ -840,13 +1284,19 @@ export function createProductionAgentRunDeps(): AgentRunDeps {
     runLevel3: () => runShellValidation(3, 'npm run build', 'npm', ['run', 'build'], ROOT),
     runLevel4: () => runShellValidation(4, 'npm run build-storybook', 'npm', ['run', 'build-storybook'], ROOT),
     refreshCodeSnapshot: () => {
-      execFileSync('npm', ['run', 'sync:code-check'], { cwd: ROOT, stdio: 'pipe' });
+      execFileSync('npm', ['run', 'sync:code-check'], { cwd: ROOT, stdio: 'pipe', shell: process.platform === 'win32' });
     },
     reRunReconciliation: () => {
-      execFileSync('npm', ['run', 'sync:reconcile'], { cwd: ROOT, stdio: 'pipe' });
+      execFileSync('npm', ['run', 'sync:reconcile'], { cwd: ROOT, stdio: 'pipe', shell: process.platform === 'win32' });
       // Per Part 8: never infer success from exit code for reconciliation —
       // read the persisted JSON it just wrote.
       return readReconciliationRun(RECONCILIATION_LATEST_PATH);
+    },
+    promoteCodeBaseline: (cssVariable, previousValue, newValue) => {
+      promoteCodeBaselineForToken(createProductionPromoteCodeBaselinePaths(), cssVariable, previousValue, newValue);
+    },
+    promoteFigmaBaseline: (variableName, previousValue, newValue) => {
+      promoteFigmaBaselineForVariable(createProductionPromoteFigmaBaselinePaths(), variableName, previousValue, newValue);
     },
   };
 }

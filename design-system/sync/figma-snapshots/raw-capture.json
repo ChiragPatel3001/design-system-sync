@@ -1,12 +1,32 @@
 {
-  "$note": "This is a captured snapshot of Figma MCP tool output at capturedAt — NOT a live connection and NOT a source of truth. It only changes when an agent with Figma MCP access re-runs the investigation and overwrites this file. See design-system/sync/figma-snapshots/README.md.",
+  "$note": "Auto-refreshed by createFigmaDevModeMcpCaptureSource (figma-capture-source.ts) via the local Figma Dev Mode MCP Server — variable values only; structural fields (pages, sections, variant symbols, dimensions, textStyleVariableDefs) carried over unchanged from the previous capture.",
   "captureSchemaVersion": "1.0.0",
   "fileKey": "opq4Is8eZdXdu920YDUIs1",
   "fileName": "Design-System-2.0",
-  "capturedAt": "2026-09-21T04:55:58.120Z",
+  "capturedAt": "2026-09-22T02:26:32.931Z",
   "capturedVia": [
     "mcp__claude_ai_Figma__get_metadata (page list; canvas 14:592 full subtree; canvas 0:1 full subtree)",
-    "mcp__claude_ai_Figma__get_variable_defs (per-component node id, x10; text-styles specimen frame 70:170)"
+    "mcp__claude_ai_Figma__get_variable_defs (per-component node id, x10; text-styles specimen frame 70:170)",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp",
+    "figma-capture-source.ts: get_variable_defs (per-component node id, x10) via http://127.0.0.1:3845/mcp"
   ],
   "pagesFromNoNodeIdListing": [
     {
@@ -117,7 +137,7 @@
       "variableDefs": {
         "Icon/on-action": "#ffffff",
         "Text/on-action": "#ffffff",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",
@@ -264,7 +284,7 @@
       ],
       "variableDefs": {
         "Text/Body": "#1b1b1a",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",
@@ -357,7 +377,7 @@
       "variableDefs": {
         "Icon/placeholder": "#575756",
         "Text/placeholder": "#575756",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",
@@ -406,7 +426,7 @@
       ],
       "variableDefs": {
         "Text/Body": "#1b1b1a",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",
@@ -507,7 +527,7 @@
         "Surface/default-secondary": "#ffffff",
         "Border/default": "#d5d5d5",
         "Text/Body": "#1b1b1a",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",
@@ -561,7 +581,7 @@
       ],
       "variableDefs": {
         "Text/Body": "#1b1b1a",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",
@@ -596,7 +616,7 @@
       "variantSymbols": [],
       "variableDefs": {
         "Text/Body": "#1b1b1a",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",
@@ -647,7 +667,7 @@
       "variableDefs": {
         "Icon/action": "#8a38f5",
         "Text/action": "#8a38f5",
-        "Paragraph Medium/Line Height": "20",
+        "Paragraph Medium/Line Height": "28",
         "Font Family/Body": "Inter",
         "Paragraph Medium/Paragraph Spacing": "8",
         "Paragraph Medium/Font size": "16",

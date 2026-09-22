@@ -125,11 +125,20 @@ export function createMockClaudeClient(response: string | (() => string)): Claud
 // =======================================================================
 
 export function buildPrompt(context: ReasonerContext): string {
-  const { record, policyDecision, editTarget, fileContent, siblingDeclarations } = context;
+  const { record, policyDecision, editTarget, fileContent, siblingDeclarations, humanDirected } = context;
 
   const siblingLines = siblingDeclarations.length
     ? siblingDeclarations.map((s) => `  ${s.identifier}: ${s.value};`).join('\n')
     : '  (no other declarations in this file)';
+
+  // Only ever present for a human-directed resolution of a
+  // both-changed-conflict toward 'figma' (see agent-run.ts's Part 18) —
+  // explains why a proposal is being requested even though the POLICY
+  // DECISION section below (deliberately left unaltered) still reads
+  // BLOCKED, so Claude isn't misled by that apparent contradiction.
+  const humanDirectedNote = humanDirected
+    ? `\nHUMAN-DIRECTED OVERRIDE\n  A human reviewer has already examined this conflict and explicitly directed that the Figma current value below is authoritative for this one case, overriding the policy verdict above for this one exception only. Propose the replacement value for the code declaration that matches Figma's current value, following the same local-convention rules as always (see OTHER DECLARATIONS below).\n`
+    : '';
 
   return `You are proposing a single, minimal value replacement for an already-authorized design-token synchronization edit. You do not choose what is edited — that has already been decided deterministically. You only decide what the new value should be.
 
@@ -145,7 +154,7 @@ RECONCILIATION FINDING
 POLICY DECISION THAT AUTHORIZED THIS ATTEMPT
   verdict: ${policyDecision.verdict}
   reason: ${policyDecision.reason}
-
+${humanDirectedNote}
 AUTHORIZED EDIT TARGET (fixed — you may not change or reinterpret this)
   file: ${editTarget.filePath}
   declaration: ${editTarget.declarationIdentifier}

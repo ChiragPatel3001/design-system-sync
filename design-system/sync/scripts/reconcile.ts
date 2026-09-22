@@ -47,7 +47,7 @@ import { createHash } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { REGISTRY_PATH, MANIFEST_PATH } from './paths.ts';
-import { FIGMA_BASELINE_PATH, FIGMA_CURRENT_PATH } from './figma-paths.ts';
+import { FIGMA_BASELINE_PATH, FIGMA_CURRENT_PATH, FIGMA_RAW_CAPTURE_PATH, FIGMA_ARCHIVE_DIR } from './figma-paths.ts';
 import { CODE_BASELINE_PATH, CODE_CURRENT_PATH } from './code-paths.ts';
 import { RECONCILIATION_RECORDS_DIR, RECONCILIATION_LATEST_PATH, relToRoot } from './reconcile-paths.ts';
 import { loadRegistry, loadManifestMeta, buildSnapshot } from './snapshot.ts';
@@ -56,6 +56,7 @@ import { readCodeSnapshotFile } from './code-snapshot.ts';
 import { loadRegistryJson, buildReconciliationCrosswalk } from './reconcile-crosswalk.ts';
 import { reconcileSnapshots, type ReconcileSnapshotsInput, type RegistryUnresolvedEntry } from './reconcile-compare.ts';
 import type { ReconciliationRecord, ReconciliationRun, ReconciliationStatus, ReconciliationWarning } from './reconcile-types.ts';
+import { refreshFigmaCapture, FigmaRefreshError } from './figma-refresh.ts';
 
 const SCHEMA_VERSION = '1.0.0';
 
@@ -374,7 +375,55 @@ function printSummary(run: ReconciliationRun): void {
   console.log(`  conflicts (both-changed-conflict): ${run.conflictCount}`);
 }
 
-function main(): void {
+/**
+ * Automatic Figma refresh — new, additive CLI-only behavior on top of
+ * everything below it. Attempts exactly one live capture refresh
+ * (figma-refresh.ts -> figma-capture-source.ts's real Dev Mode MCP
+ * adapter) before reconciliation reads its inputs. This function makes
+ * NO comparison/semantic decision and never touches a baseline, the
+ * registry, or reconcile-compare.ts — it only decides whether the
+ * refresh attempt succeeded, and fails closed (stops the whole run,
+ * never reconciles against silently-stale data) if it didn't, unless the
+ * caller has explicitly opted out.
+ *
+ * Set FIGMA_SKIP_AUTO_REFRESH=1 to reconcile against whatever is already
+ * on disk instead (e.g. offline work, or no Figma desktop app running).
+ *
+ * Exported so design-system/sync/scripts/dashboard-reconcile-handler.ts's
+ * "Run Reconcile" dashboard action can call this EXACT SAME function
+ * rather than a second copy of it.
+ */
+export async function attemptAutomaticFigmaRefresh(): Promise<{ ok: true; snapshotId: string | null } | { ok: false; message: string }> {
+  if (process.env.FIGMA_SKIP_AUTO_REFRESH === '1') {
+    console.log('FIGMA_SKIP_AUTO_REFRESH=1 — reconciling against the Figma capture already on disk, not attempting a live refresh.');
+    return { ok: true, snapshotId: null };
+  }
+
+  console.log('Refreshing the Figma capture (Dev Mode MCP Server) before reconciling...');
+  try {
+    const { snapshot } = await refreshFigmaCapture({
+      rawCapturePath: FIGMA_RAW_CAPTURE_PATH,
+      figmaCurrentPath: FIGMA_CURRENT_PATH,
+      figmaArchiveDir: FIGMA_ARCHIVE_DIR,
+    });
+    console.log(`Figma capture refreshed: current snapshot ${snapshot.snapshotId} (captured ${snapshot.source.capturedAt})`);
+    console.log('');
+    return { ok: true, snapshotId: snapshot.snapshotId };
+  } catch (err) {
+    const message = err instanceof FigmaRefreshError || err instanceof Error ? err.message : String(err);
+    return { ok: false, message };
+  }
+}
+
+async function main(): Promise<void> {
+  const refreshResult = await attemptAutomaticFigmaRefresh();
+  if (!refreshResult.ok) {
+    console.error(`Could not automatically refresh the Figma capture: ${refreshResult.message}`);
+    console.error('Set FIGMA_SKIP_AUTO_REFRESH=1 to reconcile against the last cached Figma capture instead.');
+    process.exitCode = 1;
+    return;
+  }
+
   let input: ReconcileSnapshotsInput;
   try {
     input = loadReconciliationInputs({

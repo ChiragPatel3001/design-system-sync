@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "568bde3637c3c8bc",
-  "generatedAt": "2026-09-21T05:03:07.702Z",
+  "snapshotId": "084eb498971b1ee8",
+  "generatedAt": "2026-09-21T20:23:43.589Z",
   "source": {
     "fileKey": "opq4Is8eZdXdu920YDUIs1",
     "fileName": "Design-System-2.0",
@@ -1710,7 +1710,7 @@
     },
     {
       "name": "Paragraph Medium/Line Height",
-      "value": "20",
+      "value": "28",
       "inferredType": "FLOAT",
       "consumedBy": [
         "15:664",

@@ -13,6 +13,9 @@ import {
   computeAuditId,
   isEquivalentLengthValue,
   verifyResolution,
+  AgentError,
+  createProductionAgentRunDeps,
+  createProductionReconciliationOutputPaths,
   type AgentRunDeps,
   type AgentAuditRecord,
   type ValidationStepResult,
@@ -21,6 +24,8 @@ import type { PolicyDecision } from './agent-policy-types.ts';
 import { loadReconciliationInputs, buildReconciliationRun, persistReconciliationRun, type ReconcileInputPaths, type ReconciliationOutputPaths } from './reconcile.ts';
 import { reconcileSnapshots } from './reconcile-compare.ts';
 import { buildCodeSnapshot, writeCodeSnapshotFile } from './code-snapshot.ts';
+import { promoteCodeBaselineForToken } from './code-baseline-promote.ts';
+import { promoteFigmaBaselineForVariable } from './figma-baseline-promote.ts';
 import type { ReconciliationRecord, ReconciliationRun } from './reconcile-types.ts';
 
 // =======================================================================
@@ -35,6 +40,8 @@ interface ScenarioPaths {
   reconciliationInputPaths: ReconcileInputPaths;
   reconciliationOutputPaths: ReconciliationOutputPaths;
   agentHistoryPaths: { recordsDir: string; latestPath: string };
+  codeArchiveDir: string;
+  figmaArchiveDir: string;
 }
 
 function scaffoldScenarioPaths(tempRoot: string): ScenarioPaths {
@@ -66,6 +73,8 @@ function scaffoldScenarioPaths(tempRoot: string): ScenarioPaths {
       recordsDir: path.join(tempRoot, 'agent-history', 'records'),
       latestPath: path.join(tempRoot, 'agent-history', 'latest.json'),
     },
+    codeArchiveDir: path.join(tempRoot, 'code-snapshots', 'archive'),
+    figmaArchiveDir: path.join(tempRoot, 'figma-snapshots', 'archive'),
   };
 }
 
@@ -142,6 +151,22 @@ function makeDeps(scenario: ScenarioPaths, tokensCssPath: string, expectedAfterV
     runLevel4: validators.runLevel4,
     refreshCodeSnapshot: () => buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath),
     reRunReconciliation: (generatedAt: string) => reconcileAndPersist(scenario, generatedAt),
+    promoteCodeBaseline: (cssVariable: string, previousValue: string, newValue: string) => {
+      promoteCodeBaselineForToken(
+        { codeBaselinePath: scenario.reconciliationInputPaths.codeBaselinePath, codeArchiveDir: scenario.codeArchiveDir },
+        cssVariable,
+        previousValue,
+        newValue,
+      );
+    },
+    promoteFigmaBaseline: (variableName: string, previousValue: string, newValue: string) => {
+      promoteFigmaBaselineForVariable(
+        { figmaBaselinePath: scenario.reconciliationInputPaths.figmaBaselinePath, figmaArchiveDir: scenario.figmaArchiveDir },
+        variableName,
+        previousValue,
+        newValue,
+      );
+    },
   };
 }
 
@@ -200,9 +225,18 @@ describe('agent-run.ts — isolated end-to-end (Part 12)', () => {
       assert.equal((finalContent.match(/--widget-color:/g) ?? []).length, 1);
       assert.notEqual(finalContent, originalFileContent);
 
-      // 4. No baseline was modified.
+      // 4. The CODE baseline for this one entity was promoted to the newly
+      // applied value (Part 15 / Phase 1) — this run's outcome is
+      // 'applied', so this is the intended new behavior, not a leftover
+      // pre-Phase-1 assumption. Since this finding is a figma-only-change
+      // SAFE apply, the FIGMA baseline is ALSO promoted for the same
+      // entity (Part 16 / Phase 2), so both sides converge together.
+      assert.equal(audit.codeBaselinePromoted, true);
+      assert.equal(audit.figmaBaselinePromoted, true);
       const baselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.codeBaselinePath, 'utf8'));
-      assert.equal(baselineAfter.tokenDefinitions.find((t: { cssVariable: string }) => t.cssVariable === '--widget-color').value, '#111111');
+      assert.equal(baselineAfter.tokenDefinitions.find((t: { cssVariable: string }) => t.cssVariable === '--widget-color').value, '#222222');
+      const figmaBaselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.figmaBaselinePath, 'utf8'));
+      assert.equal(figmaBaselineAfter.variables.find((v: { name: string }) => v.name === 'Widget/color').value, '#222222');
 
       // 5. Validation levels 1-4 executed.
       const levels1to4 = audit.validation.filter((v) => v.level <= 4);
@@ -221,10 +255,16 @@ describe('agent-run.ts — isolated end-to-end (Part 12)', () => {
       // 8. The original finding resolved (code now matches Figma's current value).
       assert.equal(audit.findingAfter, 'resolved');
 
-      // 9. No unrelated findings appeared (only the targeted token had any record at all in this minimal fixture).
+      // 9. No findings at all remain for this entity. latest.json here is
+      // the run AFTER both baselines promoted (reconciliationAfterRunId
+      // above) — with BOTH sides now matching their own baselines, this
+      // entity produces no reconciliation record at all, not a fresh
+      // figma-only-change (Part 16 / Phase 2: promoting only the code
+      // baseline, as Phase 1 did alone, would have left this resurfacing
+      // forever; promoting Figma's too closes that gap).
       const afterRun: ReconciliationRun = JSON.parse(readFileSync(scenario.reconciliationOutputPaths.latestPath, 'utf8'));
-      const otherRecords = afterRun.records.filter((r) => r.entityId !== 'widget-color');
-      assert.deepEqual(otherRecords, []);
+      const widgetColorRecordAfter = afterRun.records.find((r) => r.entityId === 'widget-color');
+      assert.equal(widgetColorRecordAfter, undefined, 'the entity must no longer appear in reconciliation records at all once both baselines have converged');
 
       // 10-13. Audit record exists, references the correct run/finding, has before/after.
       assert.ok(existsSync(scenario.agentHistoryPaths.latestPath));
@@ -290,12 +330,21 @@ describe('agent-run.ts — isolated end-to-end (Part 12)', () => {
 
       const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, deps, '2026-01-02T00:00:00.000Z');
 
-      // Confirm Stage 5's OWN comparison really did land on both-changed-conflict
-      // (exact string "24" !== "24px") — i.e. this test is genuinely exercising
-      // the representational gap, not something that would have resolved anyway.
-      const afterRun: ReconciliationRun = JSON.parse(readFileSync(scenario.reconciliationOutputPaths.latestPath, 'utf8'));
-      const afterRecord = afterRun.records.find((r) => r.entityId === 'widget-length');
-      assert.ok(afterRecord, 'expected the targeted record to still be present in the after-run');
+      // Confirm Stage 5's OWN Level-6 comparison really did land on
+      // both-changed-conflict (exact string "24" !== "24px") — i.e. this
+      // test is genuinely exercising the representational gap, not
+      // something that would have resolved anyway. Since Phase 1's own
+      // code-baseline promotion (see Part 15 below) now runs a SECOND
+      // reconciliation immediately afterward and latest.json reflects
+      // only that final one, the pre-promotion Level-6 run is instead
+      // located among the immutable per-run records persistReconciliationRun()
+      // always archives (see reconcile.ts) — never overwritten, so it is
+      // still there regardless of what ran after it.
+      const recordFiles = readdirSync(scenario.reconciliationOutputPaths.recordsDir);
+      const archivedRuns: ReconciliationRun[] = recordFiles.map((f) => JSON.parse(readFileSync(path.join(scenario.reconciliationOutputPaths.recordsDir, f), 'utf8')));
+      const conflictRun = archivedRuns.find((r) => r.records.some((rec) => rec.entityId === 'widget-length' && rec.status === 'both-changed-conflict'));
+      assert.ok(conflictRun, 'expected an archived run capturing the pre-promotion both-changed-conflict state');
+      const afterRecord = conflictRun!.records.find((r) => r.entityId === 'widget-length');
       assert.equal(afterRecord!.status, 'both-changed-conflict', 'Stage 5\'s exact-string comparison must still call this a conflict — reconcile-compare.ts is unmodified');
       assert.equal(afterRecord!.figma?.current, '24');
       assert.equal(afterRecord!.code?.current, '24px');
@@ -310,11 +359,570 @@ describe('agent-run.ts — isolated end-to-end (Part 12)', () => {
       assert.deepEqual(audit.change, { before: '20px', after: '24px' });
 
       // No unrelated findings in this minimal fixture.
-      const otherRecords = afterRun.records.filter((r) => r.entityId !== 'widget-length');
+      const otherRecords = conflictRun!.records.filter((r) => r.entityId !== 'widget-length');
       assert.deepEqual(otherRecords, []);
     } finally {
       rmSync(tempRoot, { recursive: true, force: true });
     }
+  });
+});
+
+// =======================================================================
+// Part 19 — the audit-trail gap found during Phase 3 real-repo
+// verification: if the post-apply refresh/reconcile (levels 5-6) fails
+// (e.g. a live Figma MCP rate limit), an already-applied, already
+// pre-apply-validated edit must NEVER be left with no audit record at
+// all, and must NEVER be rolled back over an unrelated external
+// failure. See agent-run.ts's `finalizeVerificationIncomplete`.
+// =======================================================================
+
+describe('agent-run.ts — applied-verification-incomplete (Part 19)', () => {
+  test('Level 6 (reRunReconciliation) throwing after a real apply: a complete audit record is written, the edit is NOT rolled back, and loop prevention does not block a legitimate future retry', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-verification-incomplete-l6-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'colors.css');
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #111111;\n}\n', 'utf8');
+
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-color', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/color', cssVariable: '--widget-color', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'fb', [{ name: 'Widget/color', value: '#111111' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'fc', [{ name: 'Widget/color', value: '#222222' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-color');
+      assert.equal(targetedRecordBefore.status, 'figma-only-change');
+
+      const baseDeps = makeDeps(scenario, tokensCssPath, '#222222', null);
+      // Simulates exactly what happened live during Phase 3 verification:
+      // the edit applies and passes levels 1-4 cleanly, then Level 6
+      // (re-reconcile, which in production shells out to `npm run
+      // sync:reconcile` and attempts a live Figma MCP refresh) throws.
+      const deps: AgentRunDeps = {
+        ...baseDeps,
+        reRunReconciliation: () => {
+          throw new Error('simulated: Figma Dev Mode MCP Server rate limit exceeded, please try again tomorrow');
+        },
+      };
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, deps, '2026-01-02T00:00:00.000Z');
+
+      // The outcome honestly distinguishes this from both a clean success
+      // and a genuine failure.
+      assert.equal(audit.outcome, 'applied-verification-incomplete');
+      assert.equal(audit.findingAfter, 'unresolved');
+      assert.equal(audit.reconciliationAfterRunId, null);
+
+      // The edit itself is real and was NOT rolled back — it was already
+      // independently validated by levels 1-4 before Level 6 ever ran.
+      assert.deepEqual(audit.filesModified, ['src/tokens/colors.css']);
+      assert.deepEqual(audit.change, { before: '#111111', after: '#222222' });
+      assert.match(readFileSync(tokensCssPath, 'utf8'), /--widget-color:\s*#222222;/, 'the file on disk must still reflect the applied edit, not a reverted one');
+
+      // Neither baseline promotion ever ran (it happens strictly after a
+      // confirmed clean verification, which never completed here).
+      assert.equal(audit.codeBaselinePromoted, false);
+      assert.equal(audit.figmaBaselinePromoted, false);
+
+      // Validation levels 1-5 are recorded as genuinely passed (Level 5's
+      // refreshCodeSnapshot succeeds before Level 6's reRunReconciliation
+      // throws); level 6 is recorded as genuinely failed, with the real,
+      // unmodified error message — never dropped, never paraphrased away.
+      assert.deepEqual(
+        audit.validation.map((v) => v.level),
+        [1, 2, 3, 4, 5, 6],
+      );
+      assert.ok(audit.validation.slice(0, 5).every((v) => v.passed));
+      const level6 = audit.validation.find((v) => v.level === 6);
+      assert.equal(level6?.passed, false);
+      assert.match(level6?.output ?? '', /rate limit exceeded/);
+
+      // The stopReason names the specific downstream failure verbatim.
+      assert.match(audit.stopReason, /rate limit exceeded/);
+      assert.match(audit.stopReason, /NOT reverted/);
+
+      // A COMPLETE audit record was actually persisted to disk — not
+      // silently dropped, not merely returned in-memory.
+      assert.ok(existsSync(scenario.agentHistoryPaths.latestPath));
+      const persisted: AgentAuditRecord = JSON.parse(readFileSync(scenario.agentHistoryPaths.latestPath, 'utf8'));
+      assert.equal(persisted.auditId, audit.auditId);
+      assert.equal(persisted.outcome, 'applied-verification-incomplete');
+      const recordFiles = readdirSync(scenario.agentHistoryPaths.recordsDir);
+      assert.equal(recordFiles.length, 1);
+
+      // Loop prevention does NOT treat this as a failed attempt — the edit
+      // succeeded; only an unrelated downstream step didn't complete. A
+      // legitimate future retry against this same finding must not be
+      // blocked by hasPriorFailedAttempt.
+      assert.equal(hasPriorFailedAttempt(scenario.agentHistoryPaths.recordsDir, targetedRecordBefore.reconciliationId), false);
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test('Level 5 (refreshCodeSnapshot) throwing after a real apply is also recorded as applied-verification-incomplete, distinctly from a Level 6 failure', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-verification-incomplete-l5-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'colors.css');
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #111111;\n}\n', 'utf8');
+
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-color', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/color', cssVariable: '--widget-color', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'fb', [{ name: 'Widget/color', value: '#111111' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'fc', [{ name: 'Widget/color', value: '#222222' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-color');
+
+      const baseDeps = makeDeps(scenario, tokensCssPath, '#222222', null);
+      const deps: AgentRunDeps = {
+        ...baseDeps,
+        refreshCodeSnapshot: () => {
+          throw new Error('simulated: sync:code-check failed');
+        },
+      };
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, deps, '2026-01-02T00:00:00.000Z');
+
+      assert.equal(audit.outcome, 'applied-verification-incomplete');
+      assert.deepEqual(audit.change, { before: '#111111', after: '#222222' });
+      assert.match(readFileSync(tokensCssPath, 'utf8'), /--widget-color:\s*#222222;/);
+      assert.deepEqual(
+        audit.validation.map((v) => v.level),
+        [1, 2, 3, 4, 5],
+      );
+      const level5 = audit.validation.find((v) => v.level === 5);
+      assert.equal(level5?.passed, false);
+      assert.match(level5?.output ?? '', /sync:code-check failed/);
+      assert.equal(hasPriorFailedAttempt(scenario.agentHistoryPaths.recordsDir, targetedRecordBefore.reconciliationId), false);
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+});
+
+// =======================================================================
+// Part 15/16 (Phase 1 + Phase 2) — baseline promotion after a successful
+// apply. See code-baseline-promote.ts's/figma-baseline-promote.ts's own
+// headers for the full rationale: a representational-gap token (Figma's
+// unitless resolved value vs Code's px-suffixed literal) produces a
+// *permanent* both-changed-conflict -> BLOCKED record after every
+// successful fix, because neither baseline is otherwise ever refreshed.
+// Phase 1 promoted only the CODE baseline (which, alone, still leaves a
+// figma-only-change finding resurfacing after every apply, since Figma's
+// baseline stays stale). Phase 2 additionally promotes the FIGMA
+// baseline, but ONLY for a figma-only-change SAFE apply — never for
+// code-only-change/REVIEW, never for both-changed-conflict, never for a
+// future human-directed resolution.
+// =======================================================================
+
+describe('agent-run.ts — baseline promotion after a successful apply (Part 15/16 / Phase 1+2)', () => {
+  test('promotes both the CODE and FIGMA baselines for a figma-only-change SAFE apply, and the subsequent reconcile shows no finding at all for that entity', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-baseline-promote-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'typography.css');
+
+      // Same representational-gap setup as the Stage 6E test above:
+      // Figma reports a unitless length, Code stores a px literal.
+      writeFileSync(tokensCssPath, ':root {\n  --widget-length: 20px;\n}\n', 'utf8');
+
+      writeRegistryFixture(scenario, [
+        {
+          tokenId: 'widget-length',
+          sourceType: 'figma-variable',
+          figmaName: 'Mapped/Widget/length',
+          cssVariable: '--widget-length',
+          consumedBy: [],
+        },
+      ]);
+
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline-len', [{ name: 'Widget/length', value: '20' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current-len', [{ name: 'Widget/length', value: '24' }]);
+
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-length');
+      assert.equal(targetedRecordBefore.status, 'figma-only-change');
+
+      // Confirm the CODE baseline has not been promoted yet.
+      const baselineBefore = JSON.parse(readFileSync(scenario.reconciliationInputPaths.codeBaselinePath, 'utf8'));
+      assert.equal(baselineBefore.tokenDefinitions.find((t: { cssVariable: string }) => t.cssVariable === '--widget-length').value, '20px');
+
+      const deps = makeDeps(scenario, tokensCssPath, '24px', null, '--widget-length');
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, deps, '2026-01-02T00:00:00.000Z');
+
+      assert.equal(audit.outcome, 'applied');
+      assert.equal(audit.findingAfter, 'resolved');
+      assert.equal(audit.codeBaselinePromoted, true, 'a clean successful apply must promote the one CODE baseline entry it changed');
+      // This finding is a figma-only-change SAFE apply, so the FIGMA
+      // baseline is ALSO promoted for the same entity (Part 16 / Phase 2).
+      assert.equal(audit.figmaBaselinePromoted, true, 'a figma-only-change SAFE apply must also promote the FIGMA baseline for the same entity');
+
+      // The CODE baseline file itself was updated for ONLY this one entity.
+      const baselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.codeBaselinePath, 'utf8'));
+      assert.equal(
+        baselineAfter.tokenDefinitions.find((t: { cssVariable: string }) => t.cssVariable === '--widget-length').value,
+        '24px',
+        'the code baseline for --widget-length must now read 24px',
+      );
+
+      // The FIGMA baseline file itself was updated for ONLY this one variable.
+      const figmaBaselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.figmaBaselinePath, 'utf8'));
+      assert.equal(
+        figmaBaselineAfter.variables.find((v: { name: string }) => v.name === 'Widget/length').value,
+        '24',
+        'the figma baseline for "Widget/length" must now read the resolved current value "24"',
+      );
+
+      // The persisted Stage 5 record (reconciliationAfterRunId, which the
+      // agent updated after each promotion) no longer shows
+      // both-changed-conflict for this entity — and, since BOTH sides now
+      // match their own baselines, no record exists for it at all
+      // (superseding Phase 1 alone, which only promoted the code side and
+      // left it resurfacing as a fresh figma-only-change every time).
+      const finalRun: ReconciliationRun = JSON.parse(readFileSync(scenario.reconciliationOutputPaths.latestPath, 'utf8'));
+      assert.equal(finalRun.runId, audit.reconciliationAfterRunId, 'the audit record must point at the final, post-promotion reconciliation run');
+      const finalRecord = finalRun.records.find((r) => r.entityId === 'widget-length');
+      assert.equal(finalRecord, undefined, 'once both baselines converge, the entity must produce no reconciliation record at all — not a fresh SAFE finding');
+
+      // A wholly independent, later reconcile (not one the agent itself
+      // triggered) confirms both promoted baselines are durably persisted,
+      // not just an artifact of the re-reconciliations inside this run.
+      const laterRun = reconcileAndPersist(scenario, '2026-01-03T00:00:00.000Z');
+      const laterRecord = laterRun.records.find((r) => r.entityId === 'widget-length');
+      assert.equal(laterRecord, undefined, 'a fresh, independent reconcile must still show no finding for this entity');
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test('a promotion whose expected previous value has drifted since the run started is refused, and does not fail the already-verified-successful apply', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-baseline-promote-drift-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'typography.css');
+      writeFileSync(tokensCssPath, ':root {\n  --widget-length: 20px;\n}\n', 'utf8');
+
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-length', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/length', cssVariable: '--widget-length', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline-len', [{ name: 'Widget/length', value: '20' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current-len', [{ name: 'Widget/length', value: '24' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-length');
+
+      // Simulate the baseline having drifted (e.g. a concurrent promotion)
+      // since the run started, by pointing promoteCodeBaseline at a
+      // deliberately WRONG expected-previous-value path: reuse makeDeps
+      // but override promoteCodeBaseline to always throw, mirroring what
+      // promoteCodeBaselineForToken itself would do on a real mismatch.
+      const deps = makeDeps(scenario, tokensCssPath, '24px', null, '--widget-length');
+      const throwingDeps: AgentRunDeps = {
+        ...deps,
+        promoteCodeBaseline: () => {
+          throw new Error('simulated: baseline value has drifted since this run started');
+        },
+      };
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, throwingDeps, '2026-01-02T00:00:00.000Z');
+
+      // The edit itself still succeeded and was NOT rolled back — promotion
+      // failure is bookkeeping-only, never fatal to an already-verified fix.
+      assert.equal(audit.outcome, 'applied');
+      assert.equal(audit.findingAfter, 'resolved');
+      assert.match(readFileSync(tokensCssPath, 'utf8'), /--widget-length:\s*24px;/);
+
+      // But promotion itself is honestly recorded as not having happened.
+      // The Figma baseline promotion never even attempts to run, since
+      // it's gated on the code baseline promotion having succeeded first.
+      assert.equal(audit.codeBaselinePromoted, false);
+      assert.equal(audit.figmaBaselinePromoted, false);
+      assert.match(audit.stopReason, /baseline promotion did not complete/i);
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test('a FIGMA promotion whose expected previous value has drifted is refused without rolling back the already-applied edit or the (already-succeeded) code baseline promotion', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-baseline-promote-figma-drift-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'typography.css');
+      writeFileSync(tokensCssPath, ':root {\n  --widget-length: 20px;\n}\n', 'utf8');
+
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-length', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/length', cssVariable: '--widget-length', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline-len', [{ name: 'Widget/length', value: '20' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current-len', [{ name: 'Widget/length', value: '24' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-length');
+
+      const deps = makeDeps(scenario, tokensCssPath, '24px', null, '--widget-length');
+      const throwingFigmaDeps: AgentRunDeps = {
+        ...deps,
+        promoteFigmaBaseline: () => {
+          throw new Error('simulated: Figma baseline value has drifted since this run started');
+        },
+      };
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, throwingFigmaDeps, '2026-01-02T00:00:00.000Z');
+
+      // The edit and the code baseline promotion both still succeeded.
+      assert.equal(audit.outcome, 'applied');
+      assert.equal(audit.findingAfter, 'resolved');
+      assert.match(readFileSync(tokensCssPath, 'utf8'), /--widget-length:\s*24px;/);
+      assert.equal(audit.codeBaselinePromoted, true);
+      const baselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.codeBaselinePath, 'utf8'));
+      assert.equal(baselineAfter.tokenDefinitions.find((t: { cssVariable: string }) => t.cssVariable === '--widget-length').value, '24px');
+
+      // But the Figma baseline promotion itself is honestly recorded as not having happened.
+      assert.equal(audit.figmaBaselinePromoted, false);
+      assert.match(audit.stopReason, /figma baseline promotion did not complete/i);
+
+      // The Figma baseline file itself was never touched.
+      const figmaBaselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.figmaBaselinePath, 'utf8'));
+      assert.equal(figmaBaselineAfter.variables.find((v: { name: string }) => v.name === 'Widget/length').value, '20');
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test('a code-only-change REVIEW finding never triggers Figma baseline promotion (scope: figma-only-change SAFE applies only)', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-baseline-promote-scope-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'colors.css');
+      // Figma unchanged, code changed since baseline -> code-only-change -> REVIEW (never SAFE).
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-color', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/color', cssVariable: '--widget-color', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline', [{ name: 'Widget/color', value: '#111111' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current', [{ name: 'Widget/color', value: '#111111' }]);
+
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #111111;\n}\n', 'utf8');
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #333333;\n}\n', 'utf8');
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-color');
+      assert.equal(targetedRecordBefore.status, 'code-only-change');
+
+      const deps = makeDeps(scenario, tokensCssPath, '#333333', null);
+      const canaryDeps: AgentRunDeps = {
+        ...deps,
+        promoteFigmaBaseline: () => {
+          throw new Error('promoteFigmaBaseline must never be invoked for a code-only-change/REVIEW finding');
+        },
+      };
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, canaryDeps, '2026-01-02T00:00:00.000Z');
+
+      assert.equal(audit.policyDecision.verdict, 'REVIEW');
+      assert.equal(audit.outcome, 'no-safe-action');
+      assert.equal(audit.figmaBaselinePromoted, false);
+      assert.deepEqual(audit.filesModified, []);
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+});
+
+// =======================================================================
+// Part 18 — human-directed resolution of a token-level both-changed-
+// conflict finding. Scoped ONLY to entityType 'token' + status
+// 'both-changed-conflict' — never registry-expectation-mismatch, never
+// any component-level finding (they have no single-value editTarget).
+// =======================================================================
+
+describe('agent-run.ts — human-directed resolution (Part 18)', () => {
+  test("sourceOfTruth: 'figma' — reuses the SAME reasoner->validate->apply->verify pipeline, edits code to match Figma, promotes BOTH baselines, and the conflict clears", async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-human-directed-figma-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'typography.css');
+
+      // A genuine both-changed-conflict: Figma resolves to "24" (unitless),
+      // code independently drifted to "30px" — raw strings differ from
+      // each other AND from what Figma's value would look like as px, so
+      // Stage 5's own exact-string comparison genuinely calls this a
+      // conflict (not a representational-gap false positive).
+      writeFileSync(tokensCssPath, ':root {\n  --widget-length: 20px;\n}\n', 'utf8');
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-length', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/length', cssVariable: '--widget-length', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline-len', [{ name: 'Widget/length', value: '20' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current-len', [{ name: 'Widget/length', value: '24' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      writeFileSync(tokensCssPath, ':root {\n  --widget-length: 30px;\n}\n', 'utf8');
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-length');
+      assert.equal(targetedRecordBefore.status, 'both-changed-conflict');
+      assert.equal(targetedRecordBefore.figma?.current, '24');
+      assert.equal(targetedRecordBefore.code?.current, '30px');
+
+      // The mock reasoner proposes "24px" — matching Figma's resolved
+      // value, following the file's own established px convention (the
+      // same thing a real Claude call would be asked to do — see the
+      // "HUMAN-DIRECTED OVERRIDE" prompt addition in agent-claude-reasoner.ts).
+      const deps = makeDeps(scenario, tokensCssPath, '24px', null, '--widget-length');
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, deps, '2026-01-02T00:00:00.000Z', { humanDirectedSourceOfTruth: 'figma' });
+
+      assert.equal(audit.outcome, 'applied');
+      assert.equal(audit.humanDirected, true);
+      assert.equal(audit.sourceOfTruth, 'figma');
+      assert.equal(audit.policyDecision.verdict, 'BLOCKED', 'the real policy fact is preserved untouched — only the gate was bypassed, never the recorded verdict');
+      assert.deepEqual(audit.filesModified, ['src/tokens/typography.css']);
+      assert.deepEqual(audit.change, { before: '30px', after: '24px' });
+      assert.match(readFileSync(tokensCssPath, 'utf8'), /--widget-length:\s*24px;/);
+
+      // Both baselines promoted — full convergence, same as the
+      // figma-only-change SAFE path (Part 15/16).
+      assert.equal(audit.codeBaselinePromoted, true);
+      assert.equal(audit.figmaBaselinePromoted, true);
+      const codeBaselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.codeBaselinePath, 'utf8'));
+      assert.equal(codeBaselineAfter.tokenDefinitions.find((t: { cssVariable: string }) => t.cssVariable === '--widget-length').value, '24px');
+      const figmaBaselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.figmaBaselinePath, 'utf8'));
+      assert.equal(figmaBaselineAfter.variables.find((v: { name: string }) => v.name === 'Widget/length').value, '24');
+
+      // The conflict no longer appears at all.
+      const finalRun: ReconciliationRun = JSON.parse(readFileSync(scenario.reconciliationOutputPaths.latestPath, 'utf8'));
+      assert.equal(finalRun.runId, audit.reconciliationAfterRunId);
+      assert.equal(finalRun.records.find((r) => r.entityId === 'widget-length'), undefined);
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test("sourceOfTruth: 'code' — never invokes the reasoner or edits any file, promotes BOTH baselines to their own current values, and the conflict clears", async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-human-directed-code-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'typography.css');
+
+      writeFileSync(tokensCssPath, ':root {\n  --widget-length: 20px;\n}\n', 'utf8');
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-length', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/length', cssVariable: '--widget-length', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline-len', [{ name: 'Widget/length', value: '20' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current-len', [{ name: 'Widget/length', value: '24' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      writeFileSync(tokensCssPath, ':root {\n  --widget-length: 30px;\n}\n', 'utf8');
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-length');
+      assert.equal(targetedRecordBefore.status, 'both-changed-conflict');
+
+      const contentBefore = readFileSync(tokensCssPath, 'utf8');
+      const baseDeps = makeDeps(scenario, tokensCssPath, '24px', null, '--widget-length');
+      // Canary: the reasoner (and, by extension, the edit engine) must
+      // never be invoked for the 'code' direction — there is nothing to
+      // propose, and validateProposedEdit's own no-op rule would
+      // correctly refuse a before===after edit anyway.
+      const deps: AgentRunDeps = { ...baseDeps, reasoner: () => { throw new Error('reasoner must never be invoked for a human-directed "code" resolution'); } };
+
+      const audit = await runAgentForFinding(targetedRecordBefore.reconciliationId, deps, '2026-01-02T00:00:00.000Z', { humanDirectedSourceOfTruth: 'code' });
+
+      assert.equal(audit.outcome, 'applied');
+      assert.equal(audit.humanDirected, true);
+      assert.equal(audit.sourceOfTruth, 'code');
+      assert.deepEqual(audit.filesModified, [], 'no file is ever edited for the "code" direction');
+      assert.equal(audit.change, null);
+      assert.equal(readFileSync(tokensCssPath, 'utf8'), contentBefore, 'the source file is byte-identical to before this run');
+
+      // Both baselines promoted to their OWN current values.
+      assert.equal(audit.codeBaselinePromoted, true);
+      assert.equal(audit.figmaBaselinePromoted, true);
+      const codeBaselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.codeBaselinePath, 'utf8'));
+      assert.equal(codeBaselineAfter.tokenDefinitions.find((t: { cssVariable: string }) => t.cssVariable === '--widget-length').value, '30px');
+      const figmaBaselineAfter = JSON.parse(readFileSync(scenario.reconciliationInputPaths.figmaBaselinePath, 'utf8'));
+      assert.equal(figmaBaselineAfter.variables.find((v: { name: string }) => v.name === 'Widget/length').value, '24');
+
+      // The conflict no longer appears at all — code's own choice (30px) is
+      // preserved, and the finding is honestly gone, not silently hidden.
+      const finalRun: ReconciliationRun = JSON.parse(readFileSync(scenario.reconciliationOutputPaths.latestPath, 'utf8'));
+      assert.equal(finalRun.runId, audit.reconciliationAfterRunId);
+      assert.equal(finalRun.records.find((r) => r.entityId === 'widget-length'), undefined);
+
+      // A wholly independent, later reconcile confirms this is durable.
+      const laterRun = reconcileAndPersist(scenario, '2026-01-03T00:00:00.000Z');
+      assert.equal(laterRun.records.find((r) => r.entityId === 'widget-length'), undefined);
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test('scope canary: a token-level finding that is NOT both-changed-conflict (e.g. figma-only-change) refuses human-directed resolution', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-human-directed-scope-status-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'colors.css');
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #111111;\n}\n', 'utf8');
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-color', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/color', cssVariable: '--widget-color', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'fb', [{ name: 'Widget/color', value: '#111111' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'fc', [{ name: 'Widget/color', value: '#222222' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const targetedRecordBefore = findRecordByEntityId(beforeRun, 'widget-color');
+      assert.equal(targetedRecordBefore.status, 'figma-only-change');
+
+      const deps = makeDeps(scenario, tokensCssPath, '#222222', null);
+
+      await assert.rejects(
+        () => runAgentForFinding(targetedRecordBefore.reconciliationId, deps, '2026-01-02T00:00:00.000Z', { humanDirectedSourceOfTruth: 'figma' }),
+        (err: unknown) => err instanceof AgentError && /only supported for token-level both-changed-conflict findings/.test(err.message),
+      );
+
+      // Zero writes: no file touched, no audit record persisted.
+      assert.equal(readFileSync(tokensCssPath, 'utf8'), ':root {\n  --widget-color: #111111;\n}\n');
+      assert.ok(!existsSync(scenario.agentHistoryPaths.latestPath));
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test('scope canary: a REAL component-level registry-expectation-mismatch finding ("button", read against the actual repository) refuses human-directed resolution — zero writes', async () => {
+    // Read-only against the real repository: the scope check throws
+    // BEFORE any of AgentRunDeps's functions (reasoner, validation
+    // levels, refreshCodeSnapshot, reRunReconciliation, either baseline
+    // promotion) are ever called, so this is safe to run against the
+    // real, production reconciliation data and paths — it writes nothing.
+    const outputPaths = createProductionReconciliationOutputPaths();
+    const latest: ReconciliationRun = JSON.parse(readFileSync(outputPaths.latestPath, 'utf8'));
+    const button = latest.records.find((r) => r.entityId === 'button' && r.status === 'registry-expectation-mismatch');
+    assert.ok(button, 'expected the real repository to still have its known "button" registry-expectation-mismatch finding');
+
+    const deps = createProductionAgentRunDeps();
+    await assert.rejects(
+      () => runAgentForFinding(button!.reconciliationId, deps, '2026-01-02T00:00:00.000Z', { humanDirectedSourceOfTruth: 'figma' }),
+      (err: unknown) => err instanceof AgentError && /only supported for token-level both-changed-conflict findings/.test(err.message),
+    );
   });
 });
 
@@ -473,6 +1081,123 @@ describe('agent-run.ts — BLOCKED / REVIEW / no-SAFE / previously-failed (Part 
       assert.equal(reasonerCalled, false);
       assert.equal(secondAudit.outcome, 'no-safe-action');
       assert.equal(readFileSync(tokensCssPath, 'utf8'), ':root {\n  --widget-color: #111111;\n}\n');
+      assert.equal(firstAudit.humanReauthorized, false);
+      assert.equal(secondAudit.humanReauthorized, false);
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+});
+
+// =======================================================================
+// Part 14 — explicit human re-authorization of a previously-failed
+// finding. hasPriorFailedAttempt() and the automatic-retry refusal above
+// (Part 13.D) are completely unmodified; this only proves that passing
+// `{ humanReauthorized: true }` un-blocks EXACTLY that one refusal, never
+// anything else in the pipeline.
+// =======================================================================
+
+describe('agent-run.ts — explicit human re-authorization (Part 14)', () => {
+  test('a human-reauthorized retry proceeds through the full pipeline and succeeds once the underlying failure is fixed', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-reauth-success-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'colors.css');
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #111111;\n}\n', 'utf8');
+
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-color', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/color', cssVariable: '--widget-color', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline', [{ name: 'Widget/color', value: '#111111' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current', [{ name: 'Widget/color', value: '#222222' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const record = findRecordByEntityId(beforeRun, 'widget-color');
+
+      // First attempt: deliberately broken level-1 validator (simulates the real Windows execFileSync/npx ENOENT bug) -> failed-validation, reverted.
+      const failingDeps = makeDeps(scenario, tokensCssPath, '#222222', '#222222');
+      failingDeps.runLevel1 = () => ({ level: 1, command: 'fixture: deliberately failing check', passed: false });
+      const firstAudit = await runAgentForFinding(record.reconciliationId, failingDeps, '2026-01-02T00:00:00.000Z');
+      assert.equal(firstAudit.outcome, 'failed-validation');
+      assert.equal(firstAudit.humanReauthorized, false);
+      assert.equal(hasPriorFailedAttempt(scenario.agentHistoryPaths.recordsDir, record.reconciliationId), true);
+
+      // Without reauthorization, a normal retry is still refused (unchanged behavior).
+      const unauthorizedDeps = makeDeps(scenario, tokensCssPath, '#222222', '#222222');
+      const unauthorizedAudit = await runAgentForFinding(record.reconciliationId, unauthorizedDeps, '2026-01-03T00:00:00.000Z');
+      assert.equal(unauthorizedAudit.outcome, 'no-safe-action');
+      assert.equal(unauthorizedAudit.policyDecision.verdict, 'BLOCKED');
+      assert.equal(unauthorizedAudit.editTarget, null);
+
+      // The underlying cause is now "fixed" (working validators) and a human explicitly re-authorizes.
+      const reauthorizedDeps = makeDeps(scenario, tokensCssPath, '#222222', '#222222');
+      const reauthorizedAudit = await runAgentForFinding(record.reconciliationId, reauthorizedDeps, '2026-01-04T00:00:00.000Z', { humanReauthorized: true });
+
+      assert.equal(reauthorizedAudit.outcome, 'applied');
+      assert.equal(reauthorizedAudit.humanReauthorized, true, 'the audit trail must record that this run was explicitly human re-authorized');
+      assert.deepEqual(reauthorizedAudit.filesModified, ['src/tokens/colors.css']);
+      assert.match(readFileSync(tokensCssPath, 'utf8'), /--widget-color:\s*#222222;/);
+
+      // Immutability: the original failed record is untouched, not deleted, not rewritten.
+      const recordFiles = readdirSync(scenario.agentHistoryPaths.recordsDir);
+      assert.equal(recordFiles.length, 3);
+      const stillThere = JSON.parse(readFileSync(path.join(scenario.agentHistoryPaths.recordsDir, recordFiles.find((f) => f.includes(firstAudit.auditId))!), 'utf8'));
+      assert.equal(stillThere.outcome, 'failed-validation');
+    } finally {
+      rmSync(tempRoot, { recursive: true, force: true });
+    }
+  });
+
+  test('reauthorization never bypasses a non-SAFE current policy verdict', async () => {
+    const tempRoot = mkdtempSync(path.join(tmpdir(), 'agent-run-reauth-nonsafe-'));
+    try {
+      const scenario = scaffoldScenarioPaths(tempRoot);
+      const tokensCssPath = path.join(scenario.tokensDir, 'colors.css');
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #111111;\n}\n', 'utf8');
+
+      writeRegistryFixture(scenario, [
+        { tokenId: 'widget-color', sourceType: 'figma-variable', figmaName: 'Mapped/Widget/color', cssVariable: '--widget-color', consumedBy: [] },
+      ]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaBaselinePath, 'figma-baseline', [{ name: 'Widget/color', value: '#111111' }]);
+      writeFigmaFixture(scenario.reconciliationInputPaths.figmaCurrentPath, 'figma-current', [{ name: 'Widget/color', value: '#222222' }]);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeBaselinePath);
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+
+      const beforeRun = reconcileAndPersist(scenario, '2026-01-01T00:00:00.000Z');
+      const record = findRecordByEntityId(beforeRun, 'widget-color');
+
+      const failingDeps = makeDeps(scenario, tokensCssPath, '#222222', '#222222');
+      failingDeps.runLevel1 = () => ({ level: 1, command: 'fixture: deliberately failing check', passed: false });
+      await runAgentForFinding(record.reconciliationId, failingDeps, '2026-01-02T00:00:00.000Z');
+      assert.equal(hasPriorFailedAttempt(scenario.agentHistoryPaths.recordsDir, record.reconciliationId), true);
+
+      // Between attempts, code drifts independently -> both-changed-* on
+      // the NEXT reconciliation. Re-reconcile against the real, current
+      // (already-edited-then-reverted-back) fixture state so the SAFE
+      // precondition genuinely no longer holds, without hand-fabricating
+      // a record.
+      writeFileSync(tokensCssPath, ':root {\n  --widget-color: #333333;\n}\n', 'utf8');
+      buildAndWriteCodeSnapshot(scenario, scenario.reconciliationInputPaths.codeCurrentPath);
+      const afterDriftRun = reconcileAndPersist(scenario, '2026-01-03T00:00:00.000Z');
+      const driftedRecord = findRecordByEntityId(afterDriftRun, 'widget-color');
+      assert.equal(driftedRecord.status, 'both-changed-conflict'); // Figma "#222222" vs Code "#333333" -> no longer SAFE
+
+      let reasonerCalled = false;
+      const reauthorizedDeps = makeDeps(scenario, tokensCssPath, '#222222', '#222222');
+      reauthorizedDeps.reasoner = () => {
+        reasonerCalled = true;
+        throw new Error('must never be called — reauthorization must not bypass a non-SAFE verdict');
+      };
+
+      const audit = await runAgentForFinding(driftedRecord.reconciliationId, reauthorizedDeps, '2026-01-04T00:00:00.000Z', { humanReauthorized: true });
+
+      assert.equal(reasonerCalled, false);
+      assert.equal(audit.policyDecision.verdict, 'BLOCKED');
+      assert.equal(audit.editTarget, null);
+      assert.equal(audit.humanReauthorized, true, 'the flag is still recorded even though it had no effect');
+      assert.equal(readFileSync(tokensCssPath, 'utf8'), ':root {\n  --widget-color: #333333;\n}\n', 'untouched by this refused run');
     } finally {
       rmSync(tempRoot, { recursive: true, force: true });
     }
@@ -576,6 +1301,11 @@ describe('computeAuditId', () => {
       findingAfter: 'unresolved' as const,
       outcome: 'no-safe-action' as const,
       stopReason: 'x',
+      humanReauthorized: false,
+      codeBaselinePromoted: false,
+      figmaBaselinePromoted: false,
+      humanDirected: false,
+      sourceOfTruth: null,
     };
     assert.equal(computeAuditId(base), computeAuditId(base));
   });

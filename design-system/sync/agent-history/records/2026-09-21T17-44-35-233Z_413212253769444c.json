@@ -1,0 +1,79 @@
+{
+  "reconciliationRunId": "e3def05e570801b2",
+  "reconciliationId": "1e42a06a520c",
+  "findingBefore": {
+    "reconciliationId": "1e42a06a520c",
+    "entityType": "token",
+    "entityId": "line-height-paragraph-medium",
+    "registryId": "line-height-paragraph-medium",
+    "field": "value",
+    "status": "figma-only-change",
+    "figma": {
+      "current": "24",
+      "baseline": "20",
+      "changed": true
+    },
+    "code": {
+      "current": "20px",
+      "baseline": "20px",
+      "changed": false
+    },
+    "registryExpected": null,
+    "affectedComponents": [
+      "button",
+      "checkbox",
+      "field-label",
+      "link",
+      "menu-item",
+      "text-field"
+    ],
+    "sources": {
+      "figmaBaselineId": "568bde3637c3c8bc",
+      "figmaCurrentId": "965cffe5f8e66911",
+      "codeBaselineId": "6ad9f34eea3bc282",
+      "codeCurrentId": "6ad9f34eea3bc282"
+    },
+    "detail": "Figma variable \"Paragraph Medium/Line Height\" changed since baseline; code definition \"--line-height-paragraph-medium\" did not."
+  },
+  "humanReauthorized": false,
+  "policyDecision": {
+    "reconciliationId": "1e42a06a520c",
+    "status": "figma-only-change",
+    "verdict": "SAFE",
+    "reason": "All 9 SAFE conditions satisfied: registry-mapped, unambiguous crosswalk mapping, single code declaration, raw literal value, token-value synchronization only.",
+    "requiredEvidence": [
+      "entity is registry-mapped (registryId is non-null)",
+      "finding is a token value-synchronization change (entityType \"token\", field \"value\")",
+      "crosswalk token mapping for \"line-height-paragraph-medium\" is unambiguous (status \"resolved\")",
+      "exactly one code declaration exists for \"--line-height-paragraph-medium\" (in src/tokens/typography.css)",
+      "code declaration value \"20px\" is a raw literal, not a var() alias"
+    ],
+    "requiredValidationLevels": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "requiresHumanApproval": false
+  },
+  "editTarget": {
+    "filePath": "src/tokens/typography.css",
+    "kind": "css-custom-property-value",
+    "declarationIdentifier": "--line-height-paragraph-medium",
+    "currentValue": "20px"
+  },
+  "filesInspected": [
+    "src/tokens/typography.css"
+  ],
+  "filesModified": [],
+  "change": null,
+  "validation": [],
+  "reconciliationAfterRunId": null,
+  "findingAfter": "unresolved",
+  "outcome": "no-safe-action",
+  "stopReason": "Reasoner did not produce a proposal: ANTHROPIC_API_KEY is not set. This adapter never invents or hard-codes credentials — set the environment variable, or use a MockClaudeClient (see agent-claude-reasoner.test.ts) for testing.",
+  "auditId": "413212253769444c",
+  "generatedAt": "2026-09-21T17:44:35.233Z"
+}

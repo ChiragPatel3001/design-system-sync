@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "fe47565d7c9db7e5",
-  "generatedAt": "2026-09-22T04:07:20.797Z",
+  "snapshotId": "66f4d9fa49d276e7",
+  "generatedAt": "2026-09-22T04:05:44.741Z",
   "sourceRoot": "src/components",
   "components": [
     {
@@ -1903,7 +1903,7 @@
     },
     {
       "cssVariable": "--font-size-paragraph-medium",
-      "value": "16px",
+      "value": "20px",
       "sourceFilePath": "src/tokens/typography.css"
     },
     {

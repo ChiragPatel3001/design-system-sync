@@ -1,22 +1,22 @@
 {
   "schemaVersion": "1.0.0",
-  "runId": "bf97ecd4e042b388",
-  "generatedAt": "2026-09-22T03:12:33.890Z",
+  "runId": "6e5f5083022a3d12",
+  "generatedAt": "2026-09-22T02:52:49.500Z",
   "sources": {
     "registrySnapshotId": "679d1d317942a744",
     "registryUpdatedOn": "2026-09-21",
-    "figmaBaselineId": "568bde3637c3c8bc",
+    "figmaBaselineId": "084eb498971b1ee8",
     "figmaCurrentId": "568bde3637c3c8bc",
-    "codeBaselineId": "6ad9f34eea3bc282",
+    "codeBaselineId": "bcb75223959d14f2",
     "codeCurrentId": "6ad9f34eea3bc282"
   },
-  "recordCount": 209,
-  "conflictCount": 0,
+  "recordCount": 210,
+  "conflictCount": 1,
   "statusCounts": {
     "figma-only-change": 0,
     "code-only-change": 0,
     "both-changed-compatible": 0,
-    "both-changed-conflict": 0,
+    "both-changed-conflict": 1,
     "registry-expectation-mismatch": 1,
     "unmapped-figma-entity": 8,
     "unmapped-code-entity": 0,
@@ -34,7 +34,7 @@
   ],
   "records": [
     {
-      "reconciliationId": "29f7a9ae727c",
+      "reconciliationId": "40b1e3bbb35b",
       "entityType": "component",
       "entityId": "button",
       "registryId": "button",
@@ -89,15 +89,15 @@
         "button"
       ],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "registry-recorded variant properties for \"button\" (names: Property 1, Type) do not match the current Figma capture's variant properties (names: State, Type) for node 15:664."
     },
     {
-      "reconciliationId": "e86a80aa1ebf",
+      "reconciliationId": "56adac09a222",
       "entityType": "token",
       "entityId": "--alias-error-100",
       "registryId": null,
@@ -116,15 +116,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "4b57cedfcf58",
+      "reconciliationId": "23a09f9d9521",
       "entityType": "token",
       "entityId": "--alias-error-200",
       "registryId": null,
@@ -143,15 +143,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "99eda4830d1a",
+      "reconciliationId": "88eed2655a5b",
       "entityType": "token",
       "entityId": "--alias-error-300",
       "registryId": null,
@@ -170,15 +170,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "11ac4d7d3100",
+      "reconciliationId": "fc03661df712",
       "entityType": "token",
       "entityId": "--alias-error-400",
       "registryId": null,
@@ -197,15 +197,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "d9b4a7e71406",
+      "reconciliationId": "5084e98cf4cb",
       "entityType": "token",
       "entityId": "--alias-error-50",
       "registryId": null,
@@ -224,15 +224,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "38f802d7ff2b",
+      "reconciliationId": "80641650ca5c",
       "entityType": "token",
       "entityId": "--alias-error-500",
       "registryId": null,
@@ -251,15 +251,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "06b91d8bb4cc",
+      "reconciliationId": "b7e05e061f08",
       "entityType": "token",
       "entityId": "--alias-error-600",
       "registryId": null,
@@ -278,15 +278,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1cb2c9d2f71a",
+      "reconciliationId": "c5fc6644b03a",
       "entityType": "token",
       "entityId": "--alias-error-700",
       "registryId": null,
@@ -305,15 +305,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "75c80694ec77",
+      "reconciliationId": "f69c4038b09e",
       "entityType": "token",
       "entityId": "--alias-error-800",
       "registryId": null,
@@ -332,15 +332,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "eec5c7952469",
+      "reconciliationId": "e1f30249d26a",
       "entityType": "token",
       "entityId": "--alias-error-900",
       "registryId": null,
@@ -359,15 +359,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "42ec98b17ea1",
+      "reconciliationId": "397e2140c046",
       "entityType": "token",
       "entityId": "--alias-error-950",
       "registryId": null,
@@ -386,15 +386,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-error-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "10d459f59eaa",
+      "reconciliationId": "8ed57703aef8",
       "entityType": "token",
       "entityId": "--alias-font-family-heading",
       "registryId": null,
@@ -413,15 +413,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-font-family-heading\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "4c3eba2e39d1",
+      "reconciliationId": "9829e94464ae",
       "entityType": "token",
       "entityId": "--alias-foundation-black",
       "registryId": null,
@@ -440,15 +440,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-foundation-black\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "211503b4adfe",
+      "reconciliationId": "63c24bf162ca",
       "entityType": "token",
       "entityId": "--alias-foundation-white",
       "registryId": null,
@@ -467,15 +467,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-foundation-white\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "d6b37a25f93b",
+      "reconciliationId": "3875f972ec9c",
       "entityType": "token",
       "entityId": "--alias-information-100",
       "registryId": null,
@@ -494,15 +494,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "083add884aa9",
+      "reconciliationId": "3c67324b2b8c",
       "entityType": "token",
       "entityId": "--alias-information-200",
       "registryId": null,
@@ -521,15 +521,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "e74a45d489bf",
+      "reconciliationId": "fb4a4c2993d2",
       "entityType": "token",
       "entityId": "--alias-information-300",
       "registryId": null,
@@ -548,15 +548,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "62b631ce7460",
+      "reconciliationId": "276fc7a7917f",
       "entityType": "token",
       "entityId": "--alias-information-400",
       "registryId": null,
@@ -575,15 +575,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "88c8fd7c39a7",
+      "reconciliationId": "441c06d13e57",
       "entityType": "token",
       "entityId": "--alias-information-50",
       "registryId": null,
@@ -602,15 +602,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "8656a2cdabea",
+      "reconciliationId": "1e603f91af43",
       "entityType": "token",
       "entityId": "--alias-information-500",
       "registryId": null,
@@ -629,15 +629,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "f16029fc3b6e",
+      "reconciliationId": "fd9d682e98f5",
       "entityType": "token",
       "entityId": "--alias-information-600",
       "registryId": null,
@@ -656,15 +656,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "0694053ceafd",
+      "reconciliationId": "3a39305f5e41",
       "entityType": "token",
       "entityId": "--alias-information-700",
       "registryId": null,
@@ -683,15 +683,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1769de0d0330",
+      "reconciliationId": "ed8f51494c36",
       "entityType": "token",
       "entityId": "--alias-information-800",
       "registryId": null,
@@ -710,15 +710,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "3526b632e95f",
+      "reconciliationId": "57a7f63a98dd",
       "entityType": "token",
       "entityId": "--alias-information-900",
       "registryId": null,
@@ -737,15 +737,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "bd5d65f13051",
+      "reconciliationId": "2f5860ba5d42",
       "entityType": "token",
       "entityId": "--alias-information-950",
       "registryId": null,
@@ -764,15 +764,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-information-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "dec53a6c2862",
+      "reconciliationId": "bf630277904c",
       "entityType": "token",
       "entityId": "--alias-neutral-100",
       "registryId": null,
@@ -791,15 +791,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "0d7e119f66b0",
+      "reconciliationId": "72e8ebb5a29c",
       "entityType": "token",
       "entityId": "--alias-neutral-200",
       "registryId": null,
@@ -818,15 +818,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "bf98462f8153",
+      "reconciliationId": "47e2dd968ab3",
       "entityType": "token",
       "entityId": "--alias-neutral-300",
       "registryId": null,
@@ -845,15 +845,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "16c12a0eec71",
+      "reconciliationId": "3171688ded53",
       "entityType": "token",
       "entityId": "--alias-neutral-400",
       "registryId": null,
@@ -872,15 +872,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "a265bddebd47",
+      "reconciliationId": "4646f770c684",
       "entityType": "token",
       "entityId": "--alias-neutral-50",
       "registryId": null,
@@ -899,15 +899,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "62e521b2689b",
+      "reconciliationId": "874eaff8b3e2",
       "entityType": "token",
       "entityId": "--alias-neutral-500",
       "registryId": null,
@@ -926,15 +926,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "26a66ce87e0f",
+      "reconciliationId": "71c3097e1469",
       "entityType": "token",
       "entityId": "--alias-neutral-600",
       "registryId": null,
@@ -953,15 +953,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "62742df934da",
+      "reconciliationId": "155a9ed29e7e",
       "entityType": "token",
       "entityId": "--alias-neutral-700",
       "registryId": null,
@@ -980,15 +980,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "ea3b2f6bdac5",
+      "reconciliationId": "0d95bd2c5139",
       "entityType": "token",
       "entityId": "--alias-neutral-800",
       "registryId": null,
@@ -1007,15 +1007,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "99446558153c",
+      "reconciliationId": "9bb314db56a4",
       "entityType": "token",
       "entityId": "--alias-neutral-900",
       "registryId": null,
@@ -1034,15 +1034,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "48b9955f1b85",
+      "reconciliationId": "d2990fe35b6d",
       "entityType": "token",
       "entityId": "--alias-neutral-950",
       "registryId": null,
@@ -1061,15 +1061,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-neutral-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "0b0e08e76452",
+      "reconciliationId": "2eb3d22d68e3",
       "entityType": "token",
       "entityId": "--alias-primary-100",
       "registryId": null,
@@ -1088,15 +1088,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "8ee33e234330",
+      "reconciliationId": "e3442627ca91",
       "entityType": "token",
       "entityId": "--alias-primary-200",
       "registryId": null,
@@ -1115,15 +1115,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "a9576c072c18",
+      "reconciliationId": "83688bc6c19f",
       "entityType": "token",
       "entityId": "--alias-primary-300",
       "registryId": null,
@@ -1142,15 +1142,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "900bacd84c35",
+      "reconciliationId": "7072a63f474e",
       "entityType": "token",
       "entityId": "--alias-primary-400",
       "registryId": null,
@@ -1169,15 +1169,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "f27757ee1071",
+      "reconciliationId": "38a0d5b89f51",
       "entityType": "token",
       "entityId": "--alias-primary-50",
       "registryId": null,
@@ -1196,15 +1196,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "954f001358a4",
+      "reconciliationId": "051e124d3f63",
       "entityType": "token",
       "entityId": "--alias-primary-500",
       "registryId": null,
@@ -1223,15 +1223,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "50b307518c5a",
+      "reconciliationId": "f471af910bde",
       "entityType": "token",
       "entityId": "--alias-primary-600",
       "registryId": null,
@@ -1250,15 +1250,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "dc7279dd847b",
+      "reconciliationId": "bdfdc6426085",
       "entityType": "token",
       "entityId": "--alias-primary-700",
       "registryId": null,
@@ -1277,15 +1277,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "2f7e200eb17d",
+      "reconciliationId": "395d9c7ebe0c",
       "entityType": "token",
       "entityId": "--alias-primary-800",
       "registryId": null,
@@ -1304,15 +1304,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "aa9e87f6b341",
+      "reconciliationId": "4528a2a12d25",
       "entityType": "token",
       "entityId": "--alias-primary-900",
       "registryId": null,
@@ -1331,15 +1331,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "5ef5eb203b26",
+      "reconciliationId": "ab37e8a2464f",
       "entityType": "token",
       "entityId": "--alias-primary-950",
       "registryId": null,
@@ -1358,15 +1358,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-primary-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "b2db0e7c6fc4",
+      "reconciliationId": "56e5db791db7",
       "entityType": "token",
       "entityId": "--alias-success-100",
       "registryId": null,
@@ -1385,15 +1385,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "10c4085eb1ab",
+      "reconciliationId": "371feb33b586",
       "entityType": "token",
       "entityId": "--alias-success-200",
       "registryId": null,
@@ -1412,15 +1412,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1afd13899f8a",
+      "reconciliationId": "e48c4179bdb1",
       "entityType": "token",
       "entityId": "--alias-success-300",
       "registryId": null,
@@ -1439,15 +1439,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "52eb96c9109c",
+      "reconciliationId": "36372fa070d3",
       "entityType": "token",
       "entityId": "--alias-success-400",
       "registryId": null,
@@ -1466,15 +1466,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "fae608c9c03e",
+      "reconciliationId": "690d984564fe",
       "entityType": "token",
       "entityId": "--alias-success-50",
       "registryId": null,
@@ -1493,15 +1493,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "bcb4099bfeb1",
+      "reconciliationId": "48b43f81abbd",
       "entityType": "token",
       "entityId": "--alias-success-500",
       "registryId": null,
@@ -1520,15 +1520,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "4df004995d87",
+      "reconciliationId": "44d32a9e83a1",
       "entityType": "token",
       "entityId": "--alias-success-600",
       "registryId": null,
@@ -1547,15 +1547,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "9e319b5ce0d5",
+      "reconciliationId": "8692e278acda",
       "entityType": "token",
       "entityId": "--alias-success-700",
       "registryId": null,
@@ -1574,15 +1574,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c411bf7ada45",
+      "reconciliationId": "d25b379d29f7",
       "entityType": "token",
       "entityId": "--alias-success-800",
       "registryId": null,
@@ -1601,15 +1601,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "b0bdf6866f10",
+      "reconciliationId": "65494cd94917",
       "entityType": "token",
       "entityId": "--alias-success-900",
       "registryId": null,
@@ -1628,15 +1628,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "3c872998b138",
+      "reconciliationId": "6ead3650de97",
       "entityType": "token",
       "entityId": "--alias-success-950",
       "registryId": null,
@@ -1655,15 +1655,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-success-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "85b2acd51359",
+      "reconciliationId": "40a27f297da1",
       "entityType": "token",
       "entityId": "--alias-warning-100",
       "registryId": null,
@@ -1682,15 +1682,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "9c7147c625b2",
+      "reconciliationId": "327be6869fdb",
       "entityType": "token",
       "entityId": "--alias-warning-200",
       "registryId": null,
@@ -1709,15 +1709,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "9845da27c7ab",
+      "reconciliationId": "05c729a08b05",
       "entityType": "token",
       "entityId": "--alias-warning-300",
       "registryId": null,
@@ -1736,15 +1736,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "a0e4cb05d6a7",
+      "reconciliationId": "cc7058ed4ee4",
       "entityType": "token",
       "entityId": "--alias-warning-400",
       "registryId": null,
@@ -1763,15 +1763,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1f5aa8b82a33",
+      "reconciliationId": "3b938c7b31a5",
       "entityType": "token",
       "entityId": "--alias-warning-50",
       "registryId": null,
@@ -1790,15 +1790,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "add78008e35b",
+      "reconciliationId": "caa978a45999",
       "entityType": "token",
       "entityId": "--alias-warning-500",
       "registryId": null,
@@ -1817,15 +1817,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "167e0420c10f",
+      "reconciliationId": "84e14cf875f1",
       "entityType": "token",
       "entityId": "--alias-warning-600",
       "registryId": null,
@@ -1844,15 +1844,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "925940ccee7b",
+      "reconciliationId": "a85ba5dce23a",
       "entityType": "token",
       "entityId": "--alias-warning-700",
       "registryId": null,
@@ -1871,15 +1871,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "71e0e7ec60e3",
+      "reconciliationId": "9000c3d4880c",
       "entityType": "token",
       "entityId": "--alias-warning-800",
       "registryId": null,
@@ -1898,15 +1898,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "08575cb922a9",
+      "reconciliationId": "426f271ef644",
       "entityType": "token",
       "entityId": "--alias-warning-900",
       "registryId": null,
@@ -1925,15 +1925,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "4eee22be7436",
+      "reconciliationId": "9cf6b449b1ec",
       "entityType": "token",
       "entityId": "--alias-warning-950",
       "registryId": null,
@@ -1952,15 +1952,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--alias-warning-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "af2064651fff",
+      "reconciliationId": "6cc831e76a13",
       "entityType": "token",
       "entityId": "--border-width-lg",
       "registryId": null,
@@ -1979,15 +1979,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--border-width-lg\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "70c67e05a5eb",
+      "reconciliationId": "4ac903d9c450",
       "entityType": "token",
       "entityId": "--brand-blue-100",
       "registryId": null,
@@ -2006,15 +2006,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c4a67ba1da65",
+      "reconciliationId": "05746a4767ff",
       "entityType": "token",
       "entityId": "--brand-blue-200",
       "registryId": null,
@@ -2033,15 +2033,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1003b116ce5c",
+      "reconciliationId": "1829f8f2fb01",
       "entityType": "token",
       "entityId": "--brand-blue-300",
       "registryId": null,
@@ -2060,15 +2060,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "e8756c09faa3",
+      "reconciliationId": "4c06c4cf3849",
       "entityType": "token",
       "entityId": "--brand-blue-400",
       "registryId": null,
@@ -2087,15 +2087,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "f990a7dd3ab2",
+      "reconciliationId": "ae2bca52bd2f",
       "entityType": "token",
       "entityId": "--brand-blue-50",
       "registryId": null,
@@ -2114,15 +2114,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "d910280cce82",
+      "reconciliationId": "ef6936f18eed",
       "entityType": "token",
       "entityId": "--brand-blue-500",
       "registryId": null,
@@ -2141,15 +2141,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "07d952af7c3a",
+      "reconciliationId": "62e6e2b4486d",
       "entityType": "token",
       "entityId": "--brand-blue-600",
       "registryId": null,
@@ -2168,15 +2168,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c64c26affe34",
+      "reconciliationId": "0cccba4e79c1",
       "entityType": "token",
       "entityId": "--brand-blue-700",
       "registryId": null,
@@ -2195,15 +2195,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "dc5af04950a0",
+      "reconciliationId": "28b802135530",
       "entityType": "token",
       "entityId": "--brand-blue-800",
       "registryId": null,
@@ -2222,15 +2222,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "13c48da1b5a4",
+      "reconciliationId": "3cbc59bc1b0b",
       "entityType": "token",
       "entityId": "--brand-blue-900",
       "registryId": null,
@@ -2249,15 +2249,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "16f075430eca",
+      "reconciliationId": "96c756b154cf",
       "entityType": "token",
       "entityId": "--brand-blue-950",
       "registryId": null,
@@ -2276,15 +2276,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-blue-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "d200a66b90fa",
+      "reconciliationId": "669b6894b5dd",
       "entityType": "token",
       "entityId": "--brand-font-body",
       "registryId": null,
@@ -2303,15 +2303,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-font-body\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "70f07194f5f0",
+      "reconciliationId": "7e4d59b3ff14",
       "entityType": "token",
       "entityId": "--brand-font-heading",
       "registryId": null,
@@ -2330,15 +2330,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-font-heading\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "23f4959e0a57",
+      "reconciliationId": "b3014505d8e6",
       "entityType": "token",
       "entityId": "--brand-foundation-black",
       "registryId": null,
@@ -2357,15 +2357,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-foundation-black\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "12d94026dfdb",
+      "reconciliationId": "bea9f7411bf1",
       "entityType": "token",
       "entityId": "--brand-foundation-white",
       "registryId": null,
@@ -2384,15 +2384,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-foundation-white\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "74c3c1313774",
+      "reconciliationId": "718a63af6ccb",
       "entityType": "token",
       "entityId": "--brand-gray-100",
       "registryId": null,
@@ -2411,15 +2411,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "b769bac8b869",
+      "reconciliationId": "d64a596d2b6a",
       "entityType": "token",
       "entityId": "--brand-gray-200",
       "registryId": null,
@@ -2438,15 +2438,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "8598b467e28a",
+      "reconciliationId": "e881bd68e65b",
       "entityType": "token",
       "entityId": "--brand-gray-300",
       "registryId": null,
@@ -2465,15 +2465,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "5a0d457d6ee4",
+      "reconciliationId": "7b5a37b3d324",
       "entityType": "token",
       "entityId": "--brand-gray-400",
       "registryId": null,
@@ -2492,15 +2492,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "21b990d3e0ac",
+      "reconciliationId": "28391558b964",
       "entityType": "token",
       "entityId": "--brand-gray-50",
       "registryId": null,
@@ -2519,15 +2519,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "6b8232eef02f",
+      "reconciliationId": "8e40c862a430",
       "entityType": "token",
       "entityId": "--brand-gray-500",
       "registryId": null,
@@ -2546,15 +2546,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "51c2355b0852",
+      "reconciliationId": "f4226476bb63",
       "entityType": "token",
       "entityId": "--brand-gray-600",
       "registryId": null,
@@ -2573,15 +2573,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "594575d63cf1",
+      "reconciliationId": "a864911ab60f",
       "entityType": "token",
       "entityId": "--brand-gray-700",
       "registryId": null,
@@ -2600,15 +2600,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "15a2bc7d4d84",
+      "reconciliationId": "4e039475430e",
       "entityType": "token",
       "entityId": "--brand-gray-800",
       "registryId": null,
@@ -2627,15 +2627,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "9e0728571375",
+      "reconciliationId": "368f3f47832d",
       "entityType": "token",
       "entityId": "--brand-gray-900",
       "registryId": null,
@@ -2654,15 +2654,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "47b0445c45d3",
+      "reconciliationId": "99b528910dfb",
       "entityType": "token",
       "entityId": "--brand-gray-950",
       "registryId": null,
@@ -2681,15 +2681,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-gray-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "93b57bc1c7aa",
+      "reconciliationId": "50554c68b6ab",
       "entityType": "token",
       "entityId": "--brand-green-100",
       "registryId": null,
@@ -2708,15 +2708,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "145f6c115a8b",
+      "reconciliationId": "1a3adec79e01",
       "entityType": "token",
       "entityId": "--brand-green-200",
       "registryId": null,
@@ -2735,15 +2735,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "e83dd8ec5e9e",
+      "reconciliationId": "c00cbfc6cbd0",
       "entityType": "token",
       "entityId": "--brand-green-300",
       "registryId": null,
@@ -2762,15 +2762,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "419fd2339a34",
+      "reconciliationId": "afd7bfb52c2d",
       "entityType": "token",
       "entityId": "--brand-green-400",
       "registryId": null,
@@ -2789,15 +2789,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "31b2a8f0b928",
+      "reconciliationId": "61c8d075f613",
       "entityType": "token",
       "entityId": "--brand-green-50",
       "registryId": null,
@@ -2816,15 +2816,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "29dadadbc957",
+      "reconciliationId": "4e1402787e7e",
       "entityType": "token",
       "entityId": "--brand-green-500",
       "registryId": null,
@@ -2843,15 +2843,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "7b36343b714f",
+      "reconciliationId": "49d7a9935dfe",
       "entityType": "token",
       "entityId": "--brand-green-600",
       "registryId": null,
@@ -2870,15 +2870,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "a085511dd19a",
+      "reconciliationId": "11e4dd58eb3f",
       "entityType": "token",
       "entityId": "--brand-green-700",
       "registryId": null,
@@ -2897,15 +2897,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "2a2fab8442f2",
+      "reconciliationId": "bd0e36d5b915",
       "entityType": "token",
       "entityId": "--brand-green-800",
       "registryId": null,
@@ -2924,15 +2924,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "176e4d672340",
+      "reconciliationId": "e1eb8a0794a1",
       "entityType": "token",
       "entityId": "--brand-green-900",
       "registryId": null,
@@ -2951,15 +2951,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c98f704346eb",
+      "reconciliationId": "3a05db0c8f07",
       "entityType": "token",
       "entityId": "--brand-green-950",
       "registryId": null,
@@ -2978,15 +2978,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-green-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "60edfa18e7ed",
+      "reconciliationId": "3130ac45b829",
       "entityType": "token",
       "entityId": "--brand-orange-100",
       "registryId": null,
@@ -3005,15 +3005,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "02ffc1fb7506",
+      "reconciliationId": "2ccee3baa34e",
       "entityType": "token",
       "entityId": "--brand-orange-200",
       "registryId": null,
@@ -3032,15 +3032,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "6e48d183233d",
+      "reconciliationId": "7e8ee4542e11",
       "entityType": "token",
       "entityId": "--brand-orange-300",
       "registryId": null,
@@ -3059,15 +3059,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "759d6c555ff4",
+      "reconciliationId": "72972ec148ac",
       "entityType": "token",
       "entityId": "--brand-orange-400",
       "registryId": null,
@@ -3086,15 +3086,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1f9871ff7d7c",
+      "reconciliationId": "6260023d4d2c",
       "entityType": "token",
       "entityId": "--brand-orange-50",
       "registryId": null,
@@ -3113,15 +3113,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c2b967e5316b",
+      "reconciliationId": "5200ee28d735",
       "entityType": "token",
       "entityId": "--brand-orange-500",
       "registryId": null,
@@ -3140,15 +3140,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "7eb5b9422cc0",
+      "reconciliationId": "48cf2dbe601c",
       "entityType": "token",
       "entityId": "--brand-orange-600",
       "registryId": null,
@@ -3167,15 +3167,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "afa43b79b724",
+      "reconciliationId": "810866430a17",
       "entityType": "token",
       "entityId": "--brand-orange-700",
       "registryId": null,
@@ -3194,15 +3194,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "872317643ca2",
+      "reconciliationId": "a3bae87b5530",
       "entityType": "token",
       "entityId": "--brand-orange-800",
       "registryId": null,
@@ -3221,15 +3221,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "a7eb5571d398",
+      "reconciliationId": "d262c452be3d",
       "entityType": "token",
       "entityId": "--brand-orange-900",
       "registryId": null,
@@ -3248,15 +3248,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "5c7c1ba229aa",
+      "reconciliationId": "f3f2f13b0aa0",
       "entityType": "token",
       "entityId": "--brand-orange-950",
       "registryId": null,
@@ -3275,15 +3275,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-orange-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "148a9a165665",
+      "reconciliationId": "6036f8978b72",
       "entityType": "token",
       "entityId": "--brand-purple-100",
       "registryId": null,
@@ -3302,15 +3302,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "3ffcfed535ec",
+      "reconciliationId": "2f7529c09941",
       "entityType": "token",
       "entityId": "--brand-purple-200",
       "registryId": null,
@@ -3329,15 +3329,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "75f8fb304ef9",
+      "reconciliationId": "7784d3ca8593",
       "entityType": "token",
       "entityId": "--brand-purple-300",
       "registryId": null,
@@ -3356,15 +3356,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "48f94d65e7f2",
+      "reconciliationId": "71ad0f67bacd",
       "entityType": "token",
       "entityId": "--brand-purple-400",
       "registryId": null,
@@ -3383,15 +3383,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "314c3bfa59e8",
+      "reconciliationId": "b8fe9ea0b48a",
       "entityType": "token",
       "entityId": "--brand-purple-50",
       "registryId": null,
@@ -3410,15 +3410,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "435f1b0c2459",
+      "reconciliationId": "2d0c01eb858a",
       "entityType": "token",
       "entityId": "--brand-purple-500-default",
       "registryId": null,
@@ -3437,15 +3437,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-500-default\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "6796d21398c7",
+      "reconciliationId": "44384f3ddad3",
       "entityType": "token",
       "entityId": "--brand-purple-600",
       "registryId": null,
@@ -3464,15 +3464,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "6b2c36688ec9",
+      "reconciliationId": "e8b05f7deb85",
       "entityType": "token",
       "entityId": "--brand-purple-700",
       "registryId": null,
@@ -3491,15 +3491,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "3f455f00ab41",
+      "reconciliationId": "be4cb615f166",
       "entityType": "token",
       "entityId": "--brand-purple-800",
       "registryId": null,
@@ -3518,15 +3518,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "79f243dc52a9",
+      "reconciliationId": "c5c3a618ba6d",
       "entityType": "token",
       "entityId": "--brand-purple-900",
       "registryId": null,
@@ -3545,15 +3545,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "55cc4ccec0f7",
+      "reconciliationId": "78e8d54c463c",
       "entityType": "token",
       "entityId": "--brand-purple-950",
       "registryId": null,
@@ -3572,15 +3572,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-purple-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "afca405904f8",
+      "reconciliationId": "f4a5e7ec2629",
       "entityType": "token",
       "entityId": "--brand-red-100",
       "registryId": null,
@@ -3599,15 +3599,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "406e2dfa48fc",
+      "reconciliationId": "676640cecfca",
       "entityType": "token",
       "entityId": "--brand-red-200",
       "registryId": null,
@@ -3626,15 +3626,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "07e85c4179c5",
+      "reconciliationId": "b7f353e1f510",
       "entityType": "token",
       "entityId": "--brand-red-300",
       "registryId": null,
@@ -3653,15 +3653,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-300\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "f047bc043ef7",
+      "reconciliationId": "3c99e10d665c",
       "entityType": "token",
       "entityId": "--brand-red-400",
       "registryId": null,
@@ -3680,15 +3680,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "09044996d493",
+      "reconciliationId": "aad106584242",
       "entityType": "token",
       "entityId": "--brand-red-50",
       "registryId": null,
@@ -3707,15 +3707,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "90917be4a85b",
+      "reconciliationId": "bc5096fe4fde",
       "entityType": "token",
       "entityId": "--brand-red-500",
       "registryId": null,
@@ -3734,15 +3734,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "ce1d26d51037",
+      "reconciliationId": "686128fb3bc3",
       "entityType": "token",
       "entityId": "--brand-red-600",
       "registryId": null,
@@ -3761,15 +3761,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "619be61a3cd9",
+      "reconciliationId": "f46eea80c16b",
       "entityType": "token",
       "entityId": "--brand-red-700",
       "registryId": null,
@@ -3788,15 +3788,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "13b48e3bf3c0",
+      "reconciliationId": "0efd53dc2b25",
       "entityType": "token",
       "entityId": "--brand-red-800",
       "registryId": null,
@@ -3815,15 +3815,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "66dcb74da80a",
+      "reconciliationId": "2849423fe87f",
       "entityType": "token",
       "entityId": "--brand-red-900",
       "registryId": null,
@@ -3842,15 +3842,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "13a5134a4723",
+      "reconciliationId": "f77a8a827a0d",
       "entityType": "token",
       "entityId": "--brand-red-950",
       "registryId": null,
@@ -3869,15 +3869,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--brand-red-950\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "d339f874ca43",
+      "reconciliationId": "7c9e4c4a8b28",
       "entityType": "token",
       "entityId": "--color-border-information",
       "registryId": null,
@@ -3896,15 +3896,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-border-information\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "2b38ec936ade",
+      "reconciliationId": "34c881b2c16b",
       "entityType": "token",
       "entityId": "--color-border-success",
       "registryId": null,
@@ -3923,15 +3923,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-border-success\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "ac78f671a7ac",
+      "reconciliationId": "82ee93f7c7bb",
       "entityType": "token",
       "entityId": "--color-border-warning",
       "registryId": null,
@@ -3950,15 +3950,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-border-warning\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "b535b05a5340",
+      "reconciliationId": "c96680481bf9",
       "entityType": "token",
       "entityId": "--color-icon-error",
       "registryId": null,
@@ -3977,15 +3977,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-icon-error\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "faabe443bce1",
+      "reconciliationId": "bf9350adc444",
       "entityType": "token",
       "entityId": "--color-icon-information",
       "registryId": null,
@@ -4004,15 +4004,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-icon-information\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "7821480864d0",
+      "reconciliationId": "b06e3791bd9c",
       "entityType": "token",
       "entityId": "--color-icon-placeholder",
       "registryId": null,
@@ -4031,15 +4031,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-icon-placeholder\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "ae88b5822572",
+      "reconciliationId": "c686dc1d9bfe",
       "entityType": "token",
       "entityId": "--color-icon-success",
       "registryId": null,
@@ -4058,15 +4058,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-icon-success\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "29cb57fd921d",
+      "reconciliationId": "73a70766cd53",
       "entityType": "token",
       "entityId": "--color-icon-warning",
       "registryId": null,
@@ -4085,15 +4085,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-icon-warning\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "95f312e2cd56",
+      "reconciliationId": "5d8b2b4b8afb",
       "entityType": "token",
       "entityId": "--color-surface-default",
       "registryId": null,
@@ -4112,15 +4112,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-surface-default\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "3c28a053240e",
+      "reconciliationId": "69d0e70e61ca",
       "entityType": "token",
       "entityId": "--color-surface-information",
       "registryId": null,
@@ -4139,15 +4139,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-surface-information\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "130a5099d4e3",
+      "reconciliationId": "41ffd60baf8c",
       "entityType": "token",
       "entityId": "--color-surface-page",
       "registryId": null,
@@ -4166,15 +4166,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-surface-page\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "5817d8f9d2fd",
+      "reconciliationId": "fcb342c0cd8e",
       "entityType": "token",
       "entityId": "--color-surface-success",
       "registryId": null,
@@ -4193,15 +4193,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-surface-success\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "98b0dbc865e3",
+      "reconciliationId": "a119040d580a",
       "entityType": "token",
       "entityId": "--color-surface-warning",
       "registryId": null,
@@ -4220,15 +4220,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-surface-warning\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "08289a8552e4",
+      "reconciliationId": "9efc3a4a5cc9",
       "entityType": "token",
       "entityId": "--color-text-heading",
       "registryId": null,
@@ -4247,15 +4247,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-text-heading\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "3096ac9011ac",
+      "reconciliationId": "2043d9edb299",
       "entityType": "token",
       "entityId": "--color-text-information",
       "registryId": null,
@@ -4274,15 +4274,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-text-information\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "acbc3e3c8d76",
+      "reconciliationId": "ef79c09e7839",
       "entityType": "token",
       "entityId": "--color-text-success",
       "registryId": null,
@@ -4301,15 +4301,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-text-success\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "d7550a779ecc",
+      "reconciliationId": "09f9c68bb3b0",
       "entityType": "token",
       "entityId": "--color-text-warning",
       "registryId": null,
@@ -4328,15 +4328,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--color-text-warning\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "e9753bd5f87b",
+      "reconciliationId": "de54acfa9202",
       "entityType": "token",
       "entityId": "--font-size-h1",
       "registryId": null,
@@ -4355,15 +4355,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-h1\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "6c704d19ff57",
+      "reconciliationId": "410f2275e721",
       "entityType": "token",
       "entityId": "--font-size-h2",
       "registryId": null,
@@ -4382,15 +4382,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-h2\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "ecee7d4ea437",
+      "reconciliationId": "4b016139e875",
       "entityType": "token",
       "entityId": "--font-size-h3",
       "registryId": null,
@@ -4409,15 +4409,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-h3\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c5137e328cda",
+      "reconciliationId": "f102f7d51679",
       "entityType": "token",
       "entityId": "--font-size-h4",
       "registryId": null,
@@ -4436,15 +4436,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-h4\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "0fe6efc39e3c",
+      "reconciliationId": "df50a2efe3c1",
       "entityType": "token",
       "entityId": "--font-size-h5",
       "registryId": null,
@@ -4463,15 +4463,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-h5\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "cdc4bed8becf",
+      "reconciliationId": "49fba090791a",
       "entityType": "token",
       "entityId": "--font-size-h6",
       "registryId": null,
@@ -4490,15 +4490,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-h6\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "a4b8b5a935f3",
+      "reconciliationId": "81340981dd8e",
       "entityType": "token",
       "entityId": "--font-size-paragraph-large",
       "registryId": null,
@@ -4517,15 +4517,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-paragraph-large\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "71f70413f789",
+      "reconciliationId": "9b591d6a20a7",
       "entityType": "token",
       "entityId": "--font-size-paragraph-small",
       "registryId": null,
@@ -4544,15 +4544,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-size-paragraph-small\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "e83d3b5308e0",
+      "reconciliationId": "eb6b8b656e0c",
       "entityType": "token",
       "entityId": "--font-weight-heading",
       "registryId": null,
@@ -4571,15 +4571,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--font-weight-heading\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c981f21d0bb9",
+      "reconciliationId": "bdc6ff823852",
       "entityType": "token",
       "entityId": "--line-height-h1",
       "registryId": null,
@@ -4598,15 +4598,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-h1\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "838fa4359c42",
+      "reconciliationId": "4a73feabfa08",
       "entityType": "token",
       "entityId": "--line-height-h2",
       "registryId": null,
@@ -4625,15 +4625,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-h2\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1b75bfaa4d7b",
+      "reconciliationId": "1ea882372e8f",
       "entityType": "token",
       "entityId": "--line-height-h3",
       "registryId": null,
@@ -4652,15 +4652,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-h3\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "727b13bcb914",
+      "reconciliationId": "5d2eab68b756",
       "entityType": "token",
       "entityId": "--line-height-h4",
       "registryId": null,
@@ -4679,15 +4679,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-h4\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "776f9a20ea13",
+      "reconciliationId": "c5e0dc97df71",
       "entityType": "token",
       "entityId": "--line-height-h5",
       "registryId": null,
@@ -4706,15 +4706,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-h5\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "cb2d0508a03f",
+      "reconciliationId": "d2f9fc4d9f7e",
       "entityType": "token",
       "entityId": "--line-height-h6",
       "registryId": null,
@@ -4733,15 +4733,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-h6\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "ccc15d3752ba",
+      "reconciliationId": "2339c9d5ad12",
       "entityType": "token",
       "entityId": "--line-height-paragraph-large",
       "registryId": null,
@@ -4760,15 +4760,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-paragraph-large\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "28da0549f03f",
+      "reconciliationId": "ef39c06c0eb9",
       "entityType": "token",
       "entityId": "--line-height-paragraph-small",
       "registryId": null,
@@ -4787,15 +4787,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--line-height-paragraph-small\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "88587affc3d1",
+      "reconciliationId": "c100ad033940",
       "entityType": "token",
       "entityId": "--paragraph-spacing-caption",
       "registryId": null,
@@ -4814,15 +4814,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-caption\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "9397b18f7ae0",
+      "reconciliationId": "ea6aa58c1b70",
       "entityType": "token",
       "entityId": "--paragraph-spacing-h1",
       "registryId": null,
@@ -4841,15 +4841,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-h1\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "aa0c1ea0eb8e",
+      "reconciliationId": "e5ce191fcca8",
       "entityType": "token",
       "entityId": "--paragraph-spacing-h2",
       "registryId": null,
@@ -4868,15 +4868,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-h2\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "79e4bf43744a",
+      "reconciliationId": "7bc56ee1e8e9",
       "entityType": "token",
       "entityId": "--paragraph-spacing-h3",
       "registryId": null,
@@ -4895,15 +4895,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-h3\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "2de7fc32f987",
+      "reconciliationId": "1a5a58ff8a40",
       "entityType": "token",
       "entityId": "--paragraph-spacing-h4",
       "registryId": null,
@@ -4922,15 +4922,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-h4\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "46f6fabf7f36",
+      "reconciliationId": "28004a2d6e38",
       "entityType": "token",
       "entityId": "--paragraph-spacing-h5",
       "registryId": null,
@@ -4949,15 +4949,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-h5\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "3f925841fccc",
+      "reconciliationId": "cccffc0d6618",
       "entityType": "token",
       "entityId": "--paragraph-spacing-h6",
       "registryId": null,
@@ -4976,15 +4976,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-h6\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "32eef0f41345",
+      "reconciliationId": "7b4246c362da",
       "entityType": "token",
       "entityId": "--paragraph-spacing-paragraph-large",
       "registryId": null,
@@ -5003,15 +5003,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-paragraph-large\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "f9eb06d20cff",
+      "reconciliationId": "b94474acb5b1",
       "entityType": "token",
       "entityId": "--paragraph-spacing-paragraph-medium",
       "registryId": null,
@@ -5030,15 +5030,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-paragraph-medium\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "4797cae91622",
+      "reconciliationId": "462e065a5e61",
       "entityType": "token",
       "entityId": "--paragraph-spacing-paragraph-small",
       "registryId": null,
@@ -5057,15 +5057,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--paragraph-spacing-paragraph-small\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "18aa5fca503c",
+      "reconciliationId": "5a84135bba74",
       "entityType": "token",
       "entityId": "--radius-md",
       "registryId": null,
@@ -5084,15 +5084,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--radius-md\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "13f98a7f0cd1",
+      "reconciliationId": "2e9be2c7cf25",
       "entityType": "token",
       "entityId": "--radius-none",
       "registryId": null,
@@ -5111,15 +5111,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--radius-none\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "9149ed1151c2",
+      "reconciliationId": "363a672e9749",
       "entityType": "token",
       "entityId": "--radius-sm",
       "registryId": null,
@@ -5138,15 +5138,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--radius-sm\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "b3b4538b2a36",
+      "reconciliationId": "0824908cb51c",
       "entityType": "token",
       "entityId": "--scale-0",
       "registryId": null,
@@ -5165,15 +5165,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-0\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "0bd4f912e67b",
+      "reconciliationId": "88392f195e12",
       "entityType": "token",
       "entityId": "--scale-100",
       "registryId": null,
@@ -5192,15 +5192,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "0a7b8671f7fb",
+      "reconciliationId": "cbd8728d86b8",
       "entityType": "token",
       "entityId": "--scale-1000",
       "registryId": null,
@@ -5219,15 +5219,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-1000\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "7d76f0a810e5",
+      "reconciliationId": "b7f84a33963a",
       "entityType": "token",
       "entityId": "--scale-1100",
       "registryId": null,
@@ -5246,15 +5246,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-1100\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "40991a2a8806",
+      "reconciliationId": "8c3ddaaf4aed",
       "entityType": "token",
       "entityId": "--scale-1200",
       "registryId": null,
@@ -5273,15 +5273,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-1200\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "38ebca1134a6",
+      "reconciliationId": "57b464e3d3b8",
       "entityType": "token",
       "entityId": "--scale-25",
       "registryId": null,
@@ -5300,15 +5300,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-25\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "e695c1445d92",
+      "reconciliationId": "ed413cd8d434",
       "entityType": "token",
       "entityId": "--scale-400",
       "registryId": null,
@@ -5327,15 +5327,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-400\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "c77d4623bf97",
+      "reconciliationId": "c76a0fc1bab0",
       "entityType": "token",
       "entityId": "--scale-50",
       "registryId": null,
@@ -5354,15 +5354,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-50\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "da649f7ef858",
+      "reconciliationId": "1e6e372a6ec1",
       "entityType": "token",
       "entityId": "--scale-500",
       "registryId": null,
@@ -5381,15 +5381,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-500\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "71f9f909ab4e",
+      "reconciliationId": "e3adb4bbf0f6",
       "entityType": "token",
       "entityId": "--scale-600",
       "registryId": null,
@@ -5408,15 +5408,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-600\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1ba4d6d15ced",
+      "reconciliationId": "99ef0f824fe5",
       "entityType": "token",
       "entityId": "--scale-700",
       "registryId": null,
@@ -5435,15 +5435,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-700\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "784131bbb76d",
+      "reconciliationId": "649d7d0a3b1a",
       "entityType": "token",
       "entityId": "--scale-800",
       "registryId": null,
@@ -5462,15 +5462,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-800\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "a5a1b7ccf673",
+      "reconciliationId": "a7d5714512ab",
       "entityType": "token",
       "entityId": "--scale-900",
       "registryId": null,
@@ -5489,15 +5489,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "CodeSnapshot token definition \"--scale-900\" is neither registry-tracked nor directly consumed by any registry-tracked component's own CSS — outside the reconciliation entity boundary (see design-system/registry-schema.md's \"Scope: only consumed tokens are catalogued\")."
     },
     {
-      "reconciliationId": "1bfdf423764b",
+      "reconciliationId": "8433e8bb2114",
       "entityType": "token",
       "entityId": "color-text-caption",
       "registryId": "color-text-caption",
@@ -5514,15 +5514,15 @@
         "form-field"
       ],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "registry token \"color-text-caption\" normalizes to Figma variable name \"Text/Caption\", which is not present in the Figma baseline or current capture — an unmapped/unobserved Figma-side entity, not a value conflict."
     },
     {
-      "reconciliationId": "ef3ded76dea5",
+      "reconciliationId": "745f2cddb71a",
       "entityType": "token",
       "entityId": "font-size-caption",
       "registryId": "font-size-caption",
@@ -5539,15 +5539,15 @@
         "form-field"
       ],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "registry token \"font-size-caption\" normalizes to Figma variable name \"Caption/Font size\", which is not present in the Figma baseline or current capture — an unmapped/unobserved Figma-side entity, not a value conflict."
     },
     {
-      "reconciliationId": "c753a960f01b",
+      "reconciliationId": "c90eae01a94e",
       "entityType": "token",
       "entityId": "Icon/error",
       "registryId": null,
@@ -5570,15 +5570,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "Figma variable \"Icon/error\" is present in the current Figma capture but no registry token normalizes to it."
     },
     {
-      "reconciliationId": "a662cedab496",
+      "reconciliationId": "65ac181366b3",
       "entityType": "token",
       "entityId": "Icon/placeholder",
       "registryId": null,
@@ -5601,15 +5601,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "Figma variable \"Icon/placeholder\" is present in the current Figma capture but no registry token normalizes to it."
     },
     {
-      "reconciliationId": "386ccccdcb23",
+      "reconciliationId": "99798e0d9636",
       "entityType": "token",
       "entityId": "line-height-caption",
       "registryId": "line-height-caption",
@@ -5626,15 +5626,49 @@
         "form-field"
       ],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "registry token \"line-height-caption\" normalizes to Figma variable name \"Caption/Line Height\", which is not present in the Figma baseline or current capture — an unmapped/unobserved Figma-side entity, not a value conflict."
     },
     {
-      "reconciliationId": "e472046fe2b5",
+      "reconciliationId": "67cbfe7938ca",
+      "entityType": "token",
+      "entityId": "line-height-paragraph-medium",
+      "registryId": "line-height-paragraph-medium",
+      "field": "value",
+      "status": "both-changed-conflict",
+      "figma": {
+        "current": "20",
+        "baseline": "28",
+        "changed": true
+      },
+      "code": {
+        "current": "20px",
+        "baseline": "28px",
+        "changed": true
+      },
+      "registryExpected": null,
+      "affectedComponents": [
+        "button",
+        "checkbox",
+        "field-label",
+        "link",
+        "menu-item",
+        "text-field"
+      ],
+      "sources": {
+        "figmaBaselineId": "084eb498971b1ee8",
+        "figmaCurrentId": "568bde3637c3c8bc",
+        "codeBaselineId": "bcb75223959d14f2",
+        "codeCurrentId": "6ad9f34eea3bc282"
+      },
+      "detail": "both the Figma variable \"Paragraph Medium/Line Height\" and the code definition \"--line-height-paragraph-medium\" changed since their respective baselines; their current raw values differ (see module header: code stores the unresolved alias/literal text, Figma reports the fully resolved value)."
+    },
+    {
+      "reconciliationId": "f823ad9dfb07",
       "entityType": "token",
       "entityId": "Paragraph Medium/Paragraph Spacing",
       "registryId": null,
@@ -5663,15 +5697,15 @@
       "registryExpected": null,
       "affectedComponents": [],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "Figma variable \"Paragraph Medium/Paragraph Spacing\" is present in the current Figma capture but no registry token normalizes to it."
     },
     {
-      "reconciliationId": "699e7da1aefa",
+      "reconciliationId": "b984315add10",
       "entityType": "token",
       "entityId": "scale-200",
       "registryId": "scale-200",
@@ -5692,15 +5726,15 @@
         "text-field"
       ],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "registry token \"scale-200\" normalizes to Figma variable name \"Scale/200\", which is not present in the Figma baseline or current capture — an unmapped/unobserved Figma-side entity, not a value conflict."
     },
     {
-      "reconciliationId": "d6f3191f2bcb",
+      "reconciliationId": "d647ecad0748",
       "entityType": "token",
       "entityId": "scale-300",
       "registryId": "scale-300",
@@ -5720,9 +5754,9 @@
         "text-field"
       ],
       "sources": {
-        "figmaBaselineId": "568bde3637c3c8bc",
+        "figmaBaselineId": "084eb498971b1ee8",
         "figmaCurrentId": "568bde3637c3c8bc",
-        "codeBaselineId": "6ad9f34eea3bc282",
+        "codeBaselineId": "bcb75223959d14f2",
         "codeCurrentId": "6ad9f34eea3bc282"
       },
       "detail": "registry token \"scale-300\" normalizes to Figma variable name \"Scale/300\", which is not present in the Figma baseline or current capture — an unmapped/unobserved Figma-side entity, not a value conflict."

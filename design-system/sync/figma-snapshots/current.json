@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.0.0",
-  "snapshotId": "31238181b31c8a71",
-  "generatedAt": "2026-09-22T02:26:32.937Z",
+  "snapshotId": "568bde3637c3c8bc",
+  "generatedAt": "2026-09-22T03:12:33.858Z",
   "source": {
     "fileKey": "opq4Is8eZdXdu920YDUIs1",
     "fileName": "Design-System-2.0",
-    "capturedAt": "2026-09-22T02:26:32.931Z"
+    "capturedAt": "2026-09-22T03:12:33.853Z"
   },
   "pages": [
     {
@@ -221,7 +221,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -530,7 +530,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -741,7 +741,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -856,7 +856,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -1007,7 +1007,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -1102,7 +1102,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -1219,7 +1219,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -1436,7 +1436,7 @@
         },
         {
           "name": "Paragraph Medium/Line Height",
-          "value": "28"
+          "value": "20"
         },
         {
           "name": "Paragraph Medium/Paragraph Spacing",
@@ -1710,7 +1710,7 @@
     },
     {
       "name": "Paragraph Medium/Line Height",
-      "value": "28",
+      "value": "20",
       "inferredType": "FLOAT",
       "consumedBy": [
         "15:664",
